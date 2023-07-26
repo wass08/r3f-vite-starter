@@ -5,8 +5,8 @@ export const Experience = () => {
     <>
       <OrbitControls />
       <mesh>
+        <boxGeometry />
         <meshNormalMaterial />
-        <boxBufferGeometry />
       </mesh>
     </>
   );
