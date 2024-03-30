@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "soundFile": "/Users/rumaisachowdhury/Desktop/Third Year/CSC490/r3f-vite-starter/Rhubarb-Lip-Sync-1.13.0-macOS/../public/audios/demo_audio.ogg",
+    "duration": 7.13
+  },
+  "mouthCues": [
+    { "start": 0.00, "end": 0.23, "value": "X" },
+    { "start": 0.23, "end": 0.29, "value": "C" },
+    { "start": 0.29, "end": 0.49, "value": "E" },
+    { "start": 0.49, "end": 0.56, "value": "F" },
+    { "start": 0.56, "end": 0.80, "value": "B" },
+    { "start": 0.80, "end": 0.84, "value": "C" },
+    { "start": 0.84, "end": 0.88, "value": "B" },
+    { "start": 0.88, "end": 0.97, "value": "A" },
+    { "start": 0.97, "end": 1.18, "value": "B" },
+    { "start": 1.18, "end": 1.29, "value": "A" },
+    { "start": 1.29, "end": 1.35, "value": "C" },
+    { "start": 1.35, "end": 1.69, "value": "B" },
+    { "start": 1.69, "end": 2.09, "value": "X" },
+    { "start": 2.09, "end": 2.37, "value": "B" },
+    { "start": 2.37, "end": 2.45, "value": "A" },
+    { "start": 2.45, "end": 2.69, "value": "B" },
+    { "start": 2.69, "end": 2.84, "value": "X" },
+    { "start": 2.84, "end": 2.91, "value": "B" },
+    { "start": 2.91, "end": 2.98, "value": "A" },
+    { "start": 2.98, "end": 3.04, "value": "B" },
+    { "start": 3.04, "end": 3.24, "value": "E" },
+    { "start": 3.24, "end": 3.59, "value": "B" },
+    { "start": 3.59, "end": 4.88, "value": "X" },
+    { "start": 4.88, "end": 5.14, "value": "F" },
+    { "start": 5.14, "end": 5.21, "value": "C" },
+    { "start": 5.21, "end": 5.35, "value": "E" },
+    { "start": 5.35, "end": 5.49, "value": "F" },
+    { "start": 5.49, "end": 5.56, "value": "C" },
+    { "start": 5.56, "end": 5.89, "value": "X" },
+    { "start": 5.89, "end": 6.22, "value": "B" },
+    { "start": 6.22, "end": 6.43, "value": "C" },
+    { "start": 6.43, "end": 6.68, "value": "B" },
+    { "start": 6.68, "end": 6.73, "value": "E" },
+    { "start": 6.73, "end": 6.87, "value": "F" },
+    { "start": 6.87, "end": 7.13, "value": "X" }
+  ]
+}
