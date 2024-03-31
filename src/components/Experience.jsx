@@ -1,6 +1,7 @@
 import { Environment, OrbitControls, useTexture } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { Avatar } from "./Avatar";
+import {Snowing} from "./Snowing.jsx";
 
 export const Experience = () => {
   const texture = useTexture("textures/black.jpg");
