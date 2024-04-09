@@ -1,7 +1,7 @@
 import { Environment, OrbitControls, useTexture } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { Avatar } from "./Avatar";
-import {Snowing} from "./Snowing.jsx";
+import { Snowing } from "./Snowing.jsx";
 
 export const Experience = () => {
   const texture = useTexture("textures/black.jpg");
@@ -12,10 +12,10 @@ export const Experience = () => {
       <OrbitControls />
       <Avatar position={[0, -3, 5]} scale={2} />
       <Environment preset="sunset" />
-      <mesh>
+      {/* <mesh>
         <planeGeometry args={[viewport.width, viewport.height]} />
         <meshBasicMaterial map={texture} />
-      </mesh>
+      </mesh> */}
     </>
   );
 };

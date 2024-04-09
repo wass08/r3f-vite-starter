@@ -10,16 +10,19 @@
   },
   "dependencies": {
     "@react-three/drei": "9.75.0",
-    "@react-three/fiber": "8.13.3",
-    "@types/three": "0.152.1",
+    "@react-three/fiber": "^8.13.3",
+    "@theatre/core": "^0.5.1",
+    "@theatre/r3f": "^0.5.1",
+    "@theatre/studio": "^0.5.1",
     "leva": "^0.9.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "three": "0.153.0"
+    "three": "^0.153.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@types/three": "^0.163.0",
     "@vitejs/plugin-react": "^3.1.0",
     "vite": "^4.1.0"
   }
