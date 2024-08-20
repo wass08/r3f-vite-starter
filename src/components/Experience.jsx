@@ -1,6 +1,7 @@
 import { Environment, OrbitControls, Sky } from "@react-three/drei";
 import { Avatar } from "./Avatar";
 import{useControls} from "leva"
+import { Office } from "./office";
 
 export const Experience = () => {
 
@@ -17,21 +18,12 @@ export const Experience = () => {
       <OrbitControls/>
       <Sky/>
       <Environment preset ="sunset"></Environment>
-      <group position-y={-1}>
-      <Avatar animations = {animations}/>
-
-      {animations === "Typing" &&(
-        <mesh scale = {[0.8,0.5,0.8]} position-y = {0.25} >
-        <boxGeometry/>
-        <meshStandardMaterial color = "white"/>
-      </mesh>
-
-      )}
+      <group position-1={-1}>
+        <Office/>
+      </group>
       
-      <mesh scale={5} rotation-x = {Math.PI * 0.5}>
-        <planeGeometry/>
-        <meshStandardMaterial color ="white" />
-      </mesh>
+      <group  position={[34, 0.5, 1]} scale={15.559} rotation={[-Math.PI / 2, 1.5, 1.5]}>
+      <Avatar animations = {animations}/>
       </group>
     </>
   );
