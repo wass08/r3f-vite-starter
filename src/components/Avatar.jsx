@@ -16,10 +16,7 @@ import * as THREE from 'three';
 
 export function Avatar(props) {
   const {animations} = props;
-  const {headFollow, cursorFollow} = useControls({
-    headFollow: false,
-    cursorFollow:  false,
-  });
+
   const group =  useRef();
   const { scene } = useGLTF('models/6561e968e55200949953c666.glb');
   const{animations : typingAnimation} = useFBX("animations/Typing.fbx");
@@ -30,17 +27,6 @@ export function Avatar(props) {
   fallingAnimation[0].name = "Falling";
   const{actions} = useAnimations([typingAnimation[0],standingAnimation[0], fallingAnimation[0]], group);
 
-  useFrame((state) =>{
-    if(headFollow){
-         group.current.getObjectByName("Head").lookAt(state.camera.position);
-    }
-    if(cursorFollow){
-        const target =  new THREE.Vector3(state.mouse.x, state.mouse.y, 1);
-        group.current.getObjectByName("Spine2").lookAt(target);
-      
-    }
-}
-);
 
   useEffect(() =>{
     actions[animations].reset().fadeIn(0.5).play();

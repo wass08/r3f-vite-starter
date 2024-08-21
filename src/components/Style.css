@@ -1,0 +1,64 @@
+/* styles.css */
+
+body {
+    margin: 0;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 5rem;
+  }
+  
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+  }
+  
+  .about-section h1 {
+    height: 10vh;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.375;
+    align-items: flex-start;
+  }
+  
+  .about-section h1 span {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .about-section p {
+    font-style: italic;
+    font-size: 30PX;
+    font-weight: 800;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .about-section p br {
+    font-size: 30PX;
+    font-weight: 800;
+    flex-direction: column;
+    align-items: flex-start;
+    
+  }
+  
+  
+  .about-section button {
+    font-style: italic;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.375;
+    background-color: gold;
+    border-radius: 10px;
+  }
+  
+  

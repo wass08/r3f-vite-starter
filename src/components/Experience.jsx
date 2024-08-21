@@ -15,14 +15,13 @@ export const Experience = () => {
   })
   return (
     <>
-      <OrbitControls/>
       <Sky/>
       <Environment preset ="sunset"></Environment>
       <group position-1={-1}>
         <Office/>
       </group>
       
-      <group  position={[34, 0.5, 1]} scale={15.559} rotation={[-Math.PI / 2, 1.5, 1.5]}>
+      <group  position={[11.5, 0.5, 1]} scale={15.559} rotation={[-Math.PI / 2, 1.5, 1.5]}>
       <Avatar animations = {animations}/>
       </group>
     </>
