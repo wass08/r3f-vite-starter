@@ -14,6 +14,7 @@ body {
   }
   
   .about-section {
+    height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Align items to the left */
@@ -61,4 +62,40 @@ body {
     border-radius: 10px;
   }
   
+  
+  .skills-container {
+    margin-top: 1rem;
+  }
+  .skills-container h1{
+    font-size: 50px;
+  }
+  .skills-container h2{
+    font-size: 50px;
+  }
+  
+  .skill-bar {
+    margin-bottom: 1rem;
+  }
+  
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    background-color: black;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: gold;
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+  }
   

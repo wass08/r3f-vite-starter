@@ -4,25 +4,12 @@ import{useControls} from "leva"
 import { Office } from "./office";
 
 export const Experience = () => {
-
-  const {animations} =  useControls({
-    animations:{
-
-    
-    value:"Typing",
-    options: ["Typing", "Falling", "Standing"]
-    },
-  })
   return (
     <>
-      <Sky/>
-      <Environment preset ="sunset"></Environment>
-      <group position-1={-1}>
-        <Office/>
-      </group>
       
-      <group  position={[11.5, 0.5, 1]} scale={15.559} rotation={[-Math.PI / 2, 1.5, 1.5]}>
-      <Avatar animations = {animations}/>
+      <Environment preset ="dawn"></Environment>
+      <group position={-1}>
+        <Office/>
       </group>
     </>
   );
