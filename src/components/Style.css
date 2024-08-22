@@ -119,14 +119,14 @@ body {
   
   .line {
     background-color: white;
-    height: 0.125rem; 
+    height: 5px; 
     border-radius: 0.375rem;
-    width: 100%;
+    width: 110%;
     transition: all 0.3s ease;
   }
   
   .line-top.rotate {
-    display: none;
+    transform: translateY(100%) rotate(45deg) scale(1.5);
   }
   
   .line-middle.hidden {
@@ -134,7 +134,8 @@ body {
   }
   
   .line-bottom.rotate {
-    display: none;
+    
+    transform: translateY(-100%) rotate(-45deg) scale(1.5);
   }
   
   .menu-container {
