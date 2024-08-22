@@ -6,9 +6,9 @@ import { Office } from "./office";
 export const Experience = () => {
   return (
     <>
-      
-      <Environment preset ="dawn"></Environment>
-      <group position={-1}>
+      <OrbitControls/>
+      <Environment preset ="sunset"></Environment>
+      <group position={-2}>
         <Office/>
       </group>
     </>
