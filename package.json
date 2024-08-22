@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@react-three/drei": "^9.75.0",
-    "@react-three/fiber": "^8.13.3",
+    "@react-three/fiber": "^8.17.5",
     "@types/three": "0.152.1",
     "framer-motion": "^11.3.29",
     "framer-motion-3d": "^11.3.29",

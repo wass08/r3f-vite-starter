@@ -26,22 +26,22 @@
             <button 
                 className="menu-item" 
                 onClick={() => onSectionChange(0)}>
-                About
+               ABOUT
             </button>
             <button 
                 className="menu-item" 
                 onClick={() => onSectionChange(1.5)}>
-                Skills
+                SKILLS
             </button>
             <button 
                 className="menu-item" 
                 onClick={() => onSectionChange(3)}>
-                Projects
+                PROJECTS
             </button>
             <button 
                 className="menu-item" 
                 onClick={() => onSectionChange(4.5)}>
-                Contact
+                CONTACT
             </button>
             </div>
         </div>

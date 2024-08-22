@@ -1,5 +1,6 @@
 import './Style.css';
 import React from 'react';
+import { useEffect, useRef } from "react";
 
 const Section = (props) => {
     const { children } = props;
@@ -48,26 +49,57 @@ const AboutSection = () => {
   };
 
   const SkillBar = ({ title, level }) => {
+    const progressRef = useRef(null);
+  
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+            
+              entry.target.style.width = `${level}%`;
+            } else {
+            
+              entry.target.style.width = `0%`;
+            }
+          });
+        },
+        { threshold: 0.5 } 
+      );
+  
+      if (progressRef.current) {
+        observer.observe(progressRef.current);
+      }
+      
+  
+      return () => {
+        if (progressRef.current) {
+          observer.unobserve(progressRef.current);
+        }
+      };
+    }, [level]);
+  
     return (
       <div className="skill-bar">
         <div className="skill-info">
           <span>{title}</span>
-          <span>{level}%</span>
         </div>
         <div className="progress-bar">
-          <div className="progress" style={{ width: `${level}%` }}></div>
+          <div className="progress" ref={progressRef}></div>
         </div>
       </div>
     );
   };
+
+
   
   const SkillSection = () => {
     const skills = [
-      { title: "Three.js", level: 60 },
-      { title: "HTML/CSS", level: 70 },
-      { title: "Python", level: 40 },
-      { title: "C#", level: 50 },
-      { title: "Blender", level: 70 },
+      { title: "Three.js", level: 70},
+      { title: "HTML/CSS", level: 80 },
+      { title: "Python", level: 50},
+      { title: "C#", level: 60},
+      { title: "Blender", level: 80},
     ];
   
     const languages = [
@@ -75,12 +107,10 @@ const AboutSection = () => {
       { title: "Filipino", level: 90, },
       { title: "Spanish", level: 50,  },
     ];
-  
     return (
       <Section>
-      
         <div className="skills-container">
-        <h1>Skills</h1>
+          <h1>Skills</h1>
           <h2>Technical Skills</h2>
           {skills.map((skill, index) => (
             <SkillBar key={index} title={skill.title} level={skill.level} />
@@ -90,7 +120,7 @@ const AboutSection = () => {
             <SkillBar key={index} title={language.title} level={language.level} />
           ))}
         </div>
-
       </Section>
     );
   };
+  

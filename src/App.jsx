@@ -14,13 +14,18 @@ function App() {
   const  [navOpened, setNavOpened] = useState(false);
 
 
+
   return (
     <>
     <Canvas shadows camera={{ position: [10, 5, -5], fov: 50}}>
       <color attach="background" args={["#FFE5B4"]} />
       <ScrollControls pages={5} damping={0.1}>
         <ScrollManager section = {section} onSectionChange ={setSection}/>
-      <Experience />
+
+        <Scroll>
+      <Experience section = {section} />
+      </Scroll>
+
       <Scroll html>
         <Interface/>
       </Scroll>

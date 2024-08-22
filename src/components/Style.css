@@ -58,8 +58,8 @@ body {
     font-size: 2rem;
     font-weight: 800;
     line-height: 1.375;
-    background-color: gold;
-    border-radius: 10px;
+    background-color: #BCECAC;
+    border-radius: 5px;
   }
   
   
@@ -89,22 +89,25 @@ body {
     background-color: black;
     border-radius: 10px;
     overflow: hidden;
-    height: 20px;
+    height: 10px;
   }
   
   .progress {
     height: 100%;
-    background-color: gold;
+    background-color: #BCECAC;
     border-radius: 10px;
     transition: width 0.5s ease-in-out;
   }
+
+
+
   .menu-button {
     z-index: 20;
     position: fixed;
     top: 3rem;
     right: 3rem;
     padding: 0.75rem;
-    background-color: #4f46e5;
+    background-color: skyblue;
     width: 2.75rem;
     height: 2.75rem;
     border-radius: 0.375rem;
@@ -123,7 +126,7 @@ body {
   }
   
   .line-top.rotate {
-    transform: rotate(45deg) translateY(0.5rem) tranlateX(0.5rem);
+    display: none;
   }
   
   .line-middle.hidden {
@@ -131,7 +134,7 @@ body {
   }
   
   .line-bottom.rotate {
-    transform: rotate(-45deg) translateY(0.125rem) ranlateX(0.5rem);;
+    display: none;
   }
   
   .menu-container {
@@ -164,7 +167,7 @@ body {
     flex-direction: column;
     gap: 1.5rem; 
     padding: 2rem; 
-    background-color: #CBC3E3;
+    background-color: #BCECAC;
   }
   
   .menu-item {
@@ -172,15 +175,14 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: color 0.3s ease;
-    font-style: italic;
+    padding: 10px;
     font-size: 2rem;
     font-weight: 800;
     line-height: 1.375;
-    background-color: gold;
-    border-radius: 10px;
+    background-color: #FFE5B4;
     
   }
   
   .menu-item:hover {
-    background-color: #4f46e5; 
+    background-color: skyblue; 
   }

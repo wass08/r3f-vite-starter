@@ -11,7 +11,6 @@ export const ScrollManager = (props) =>{
     const data = useScroll();
     const lastScroll = useRef(0);
     const isAnimating = useRef(false);
-    const fillRef = useRef(null);
 
     data.fill.classList.add("top-0")
     data.fill.classList.add("absolute")
