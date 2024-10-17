@@ -13,8 +13,8 @@ export default function Model(props) {
 
   return (
     <group {...props} dispose={null}>
-      <group position={[0, 130.5, 0]}>
-        <group position={[0, -130.5, 0]} rotation={[Math.PI / 2, 0, 0]}>
+      <group  position={[144, -32, 185]}>
+        <group  position={[144, -32, 185]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh
             geometry={
               nodes["New_World_(8)__9994763_58_4009_to_9994925_319_4093"]
