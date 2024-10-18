@@ -1,10 +1,10 @@
-import Ring from "./Ring";
+import Speedometer from "./Speedometer";
 import { Canvas } from "@react-three/fiber";
 
 export default function HUD() {
     return (
-        <Canvas>
-            <Ring/>
+        <Canvas style={{ background: 'gray', height: '100vh' }}>
+            <Speedometer speed={200}/>
         </Canvas>
     );
 }
