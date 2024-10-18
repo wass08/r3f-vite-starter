@@ -70,11 +70,13 @@ export default function Ring({speed}) {
             <Circle args={[0.02, 32]} position={pos} color="white" />
         ))}
         {points[3].map((pos) => (
-            <Circle args={[0.02, 16]} position={pos} color="red" />
+            <Circle args={[0.02, 16]} position={pos}>
+                <meshStandardMaterial color="red" emissive="red" emissiveIntensity={1}/>
+            </Circle>
         ))}
         
         <EffectComposer>
-            <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} intensity={0.5} />
+            <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.9} intensity={0.5} />
         </EffectComposer>
         
         </>
