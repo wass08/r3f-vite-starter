@@ -9,6 +9,10 @@ import { RigidBody, Physics } from "@react-three/rapier";
 
 export function Race(props) {
   const { nodes, materials } = useGLTF('/Racw.glb')
+   Object.values(materials).forEach((material) => {
+     material.transparent = true;
+     material.opacity = 0; // Adjust this value between 0 (fully transparent) and 1 (fully opaque) as needed
+   });
   return (
     <group {...props} dispose={null}>
       <RigidBody type="fixed" colliders="trimesh">

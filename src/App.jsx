@@ -3,37 +3,34 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Race } from "./assets/track/Racw";
-import { Vector3 } from "three";
+import { CameraHelper } from "three";
 
-// TestCube Component with Gentle Movement
+import { Vector3 } from "three";
+import { BadLands } from "./assets/track/BadLandsWhole";
+import { Cave } from "./assets/track/Cave_whole";
+import { Test } from "./assets/track/LightTesting";
+
+// TestCube Component with Movement
 function TestCube() {
   const cubeRef = useRef();
 
-  // Function to handle key press events
   const handleKeyDown = (event) => {
-    const force = 2; // Reduced force for gentler movement
-    const direction = new Vector3(0, 0, 0); // Initialize the force vector
+    const force = 2;
+    const direction = new Vector3(0, 0, 0);
 
-    if (event.key === "ArrowUp") {
-      direction.z = -force; // Move forward
-    } else if (event.key === "ArrowDown") {
-      direction.z = force; // Move backward
-    } else if (event.key === "ArrowLeft") {
-      direction.x = -force; // Move left
-    } else if (event.key === "ArrowRight") {
-      direction.x = force; // Move right
-    }
+    if (event.key === "ArrowUp") direction.z = -force;
+    if (event.key === "ArrowDown") direction.z = force;
+    if (event.key === "ArrowLeft") direction.x = -force;
+    if (event.key === "ArrowRight") direction.x = force;
 
-    // Apply the force to the cube's rigid body
     if (cubeRef.current) {
       cubeRef.current.applyImpulse(direction, true);
     }
   };
 
-  // Add event listener for key presses when the component is mounted
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown); // Clean up
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
@@ -54,81 +51,102 @@ function TestCube() {
 // Main App Component
 export default function App() {
   const cameraRef = useRef();
-  const moveSpeed = 0.5; // Adjust camera movement speed
+  const moveSpeed = 0.5;
 
-  // Handle camera movement
   const handleKeyDown = (event) => {
     if (!cameraRef.current) return;
-
-    // Get the current camera position
     const position = cameraRef.current.position;
 
-    switch (event.key) {
-      case "w":
-        position.z -= moveSpeed; // Move forward
-        break;
-      case "s":
-        position.z += moveSpeed; // Move backward
-        break;
-      case "a":
-        position.x -= moveSpeed; // Move left
-        break;
-      case "d":
-        position.x += moveSpeed; // Move right
-        break;
-      case "Shift":
-        position.y -= moveSpeed; // Move down
-        break;
-      case " ":
-        position.y += moveSpeed; // Move up
-        break;
-      default:
-        break;
-    }
+    if (event.key === "w") position.z -= moveSpeed;
+    if (event.key === "s") position.z += moveSpeed;
+    if (event.key === "a") position.x -= moveSpeed;
+    if (event.key === "d") position.x += moveSpeed;
+    if (event.key === "Shift") position.y -= moveSpeed;
+    if (event.key === " ") position.y += moveSpeed;
   };
 
-  // Gyro Control Hook
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Gyro control for mobile devices
   useEffect(() => {
     const handleOrientation = (event) => {
       if (cameraRef.current) {
         const { alpha, beta, gamma } = event;
         cameraRef.current.rotation.set(
-          (beta * Math.PI) / 180, // Tilt up and down
-          (alpha * Math.PI) / 180, // Rotate around vertical axis
-          (gamma * Math.PI) / 180 // Tilt left and right
+          (beta * Math.PI) / 180,
+          (alpha * Math.PI) / 180,
+          (gamma * Math.PI) / 180
         );
       }
     };
-
     window.addEventListener("deviceorientation", handleOrientation);
-    return () => {
-      window.removeEventListener("deviceorientation", handleOrientation); // Clean up
-    };
+    return () =>
+      window.removeEventListener("deviceorientation", handleOrientation);
   }, []);
 
-  // Add event listener for key presses when the component is mounted
+  const directionalLightRef = useRef();
+
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown); // Clean up
+    if (directionalLightRef.current) {
+      const helper = new CameraHelper(
+        directionalLightRef.current.shadow.camera
+      );
+      directionalLightRef.current.add(helper);
+    }
   }, []);
 
   return (
-    <Canvas shadows>
+    <Canvas
+      shadows
+      camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
+    >
+      {/* Ambient and Directional Lighting */}
       <ambientLight intensity={0.5} />
-      <directionalLight castShadow position={[10, 20, 15]} intensity={1.5} />
+      <directionalLight
+        ref={directionalLightRef}
+        color={"#b77228"}
+        castShadow
+        position={[110, 150, 33]}
+        intensity={25}
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+        shadow-camera-left={-500}
+        shadow-camera-right={500}
+        shadow-camera-top={500}
+        shadow-camera-bottom={-500}
+        shadow-camera-near={1}
+        shadow-camera-far={1500}
+        shadow-bias={-0.001}
+      />
 
       {/* Physics Environment */}
-      <Physics gravity={[0, -9.81, 0]}>
-        {/* Set gravity here */}
-        <Race /> {/* Race Track */}
-        <TestCube /> {/* Test cube with movement */}
-      </Physics>
+      {/* <Physics gravity={[0, -9.81, 0]}>
+        <Race />
+        <TestCube />
+      </Physics> */}
+      {/* <group position={[20, 0, 95]} rotation={[0, Math.PI / 2, 0]}>
+        <Test />
+      </group> */}
+      {/* Render Models */}
+      <group position={[0, 0, -14]} frustumCulled>
+        <BadLands />
+        <Cave />
+      </group>
 
-      {/* Camera Control */}
+      {/* Camera Configuration */}
       <perspectiveCamera ref={cameraRef} fov={35} position={[0, 10, 20]} />
 
-      {/* OrbitControls */}
-      <OrbitControls enablePan={false} enableZoom={true} enableRotate={true} />
+      {/* Orbit Controls */}
+      <OrbitControls
+        enablePan
+        enableZoom
+        enableRotate
+        maxDistance={2000} // To prevent excessive zoom-out
+        minDistance={5} // Prevents zooming in too far
+      />
     </Canvas>
   );
 }
