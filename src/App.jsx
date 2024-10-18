@@ -18,16 +18,17 @@ export default function App() {
       <directionalLight castShadow position={[10, 20, 15]} intensity={1.5} />
 
       <Physics gravity={[0, -90.81, 0]} debug >
-        <Model></Model>
-        <Race /> 
-        {/* <RigidBody type="fixed">
-          <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -10, 0]}>
-            <planeGeometry args={[100, 100]} />
+        {/* <Model></Model>
+        <Race />  */}
+        <RigidBody type="fixed" position={[0, 0, 0]}>
+          <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+            <planeGeometry args={[400, 400]} />
             <meshStandardMaterial color="green" />
           </mesh>
-        </RigidBody> */}
+        </RigidBody>
 
         <Car/>
+
       </Physics>
 
 
