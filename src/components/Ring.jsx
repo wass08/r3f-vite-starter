@@ -66,19 +66,20 @@ export default function Ring({speed}) {
         <Text position={[0,-0.3,0]} fontSize={0.2} color="orange">
             {speed}
         </Text>
+        <Text position={[0,-0.5,0]} fontSize={0.1} color="white">
+            km/h
+        </Text>
         {points[2].map((pos) => (
-            <Circle args={[0.02, 32]} position={pos} color="white" />
+            <Circle args={[0.02, 32]} position={pos} color="white" emissive="white"/>
         ))}
         {points[3].map((pos) => (
             <Circle args={[0.02, 16]} position={pos}>
-                <meshStandardMaterial color="red" emissive="red" emissiveIntensity={1}/>
+                <meshStandardMaterial color="red" emissive="red"/>
             </Circle>
         ))}
-        
         <EffectComposer>
-            <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.9} intensity={0.5} />
+            <Bloom luminanceThreshold={0} intensity={0.5} />
         </EffectComposer>
-        
         </>
     );
 }
