@@ -11,7 +11,7 @@ import HUD from "./components/HUD";
 function App() {
 
   return (
-    <HUD/>
+    <HUD speed={200} currentLap={3} maxLap={15} currentTime={120.33} />
     
   );
 }
