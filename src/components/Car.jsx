@@ -829,10 +829,10 @@ export function Car(props) {
     );
 
     // Lerp camera position for smooth movement
-    cameraRef.current.position.lerp(targetPosition, delta * 3);
+    cameraRef.current.position.lerp(targetPosition, delta * 10);
 
     // Update camera to look at the car
-    lookAtTarget.current.lerp(carPosition, delta * 3);
+    lookAtTarget.current.lerp(carPosition, delta * 10);
     cameraRef.current.lookAt(lookAtTarget.current);
   });
 
