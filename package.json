@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@react-three/cannon": "^6.6.0",
-    "@react-three/drei": "^9.114.3",
+    "@react-three/drei": "^9.114.5",
     "@react-three/fiber": "^8.17.10",
+    "@react-three/rapier": "^1.5.0",
     "cannon-es": "^0.20.0",
+    "rapier": "^1.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "three": "^0.167.1",
