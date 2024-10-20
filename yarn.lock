@@ -484,7 +484,7 @@
     "fflate" "~0.8.2"
     "meshoptimizer" "~0.18.1"
 
-"@types/three@>=0.134.0":
+"@types/three@^0.169.0", "@types/three@>=0.134.0":
   "integrity" "sha512-oan7qCgJBt03wIaK+4xPWclYRPG9wzcg7Z2f5T8xYTNEF95kh0t0lklxLLYBDo7gQiGLYzE6iF4ta7nXF2bcsw=="
   "resolved" "https://registry.npmjs.org/@types/three/-/three-0.169.0.tgz"
   "version" "0.169.0"
