@@ -144,7 +144,7 @@ export default function App() {
 
         <Map />
 
-        <Physics gravity={[0, -90.81, 0]} >
+        <Physics gravity={[0, -90.81, 0]} debug >
           {/* Race track and ground */}
           <RaceTrackWalls />
 
@@ -169,6 +169,8 @@ export default function App() {
         {/* <SkidMarks carRef={carRef} /> */}
         <DustParticles carRef={carRef} />
       </Physics>
+      <BackgroundMusic/>
+
     </Canvas>
     </div>
   );
