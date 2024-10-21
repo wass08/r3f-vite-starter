@@ -1,4 +1,3 @@
-
 // import React, { useRef, useEffect, useState } from 'react';
 // import { useGLTF } from '@react-three/drei';
 // import { RigidBody } from '@react-three/rapier';
@@ -16,7 +15,6 @@
 //     [30,1,0],
 //     [60,1,0],
 
-
 //   ]
 
 //   const [keys, setKeys] = useState({
@@ -31,7 +29,7 @@
 //   const [boostTimer, setBoostTimer] = useState(0);
 
 //   const FORCE = boostActive ? 50 : 25; // Increase force when boost is active
-  
+
 //   let TURN = boostActive ? 4 : 2;
 //   const maxSpeed = 0.8;
 //   let carSpeed = 0;
@@ -102,7 +100,6 @@
 //       TURN=20;
 //     }
 //     console.log(TURN);
-    
 
 //     // Check proximity to boost
 //     const carPosition = rigidBody.current.translation();
@@ -110,14 +107,14 @@
 
 //       const boostPosition = new THREE.Vector3(boost[0], boost[1], boost[2]); // Boost position, adjust if needed
 //       // console.log(carPosition);
-      
+
 //       const distanceToBoost = boostPosition.distanceTo(carPosition)
-  
+
 //       if (distanceToBoost < 2 && !boostActive) {
 //         setBoostActive(true);
 //         setBoostTimer(5); // Boost lasts 5 seconds
 //       }
-  
+
 //       // Boost timer countdown
 //       if (boostActive && boostTimer > 0) {
 //         setBoostTimer(boostTimer - delta);
@@ -125,7 +122,6 @@
 //         setBoostActive(false); // Deactivate boost when timer runs out
 //       }
 //     })
-  
 
 //     // Adjust camera to follow the car
 //     const carRotation = rigidBody.current.rotation();
@@ -173,9 +169,7 @@
 
 // useGLTF.preload('/Car.glb');
 
-
 /////////////////////////////////////////////////////
-
 
 // import React, { useRef, useEffect, useState } from 'react';
 // import { useGLTF } from '@react-three/drei';
@@ -333,8 +327,6 @@
 
 // useGLTF.preload('/Car.glb');
 
-
-
 // Car.jsx
 // import React, { useRef } from 'react';
 // import { useGLTF } from '@react-three/drei';
@@ -362,9 +354,6 @@
 // }
 
 // useGLTF.preload('/Car.glb');
-
-
-
 
 // import React, { useRef, useEffect, useState } from 'react';
 // import { useGLTF } from '@react-three/drei';
@@ -500,7 +489,7 @@
 //             <mesh geometry={nodes.Punto_GT_6.geometry} material={materials['Material_6']} receiveShadow />
 //             <mesh geometry={nodes.Punto_GT_7.geometry} material={materials['Material_7']} receiveShadow />
 //           </group>
-          
+
 //           {/* Add FirstPersonCamera as a child of the RigidBody */}
 //           <FirstPersonCamera position={[0, 1, 0]} /> {/* Adjust position to be inside the car */}
 //         </RigidBody>
@@ -513,10 +502,7 @@
 
 // useGLTF.preload('/Car.glb');
 
-
-
 ////////////////////////////////
-
 
 // import React, { useRef, useEffect, useState } from 'react';
 // import { useGLTF, PerspectiveCamera } from '@react-three/drei';
@@ -698,17 +684,17 @@
 
 // useGLTF.preload('/Car.glb');
 
+import React, { useRef, useEffect, useState } from "react";
+import { useGLTF, PerspectiveCamera } from "@react-three/drei";
+import { RigidBody } from "@react-three/rapier";
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
+import Boost from "./Boost";
 
+export function Car({props ,onPositionChange}) {
+  const carRef = React.useRef();
 
-import React, { useRef, useEffect, useState } from 'react';
-import { useGLTF, PerspectiveCamera } from '@react-three/drei';
-import { RigidBody } from '@react-three/rapier';
-import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
-import Boost from './Boost';
-
-export function Car(props) {
-  const { nodes, materials } = useGLTF('/Car.glb');
+  const { nodes, materials } = useGLTF("/Car.glb");
   const rigidBody = useRef();
   const cameraRef = useRef();
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
@@ -739,27 +725,30 @@ export function Car(props) {
   // Handling keypress events for movement
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowUp') setKeys((keys) => ({ ...keys, forward: true }));
-      if (e.key === 'ArrowDown') setKeys((keys) => ({ ...keys, backward: true }));
-      if (e.key === 'ArrowLeft') setKeys((keys) => ({ ...keys, left: true }));
-      if (e.key === 'ArrowRight') setKeys((keys) => ({ ...keys, right: true }));
-      if (e.key === ' ') setKeys((keys) => ({ ...keys, space: true }));
+      if (e.key === "ArrowUp") setKeys((keys) => ({ ...keys, forward: true }));
+      if (e.key === "ArrowDown")
+        setKeys((keys) => ({ ...keys, backward: true }));
+      if (e.key === "ArrowLeft") setKeys((keys) => ({ ...keys, left: true }));
+      if (e.key === "ArrowRight") setKeys((keys) => ({ ...keys, right: true }));
+      if (e.key === " ") setKeys((keys) => ({ ...keys, space: true }));
     };
 
     const handleKeyUp = (e) => {
-      if (e.key === 'ArrowUp') setKeys((keys) => ({ ...keys, forward: false }));
-      if (e.key === 'ArrowDown') setKeys((keys) => ({ ...keys, backward: false }));
-      if (e.key === 'ArrowLeft') setKeys((keys) => ({ ...keys, left: false }));
-      if (e.key === 'ArrowRight') setKeys((keys) => ({ ...keys, right: false }));
-      if (e.key === ' ') setKeys((keys) => ({ ...keys, space: false }));
+      if (e.key === "ArrowUp") setKeys((keys) => ({ ...keys, forward: false }));
+      if (e.key === "ArrowDown")
+        setKeys((keys) => ({ ...keys, backward: false }));
+      if (e.key === "ArrowLeft") setKeys((keys) => ({ ...keys, left: false }));
+      if (e.key === "ArrowRight")
+        setKeys((keys) => ({ ...keys, right: false }));
+      if (e.key === " ") setKeys((keys) => ({ ...keys, space: false }));
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
     };
   }, []);
 
@@ -802,6 +791,7 @@ export function Car(props) {
 
     // Check proximity to boost
     const carPosition = rigidBody.current.translation();
+    onPositionChange(carPosition);
     Boostarray.forEach((boost) => {
       const boostPosition = new THREE.Vector3(boost[0], boost[1], boost[2]); // Boost position, adjust if needed
       const distanceToBoost = boostPosition.distanceTo(carPosition);
@@ -821,7 +811,9 @@ export function Car(props) {
 
     // Adjust camera to follow the car smoothly
     const carRotation = rigidBody.current.rotation();
-    const cameraOffset = new THREE.Vector3(2, 6, 0).applyQuaternion(carRotation); // Camera offset relative to the car's rotation
+    const cameraOffset = new THREE.Vector3(2, 6, 0).applyQuaternion(
+      carRotation
+    ); // Camera offset relative to the car's rotation
     const targetPosition = new THREE.Vector3(
       carPosition.x + cameraOffset.x,
       carPosition.y + cameraOffset.y,
@@ -851,14 +843,46 @@ export function Car(props) {
           scale={[0.4, 0.4, 0.4]}
         >
           <group rotation={[0, Math.PI / 2, 0]}>
-            <mesh geometry={nodes.Punto_GT_0.geometry} material={materials['Material_0']} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_1.geometry} material={materials['Material_1']} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_2.geometry} material={materials['Material_2']} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_3.geometry} material={materials['Material_3']} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_4.geometry} material={materials['Material_4']} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_5.geometry} material={materials['Material_5']} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_6.geometry} material={materials['Material_6']} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_7.geometry} material={materials['Material_7']} receiveShadow />
+            <mesh
+              geometry={nodes.Punto_GT_0.geometry}
+              material={materials["Material_0"]}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_1.geometry}
+              material={materials["Material_1"]}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_2.geometry}
+              material={materials["Material_2"]}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_3.geometry}
+              material={materials["Material_3"]}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_4.geometry}
+              material={materials["Material_4"]}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_5.geometry}
+              material={materials["Material_5"]}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_6.geometry}
+              material={materials["Material_6"]}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_7.geometry}
+              material={materials["Material_7"]}
+              receiveShadow
+            />
           </group>
         </RigidBody>
       </group>
@@ -878,4 +902,4 @@ export function Car(props) {
   );
 }
 
-useGLTF.preload('/Car.glb');
+useGLTF.preload("/Car.glb");
