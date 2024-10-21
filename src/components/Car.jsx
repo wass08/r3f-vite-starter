@@ -5,10 +5,12 @@ import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import Boost from './Boost';
 import GameWithSound from './GameWithSound';
+import DustParticles from './DustParticles/DustParticles';
 
-export function Car(props) {
+export function Car({rigidBody, ...props}) {
+
   const { nodes, materials } = useGLTF('/Car.glb');
-  const rigidBody = useRef();
+  // const rigidBody = useRef();
   const cameraRef = useRef();
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
 
@@ -164,8 +166,9 @@ export function Car(props) {
 
   return (
     <>
-      <group {...props} dispose={null}>
+      <group {...props} dispose={null} >
         <RigidBody
+
           ref={rigidBody}
           type="dynamic"
           colliders="hull"
