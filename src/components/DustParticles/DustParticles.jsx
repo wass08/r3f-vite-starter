@@ -5,61 +5,73 @@ import * as THREE from "three";
 
 const DustParticles = ({ carRef }) => {
   const [dustParticles, setDustParticles] = useState([]);
-  const previousPosition = useRef(new THREE.Vector3()); // To calculate speed
+  const previousPosition = useRef(new THREE.Vector3()); // For speed calculations
 
   useFrame((_, delta) => {
-    const { current: car } = carRef;
+    if (!carRef.current) return;
 
-    if (car) {
-      // Calculate car speed based on position change
-      const carSpeed = car.position.distanceTo(previousPosition.current) / delta;
-      previousPosition.current.copy(car.position);
+    // Get car's position and rotation using Rapier's translation and rotation methods
+    const carTranslation = carRef.current.translation(); // Get car position from Rapier
+    const carPosition = new THREE.Vector3(
+      carTranslation.x,
+      carTranslation.y,
+      carTranslation.z
+    );
+    const carRotation = new THREE.Quaternion().copy(carRef.current.rotation()); // Get car's rotation as a quaternion
 
-      if (carSpeed > 7) { 
-        const geometry = new THREE.SphereGeometry(0.7);
-        const material = new THREE.MeshBasicMaterial({
-          color: 0xffffff,
-          transparent: true,
-          opacity: 0.1,
-        });
+    // Calculate car speed (distance traveled)
+    const carSpeed = carPosition.distanceTo(previousPosition.current) / delta;
+    previousPosition.current.copy(carPosition);
 
-        // Create two particles with slight positional offsets
-        const particle1 = new THREE.Mesh(geometry, material.clone());
-        const particle2 = new THREE.Mesh(geometry, material.clone());
+    // Emit particles only if car is moving fast enough
+    if (carSpeed > 5) {
+      // Adjust the speed threshold
+      const geometry = new THREE.SphereGeometry(0.33);
+      const material = new THREE.MeshBasicMaterial({
+        color: 0xcccccc,
+        transparent: true,
+        opacity: 0.7,
+      });
 
-        // Position the particles behind the car with slight left/right offset
-        particle1.position.set(car.position.x - 0.0, car.position.y, car.position.z - 1.5);
-        particle1.rotation.x = -Math.PI / 2.5;
-        particle1.rotation.z = car.rotation.y;
-        particle2.position.set(car.position.x + 0.0, car.position.y, car.position.z - 1.5);
-        particle2.rotation.x = -Math.PI / 2.5;
-        particle2.rotation.z = car.rotation.y;
-        // Add new particles to the state, fade existing ones, and remove fully transparent particles
-        setDustParticles((prev) => [
-          ...prev
-            .map((p) => {
-              p.material.opacity -= 0.008; 
-              return p;
-            })
-            .filter((p) => p.material.opacity > 0), 
-          particle1,
-          particle2,
-        ]);
-      } else {
-        setDustParticles((prev) => [
-          ...prev
-            .map((p) => {
-              p.material.opacity -= 0.009;
-              return p;
-            })
-            .filter((p) => p.material.opacity > 0),
-        ]);
-      }
+      // Create two particles behind the car with slight offset
+      const particle1 = new THREE.Mesh(geometry, material.clone());
+      const particle2 = new THREE.Mesh(geometry, material.clone());
+
+      const offset1 = new THREE.Vector3(0.1, 0, 0.5); // Slight left behind the car
+      const offset2 = new THREE.Vector3(0.1, 0, -.5); // Slight right behind the car
+
+      // Apply the car's rotation to these offset positions
+      offset1.applyQuaternion(carRotation);
+      offset2.applyQuaternion(carRotation);
+
+      // Set particle positions relative to the car's position and orientation
+      particle1.position.copy(carPosition).add(offset1);
+      particle2.position.copy(carPosition).add(offset2);
+      setDustParticles((prev) => [
+        ...prev
+          .map((p) => {
+            p.material.opacity -= 0.03;
+            return p;
+          })
+          .filter((p) => p.material.opacity > 0), // Remove particles that are fully faded
+        particle1,
+        particle2,
+      ]);
+    } else {
+      setDustParticles((prev) => [
+        ...prev
+          .map((p) => {
+            p.material.opacity -= 0.03;
+            return p;
+          })
+          .filter((p) => p.material.opacity > 0), // Remove particles that are fully faded
+      ]);
     }
   });
 
-  // Render particles
-  return dustParticles.map((particle, i) => <primitive key={i} object={particle} />);
+  return dustParticles.map((particle, i) => (
+    <primitive key={i} object={particle} />
+  ));
 };
 
 export default DustParticles;
