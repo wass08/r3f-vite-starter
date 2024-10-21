@@ -190,10 +190,9 @@ export default function App() {
         </RigidBody>
 
         {/* Car component with built-in camera follow */}
-        <Car rigidBody={carRef}/>
-        {/* <DustParticles carRef={carRef} /> */}
-        <SkidMarks carRef={carRef}/>
-
+        <Car rigidBody={carRef} />
+        <SkidMarks carRef={carRef} />
+        <DustParticles carRef={carRef} />
       </Physics>
     </Canvas>
   );
