@@ -70,7 +70,7 @@
 //     </>
 //   );
 // }
-import React, { useRef }, { useState, useEffect } from "react";
+import React, { useRef , useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Car";
@@ -144,7 +144,7 @@ export default function App() {
 
         <Map />
 
-        <Physics gravity={[0, -90.81, 0]} debug>
+        <Physics gravity={[0, -90.81, 0]} >
           {/* Race track and ground */}
           <RaceTrackWalls />
 
@@ -166,9 +166,10 @@ export default function App() {
 
         {/* Car component with built-in camera follow */}
         <Car rigidBody={carRef} />
-        <SkidMarks carRef={carRef} />
+        {/* <SkidMarks carRef={carRef} /> */}
         <DustParticles carRef={carRef} />
       </Physics>
     </Canvas>
+    </div>
   );
 }

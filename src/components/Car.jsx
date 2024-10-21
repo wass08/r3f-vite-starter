@@ -33,7 +33,7 @@ export function Car({rigidBody, ...props}) {
   const [boostActive, setBoostActive] = useState(false);
   const [boostTimer, setBoostTimer] = useState(0);
 
-  const FORCE = boostActive ? 13 : 5; // Increase force when boost is active
+  const FORCE = boostActive ? 13 : 6; // Increase force when boost is active
   let TURN = boostActive ? 1 : 0.1;
   const maxSpeed = 0.8;
   let carSpeed = 0;
@@ -70,8 +70,7 @@ export function Car({rigidBody, ...props}) {
   // Reset function to reset car's position, rotation, and speed
   const resetCar = () => {
     if (rigidBody.current) {
-      rigidBody.current.setTranslation({ x: 10, y: 0
-        , z: 0 }); // Reset position
+      rigidBody.current.setTranslation({ x: 10, y: 1, z: 0 }); // Reset position
       const uprightRotation = new THREE.Quaternion(); 
       uprightRotation.setFromEuler(new THREE.Euler(0, Math.PI / 2, Math.PI / 2)); 
 
