@@ -19,32 +19,30 @@ const DustParticles = ({ carRef }) => {
     );
     const carRotation = new THREE.Quaternion().copy(carRef.current.rotation()); // Get car's rotation as a quaternion
 
-    // Calculate car speed (distance traveled)
     const carSpeed = carPosition.distanceTo(previousPosition.current) / delta;
     previousPosition.current.copy(carPosition);
 
-    // Emit particles only if car is moving fast enough
-    if (carSpeed > 5) {
-      // Adjust the speed threshold
+
+    if (carSpeed > 7) {
+
       const geometry = new THREE.SphereGeometry(0.33);
       const material = new THREE.MeshBasicMaterial({
         color: 0xcccccc,
         transparent: true,
-        opacity: 0.7,
+        opacity: 0.5,
       });
 
-      // Create two particles behind the car with slight offset
+  
       const particle1 = new THREE.Mesh(geometry, material.clone());
       const particle2 = new THREE.Mesh(geometry, material.clone());
 
-      const offset1 = new THREE.Vector3(0.1, 0, 0.5); // Slight left behind the car
-      const offset2 = new THREE.Vector3(0.1, 0, -.5); // Slight right behind the car
-
-      // Apply the car's rotation to these offset positions
+      const offset1 = new THREE.Vector3(0.1, 0, 0.5); 
+      const offset2 = new THREE.Vector3(0.1, 0, -.5); 
+    
       offset1.applyQuaternion(carRotation);
       offset2.applyQuaternion(carRotation);
 
-      // Set particle positions relative to the car's position and orientation
+
       particle1.position.copy(carPosition).add(offset1);
       particle2.position.copy(carPosition).add(offset2);
       setDustParticles((prev) => [

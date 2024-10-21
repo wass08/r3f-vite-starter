@@ -6,24 +6,30 @@ import * as THREE from "three";
 const SkidMarks = ({ carRef }) => {
   const [skidMeshes, setSkidMeshes] = useState([]);
   const previousRotationY = useRef(0);
+  const previousPosition = useRef(new THREE.Vector3());
 
-  useFrame(() => {
+  useFrame((_,delta) => {
     const { current: car } = carRef;
     if (!car) return;
 
-    // Get car's position and rotation (Rapier's methods)
     const carPosition = car.translation();
     const carRotation = new THREE.Quaternion().copy(car.rotation());
 
-    // Check for rotation change (i.e., sharp turn)
-    const rotationY = car.rotation().y;
-    if (Math.abs(rotationY - previousRotationY.current) > 0.0) {
-      // Add new skid marks on sharp turn
+    const tempPos = new THREE.Vector3(
+      carPosition.x,
+      carPosition.y,
+      carPosition.z
+    );
 
-      // Skid mark geometry and material
-      const geometry = new THREE.PlaneGeometry(0.2, 0.4);
+    const carSpeed = tempPos.distanceTo(previousPosition.current) / delta;
+    previousPosition.current.copy(carPosition);
+
+    const rotationY = car.rotation().y;
+    if (Math.abs(rotationY - previousRotationY.current) > 0.001 && carSpeed > 5) {
+    
+      const geometry = new THREE.PlaneGeometry(0.4, 0.4);
       const material = new THREE.MeshBasicMaterial({
-        color: 0xffffff,
+        color: 0xeeeeee,
         side: THREE.DoubleSide,
         transparent: true,
         opacity: 0.7,
@@ -38,9 +44,8 @@ const SkidMarks = ({ carRef }) => {
         carPosition.y + offsetL.y,
         carPosition.z + offsetL.z
       );
-      skidMarkL.rotation.x = -Math.PI / 2; // Flat on the ground
-      skidMarkL.rotation.z = rotationY; // Align with car's rotation
-      setSkidMeshes((prev) => [...prev, skidMarkL]);
+      skidMarkL.rotation.x = -Math.PI / 2; 
+      // skidMarkL.rotation.z = rotationY; 
 
       // Right skid mark offset (relative to the car)
       const offsetR = new THREE.Vector3(0.24, 0, 0.5); // Slight right behind the car
@@ -52,8 +57,10 @@ const SkidMarks = ({ carRef }) => {
         carPosition.z + offsetR.z
       );
       skidMarkR.rotation.x = -Math.PI / 2; // Flat on the ground
-      skidMarkR.rotation.z = rotationY; // Align with car's rotation
-      setSkidMeshes((prev) => [...prev, skidMarkR]);
+      // skidMarkR.rotation.z = rotationY; // Align with car's rotation
+      setSkidMeshes((prev) => [...prev, skidMarkR, skidMarkL]);
+  
+
     }
 
     // Update previous rotation
