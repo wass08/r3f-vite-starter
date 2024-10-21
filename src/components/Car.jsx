@@ -13,6 +13,8 @@ export function Car({rigidBody, ...props}) {
   // const rigidBody = useRef();
   const cameraRef = useRef();
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
+  const [isFirstPerson, setIsFirstPerson] = useState(false); // Toggle for camera mode
+
 
   const Boostarray = [
     [0, 1, 0],
@@ -34,7 +36,7 @@ export function Car({rigidBody, ...props}) {
   const [boostTimer, setBoostTimer] = useState(0);
 
   const FORCE = boostActive ? 13 : 6; // Increase force when boost is active
-  let TURN = boostActive ? 1 : 0.1;
+  let TURN = boostActive ? 1 : 0.2;
   const maxSpeed = 0.8;
   let carSpeed = 0;
 
@@ -47,6 +49,8 @@ export function Car({rigidBody, ...props}) {
       if (e.key === 'ArrowRight') setKeys((keys) => ({ ...keys, right: true }));
       if (e.key === ' ') setKeys((keys) => ({ ...keys, space: true }));
       if (e.key === 'r' || e.key === 'R') setKeys((keys) => ({ ...keys, reset: true })); // Reset on 'R'
+      if (e.key === 'c') setIsFirstPerson((prev) => !prev); // Toggle camera mode on 'C' key press
+
     };
 
     const handleKeyUp = (e) => {
@@ -147,20 +151,53 @@ export function Car({rigidBody, ...props}) {
     });
 
     // Adjust camera to follow the car smoothly
-    const carRotation = rigidBody.current.rotation();
-    const cameraOffset = new THREE.Vector3(2, 6, 0).applyQuaternion(carRotation); // Camera offset relative to the car's rotation
-    const targetPosition = new THREE.Vector3(
-      carPosition.x + cameraOffset.x,
-      carPosition.y + cameraOffset.y,
-      carPosition.z + cameraOffset.z
-    );
+    // const carRotation = rigidBody.current.rotation();
+    // const cameraOffset = new THREE.Vector3(2, 6, 0).applyQuaternion(carRotation); // Camera offset relative to the car's rotation
+    // const targetPosition = new THREE.Vector3(
+    //   carPosition.x + cameraOffset.x,
+    //   carPosition.y + cameraOffset.y,
+    //   carPosition.z + cameraOffset.z
+    // );
 
-    // Lerp camera position for smooth movement
-    cameraRef.current.position.lerp(targetPosition, delta * 10);
+    // // Lerp camera position for smooth movement
+    // cameraRef.current.position.lerp(targetPosition, delta * 10);
 
-    // Update camera to look at the car
-    lookAtTarget.current.lerp(carPosition, delta * 10);
-    cameraRef.current.lookAt(lookAtTarget.current);
+    // // Update camera to look at the car
+    // lookAtTarget.current.lerp(carPosition, delta * 10);
+    // cameraRef.current.lookAt(lookAtTarget.current);
+
+    if (isFirstPerson) {
+      // Set the camera's position to be near the car's bonnet
+        cameraRef.current.position.set(carPosition.x, carPosition.y + 0.8, carPosition.z -0.4);
+        
+        // Get the car's quaternion (rotation)
+        const carQuaternion = rigidBody.current.rotation(); // Get the car's quaternion rotation
+        cameraRef.current.quaternion.copy(carQuaternion); // Update the camera's quaternion to match the car's rotation
+
+        // Define a direction to look at (adjust these values to change the camera's facing position)
+        const lookAtOffset = new THREE.Vector3(1.5, -9, -0.5); // Forward direction relative to the car
+        lookAtOffset.applyQuaternion(carQuaternion); // Rotate the look-at offset by the car's rotation
+
+        // Calculate the target position for the camera to look at
+        const targetPosition = cameraRef.current.position.clone().add(lookAtOffset);
+        
+        // Make the camera look at the calculated target position
+        cameraRef.current.lookAt(targetPosition);
+    } else {
+      // Third-person camera behind and above the car
+      const carRotation = rigidBody.current.rotation();
+      const cameraOffset = new THREE.Vector3(2, 4, 0).applyQuaternion(carRotation); // Camera offset relative to the car's rotation
+      const targetPosition = new THREE.Vector3(
+        carPosition.x + cameraOffset.x,
+        carPosition.y + cameraOffset.y,
+        carPosition.z + cameraOffset.z
+      );
+
+      cameraRef.current.position.lerp(targetPosition, delta * 10);
+
+      lookAtTarget.current.lerp(carPosition, delta * 10);
+      cameraRef.current.lookAt(lookAtTarget.current);
+      }
   });
 
   return (
@@ -189,7 +226,7 @@ export function Car({rigidBody, ...props}) {
             <mesh geometry={nodes.Punto_GT_7.geometry} material={materials.gt_details} receiveShadow />
           </group>
         </RigidBody>
-        {/* <GameWithSound /> */}
+        <GameWithSound />
       </group>
 
       <PerspectiveCamera ref={cameraRef} makeDefault  fov={75}
