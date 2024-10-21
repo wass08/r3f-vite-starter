@@ -70,7 +70,7 @@
 //     </>
 //   );
 // }
-import React, { useState, useEffect } from "react";
+import React, { useRef }, { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Car";
@@ -78,6 +78,8 @@ import { RaceTrackWalls } from "./assets/track/Track1/CherryBlossomRawTrack";
 import { Map } from "./assets/track/Track1/WholeMap";
 import { Timer } from "./components/Timer";
 import BackgroundMusic from "./components/BackgroundMusic";
+import DustParticles from "./components/DustParticles/DustParticles";
+import SkidMarks from "./components/SkidMarks/SkidsMarks";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -99,6 +101,8 @@ export default function App() {
       window.removeEventListener("keydown", handleKeyDown); // Cleanup event listener on unmount
     };
   }, []);
+
+  const carRef = useRef();
 
   return (
     <div style={{ position: "relative", width: "100%", height: "100vh" }}>
@@ -160,12 +164,11 @@ export default function App() {
             </mesh>
           </RigidBody>
 
-          {/* Car component with built-in camera follow */}
-          <Car />
-        </Physics>
-
-        {/* <BackgroundMusic/> */}
-      </Canvas>
-    </div>
+        {/* Car component with built-in camera follow */}
+        <Car rigidBody={carRef} />
+        <SkidMarks carRef={carRef} />
+        <DustParticles carRef={carRef} />
+      </Physics>
+    </Canvas>
   );
 }
