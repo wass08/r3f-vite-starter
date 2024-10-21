@@ -137,6 +137,8 @@ import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Car";
 import { RaceTrackWalls } from "./assets/track/Track1/CherryBlossomRawTrack";
 import { Map } from "./assets/track/Track1/WholeMap";
+import { NetherRawTrackWalls } from "./assets/track/Track2/NetherRawTrack";
+import { WholeNetherMap } from "./assets/track/Track2/WholeNetherMap";
 
 // Main App Component
 export default function App() {
@@ -162,12 +164,14 @@ export default function App() {
         shadow-camera-far={1500}
         shadow-bias={-0.001}
       />
-      <Map />
+      {/* <Map /> */}
+      <WholeNetherMap/>
 
       <Physics gravity={[0, -50.81, 0]} debug >
         {/* Race track and ground */}
 
-        <RaceTrackWalls />
+        {/* <RaceTrackWalls /> */}
+        <NetherRawTrackWalls/>
 
         {/* Ground plane */}
         <RigidBody type="fixed" position={[0, 0, 0]} >
