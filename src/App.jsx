@@ -131,15 +131,19 @@
 
 //////////////////////////////////
 
-import React from "react";
+import React, { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Car";
 import { RaceTrackWalls } from "./assets/track/Track1/CherryBlossomRawTrack";
 import { Map } from "./assets/track/Track1/WholeMap";
+import DustParticles from "./components/DustParticles/DustParticles";
+import SkidMarks from "./components/SkidMarks/SkidsMarks";
 
 // Main App Component
 export default function App() {
+  const carRef = useRef();
+
   return (
     <Canvas
       shadows
@@ -164,13 +168,13 @@ export default function App() {
       />
       <Map />
 
-      <Physics gravity={[0, -50.81, 0]} debug >
+      <Physics gravity={[0, -50.81, 0]} debug>
         {/* Race track and ground */}
 
         <RaceTrackWalls />
 
         {/* Ground plane */}
-        <RigidBody type="fixed" position={[0, 0, 0]} >
+        <RigidBody type="fixed" position={[0, 0, 0]}>
           <mesh
             receiveShadow
             rotation={[-Math.PI / 2, 0, 0]}
@@ -186,7 +190,10 @@ export default function App() {
         </RigidBody>
 
         {/* Car component with built-in camera follow */}
-        <Car />
+        <Car rigidBody={carRef}/>
+        {/* <DustParticles carRef={carRef} /> */}
+        <SkidMarks carRef={carRef}/>
+
       </Physics>
     </Canvas>
   );
