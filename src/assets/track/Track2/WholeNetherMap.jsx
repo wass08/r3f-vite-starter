@@ -10,7 +10,7 @@ export function WholeNetherMap({ activeGroup, ...props }) {
   console.log(activeGroup);
   // Use the rest of the props as needed
 
-  const { nodes, materials } = useGLTF("/WholeNetherMap.glb");
+  const { nodes, materials } = useGLTF(`/~scarhatt/WholeNetherMap.glb`);
   return (
     <group {...props} dispose={null} position={[15, -140, -17]}>
       {(activeGroup == 1 || activeGroup - 1 == 1 || activeGroup + 1 == 1||true) && (
@@ -1775,4 +1775,4 @@ export function WholeNetherMap({ activeGroup, ...props }) {
   );
 }
 
-useGLTF.preload("/WholeNetherMap.glb");
+useGLTF.preload(`/~scarhatt/WholeNetherMap.glb`);

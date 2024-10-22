@@ -1,21 +1,20 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { useGLTF, PerspectiveCamera } from '@react-three/drei';
-import { RigidBody } from '@react-three/rapier';
-import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
-import Boost from './Boost';
-import GameWithSound from './GameWithSound';
-import DustParticles from './DustParticles/DustParticles';
-import Speedometer from './Speedometer';
+import React, { useRef, useEffect, useState } from "react";
+import { useGLTF, PerspectiveCamera } from "@react-three/drei";
+import { RigidBody } from "@react-three/rapier";
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
+import Boost from "./Boost";
+import GameWithSound from "./GameWithSound";
+import DustParticles from "./DustParticles/DustParticles";
+import Speedometer from "./Speedometer";
+import { getBaseUrl } from "../utils/getURL";
 
-export function Car({rigidBody, onSpeedChange, ...props}) {
-
-  const { nodes, materials } = useGLTF('/Car.glb');
+export function Car({ rigidBody, onSpeedChange, ...props }) {
+  const { nodes, materials } = useGLTF(`/~scarhatt/Car.glb`);
   // const rigidBody = useRef();
   const cameraRef = useRef();
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
   const [isFirstPerson, setIsFirstPerson] = useState(false); // Toggle for camera mode
-
 
   const Boostarray = [
     [0, 1, 0],
@@ -44,23 +43,27 @@ export function Car({rigidBody, onSpeedChange, ...props}) {
   // Handling keypress events for movement
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowUp') setKeys((keys) => ({ ...keys, forward: true }));
-      if (e.key === 'ArrowDown') setKeys((keys) => ({ ...keys, backward: true }));
-      if (e.key === 'ArrowLeft') setKeys((keys) => ({ ...keys, left: true }));
-      if (e.key === 'ArrowRight') setKeys((keys) => ({ ...keys, right: true }));
-      if (e.key === ' ') setKeys((keys) => ({ ...keys, space: true }));
-      if (e.key === 'r' || e.key === 'R') setKeys((keys) => ({ ...keys, reset: true })); // Reset on 'R'
-      if (e.key === 'c') setIsFirstPerson((prev) => !prev); // Toggle camera mode on 'C' key press
-
+      if (e.key === "ArrowUp") setKeys((keys) => ({ ...keys, forward: true }));
+      if (e.key === "ArrowDown")
+        setKeys((keys) => ({ ...keys, backward: true }));
+      if (e.key === "ArrowLeft") setKeys((keys) => ({ ...keys, left: true }));
+      if (e.key === "ArrowRight") setKeys((keys) => ({ ...keys, right: true }));
+      if (e.key === " ") setKeys((keys) => ({ ...keys, space: true }));
+      if (e.key === "r" || e.key === "R")
+        setKeys((keys) => ({ ...keys, reset: true })); // Reset on 'R'
+      if (e.key === "c") setIsFirstPerson((prev) => !prev); // Toggle camera mode on 'C' key press
     };
 
     const handleKeyUp = (e) => {
-      if (e.key === 'ArrowUp') setKeys((keys) => ({ ...keys, forward: false }));
-      if (e.key === 'ArrowDown') setKeys((keys) => ({ ...keys, backward: false }));
-      if (e.key === 'ArrowLeft') setKeys((keys) => ({ ...keys, left: false }));
-      if (e.key === 'ArrowRight') setKeys((keys) => ({ ...keys, right: false }));
-      if (e.key === ' ') setKeys((keys) => ({ ...keys, space: false }));
-      if (e.key === 'r' || e.key === 'R') setKeys((keys) => ({ ...keys, reset: false }));
+      if (e.key === "ArrowUp") setKeys((keys) => ({ ...keys, forward: false }));
+      if (e.key === "ArrowDown")
+        setKeys((keys) => ({ ...keys, backward: false }));
+      if (e.key === "ArrowLeft") setKeys((keys) => ({ ...keys, left: false }));
+      if (e.key === "ArrowRight")
+        setKeys((keys) => ({ ...keys, right: false }));
+      if (e.key === " ") setKeys((keys) => ({ ...keys, space: false }));
+      if (e.key === "r" || e.key === "R")
+        setKeys((keys) => ({ ...keys, reset: false }));
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -76,10 +79,12 @@ export function Car({rigidBody, onSpeedChange, ...props}) {
   const resetCar = () => {
     if (rigidBody.current) {
       rigidBody.current.setTranslation({ x: 10, y: 1, z: 0 }); // Reset position
-      const uprightRotation = new THREE.Quaternion(); 
-      uprightRotation.setFromEuler(new THREE.Euler(0, Math.PI / 2, Math.PI / 2)); 
+      const uprightRotation = new THREE.Quaternion();
+      uprightRotation.setFromEuler(
+        new THREE.Euler(0, Math.PI / 2, Math.PI / 2)
+      );
 
-    rigidBody.current.setRotation(uprightRotation); // Reset to upright
+      rigidBody.current.setRotation(uprightRotation); // Reset to upright
       rigidBody.current.setLinvel({ x: 0, y: 0, z: 0 }); // Reset linear velocity
       rigidBody.current.setAngvel({ x: 0, y: 0, z: 0 }); // Reset angular velocity
 
@@ -108,13 +113,13 @@ export function Car({rigidBody, onSpeedChange, ...props}) {
 
     // Apply forward/backward movement
     if (keys.forward) {
-      carSpeed +=10
+      carSpeed += 10;
       rigidBody.current.applyImpulse(
         { x: direction.x * FORCE, y: 0, z: direction.z * FORCE },
         true
       );
     } else if (keys.backward) {
-      carSpeed +=10
+      carSpeed += 10;
       rigidBody.current.applyImpulse(
         { x: -direction.x * FORCE, y: 0, z: -direction.z * FORCE },
         true
@@ -172,25 +177,33 @@ export function Car({rigidBody, onSpeedChange, ...props}) {
 
     if (isFirstPerson) {
       // Set the camera's position to be near the car's bonnet
-        cameraRef.current.position.set(carPosition.x, carPosition.y + 0.8, carPosition.z -0.4);
-        
-        // Get the car's quaternion (rotation)
-        const carQuaternion = rigidBody.current.rotation(); // Get the car's quaternion rotation
-        cameraRef.current.quaternion.copy(carQuaternion); // Update the camera's quaternion to match the car's rotation
+      cameraRef.current.position.set(
+        carPosition.x,
+        carPosition.y + 0.8,
+        carPosition.z - 0.4
+      );
 
-        // Define a direction to look at (adjust these values to change the camera's facing position)
-        const lookAtOffset = new THREE.Vector3(1.5, -9, -0.5); // Forward direction relative to the car
-        lookAtOffset.applyQuaternion(carQuaternion); // Rotate the look-at offset by the car's rotation
+      // Get the car's quaternion (rotation)
+      const carQuaternion = rigidBody.current.rotation(); // Get the car's quaternion rotation
+      cameraRef.current.quaternion.copy(carQuaternion); // Update the camera's quaternion to match the car's rotation
 
-        // Calculate the target position for the camera to look at
-        const targetPosition = cameraRef.current.position.clone().add(lookAtOffset);
-        
-        // Make the camera look at the calculated target position
-        cameraRef.current.lookAt(targetPosition);
+      // Define a direction to look at (adjust these values to change the camera's facing position)
+      const lookAtOffset = new THREE.Vector3(1.5, -9, -0.5); // Forward direction relative to the car
+      lookAtOffset.applyQuaternion(carQuaternion); // Rotate the look-at offset by the car's rotation
+
+      // Calculate the target position for the camera to look at
+      const targetPosition = cameraRef.current.position
+        .clone()
+        .add(lookAtOffset);
+
+      // Make the camera look at the calculated target position
+      cameraRef.current.lookAt(targetPosition);
     } else {
       // Third-person camera behind and above the car
       const carRotation = rigidBody.current.rotation();
-      const cameraOffset = new THREE.Vector3(2, 4, 0).applyQuaternion(carRotation); // Camera offset relative to the car's rotation
+      const cameraOffset = new THREE.Vector3(2, 4, 0).applyQuaternion(
+        carRotation
+      ); // Camera offset relative to the car's rotation
       const targetPosition = new THREE.Vector3(
         carPosition.x + cameraOffset.x,
         carPosition.y + cameraOffset.y,
@@ -201,14 +214,13 @@ export function Car({rigidBody, onSpeedChange, ...props}) {
 
       lookAtTarget.current.lerp(carPosition, delta * 10);
       cameraRef.current.lookAt(lookAtTarget.current);
-      }
+    }
   });
 
   return (
     <>
-      <group {...props} dispose={null} >
+      <group {...props} dispose={null}>
         <RigidBody
-
           ref={rigidBody}
           type="dynamic"
           colliders="hull"
@@ -220,31 +232,63 @@ export function Car({rigidBody, onSpeedChange, ...props}) {
           scale={[0.4, 0.4, 0.4]}
         >
           <group rotation={[0, Math.PI / 2, 0]}>
-            <mesh geometry={nodes.Punto_GT_0.geometry} material={materials.gt_black} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_1.geometry} material={materials.gt_license} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_2.geometry} material={materials.gt_tire} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_3.geometry} material={materials.gt_rim} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_4.geometry} material={materials.gt_windows} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_5.geometry} material={materials['Hemi.001']} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_6.geometry} material={materials.gt_body} receiveShadow />
-            <mesh geometry={nodes.Punto_GT_7.geometry} material={materials.gt_details} receiveShadow />
+            <mesh
+              geometry={nodes.Punto_GT_0.geometry}
+              material={materials.gt_black}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_1.geometry}
+              material={materials.gt_license}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_2.geometry}
+              material={materials.gt_tire}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_3.geometry}
+              material={materials.gt_rim}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_4.geometry}
+              material={materials.gt_windows}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_5.geometry}
+              material={materials["Hemi.001"]}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_6.geometry}
+              material={materials.gt_body}
+              receiveShadow
+            />
+            <mesh
+              geometry={nodes.Punto_GT_7.geometry}
+              material={materials.gt_details}
+              receiveShadow
+            />
           </group>
         </RigidBody>
         <GameWithSound />
         <Speedometer speed={carSpeed} />
-
       </group>
 
-      <PerspectiveCamera ref={cameraRef} makeDefault  fov={75}
+      <PerspectiveCamera
+        ref={cameraRef}
+        makeDefault
+        fov={75}
         position={[0, 5, -10]}
         near={0.1}
         far={85}
-       />
+      />
       <Boost Boostarray={Boostarray} />
-
-
     </>
   );
 }
 
-useGLTF.preload('/Car.glb');
+useGLTF.preload(`/~scarhatt/Car.glb`);
