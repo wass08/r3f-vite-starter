@@ -66,7 +66,7 @@ export default function Nether() {
   function SceneFog() {
     const { scene } = useThree();
     useEffect(() => {
-      scene.fog = new THREE.Fog("#111", 1, 1000); // Adjust fog density here
+      scene.fog = new THREE.Fog("#ff0000", 1, 1000); // Adjust fog density here
       return () => {
         scene.fog = null; // Cleanup fog on unmount
       };
