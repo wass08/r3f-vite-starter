@@ -133,7 +133,6 @@ export function Car({rigidBody, ...props}) {
 
     // Check proximity to boost
     const carPosition = rigidBody.current.translation();
-    onPositionChange(carPosition);
     Boostarray.forEach((boost) => {
       const boostPosition = new THREE.Vector3(boost[0], boost[1], boost[2]); // Boost position, adjust if needed
       const distanceToBoost = boostPosition.distanceTo(carPosition);
