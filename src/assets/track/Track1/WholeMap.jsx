@@ -5,10 +5,10 @@ Command: npx gltfjsx@6.5.2 WholeMap.glb
 
 import React, {useEffect} from "react";
 import { useGLTF } from "@react-three/drei";
-
+import { getBaseUrl } from "../../../utils/getURL";
 export function Map(props) {
   
-  const { nodes, materials } = useGLTF("/WholeMap.glb");
+  const { nodes, materials } = useGLTF(`${getBaseUrl}/WholeMap.glb`);
   useEffect(() => {
     // Reset emissive materials
     Object.values(materials).forEach((material) => {
@@ -2115,4 +2115,4 @@ export function Map(props) {
   );
 }
 
-useGLTF.preload("/WholeMap.glb");
+useGLTF.preload(`${getBaseUrl}/WholeMap.glb`);

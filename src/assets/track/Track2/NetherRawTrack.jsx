@@ -6,9 +6,10 @@ Command: npx gltfjsx@6.5.2 NetherRawTrack.glb
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 import { RigidBody, Physics } from "@react-three/rapier";
+import { getBaseUrl } from "../../../utils/getURL";
 
 export function NetherRawTrackWalls(props) {
-  const { nodes, materials } = useGLTF("/NetherRawTrack.glb");
+  const { nodes, materials } = useGLTF(`/~scarhatt/NetherRawTrack.glb`);
   materials[nodes.blackstone_top014.material.name].transparent = true;
   materials[nodes.blackstone_top014.material.name].opacity = 0;
   return (
@@ -25,4 +26,4 @@ export function NetherRawTrackWalls(props) {
   );
 }
 
-useGLTF.preload("/NetherRawTrack.glb");
+useGLTF.preload(`/~scarhatt/NetherRawTrack.glb`);

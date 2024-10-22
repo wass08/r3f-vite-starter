@@ -12,6 +12,7 @@ import Loader from "./components/Loader";
 import { NetherRawTrackWalls } from "./assets/track/Track2/NetherRawTrack";
 import { WholeNetherMap } from "./assets/track/Track2/WholeNetherMap";
 import { Map } from "./assets/track/Track1/WholeMap";
+import { getBaseUrl } from "./utils/getURL";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
