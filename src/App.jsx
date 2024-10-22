@@ -11,6 +11,7 @@ import HUD from "./components/HUD";
 import Loader from "./components/Loader"; // Import the Loader component
 import { WholeNetherMap } from "./assets/track/Track2/WholeNetherMap";
 import { NetherRawTrackWalls } from "./assets/track/Track2/NetherRawTrack";
+import { Map } from "./assets/track/Track1/WholeMap";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -220,7 +221,7 @@ export default function App() {
                 shadow-camera-far={1500}
                 shadow-bias={-0.001}
               />
-              {activeGroup == 2 ? <Map /> : <WholeNetherMap />}
+              {activeGroup == 2 ? <Map/> : <WholeNetherMap />}
 
               <Physics gravity={[0, -90.81, 0]} paused={isPaused}>
                 {activeGroup == 2 ? (
