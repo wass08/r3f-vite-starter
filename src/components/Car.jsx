@@ -38,7 +38,7 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
   const FORCE = boostActive ? 13 : 50; // Increase force when boost is active
   let TURN = boostActive ? 1 : 3;
   const maxSpeed = 200;
-  let carSpeed = 0;
+  const [carSpeed,setCarSPeed]=useState(0)
 
   // Handling keypress events for movement
   useEffect(() => {
@@ -88,7 +88,7 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
       rigidBody.current.setLinvel({ x: 0, y: 0, z: 0 }); // Reset linear velocity
       rigidBody.current.setAngvel({ x: 0, y: 0, z: 0 }); // Reset angular velocity
 
-      carSpeed = 0;
+      setCarSPeed(0) ;
       setBoostActive(false);
       setBoostTimer(0);
     }
@@ -112,14 +112,20 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
     direction.applyQuaternion(quaternion);
 
     // Apply forward/backward movement
+    if(!keys.forward){
+      setCarSPeed(0)
+
+    }
     if (keys.forward) {
-      carSpeed += 10;
+      setCarSPeed(Math.min(carSpeed+3,maxSpeed))
       rigidBody.current.applyImpulse(
         { x: direction.x * FORCE, y: 0, z: direction.z * FORCE },
         true
       );
-    } else if (keys.backward) {
-      carSpeed += 10;
+    } else if (keys.backward) {      
+      setCarSPeed(Math.min(carSpeed+3,maxSpeed))
+
+
       rigidBody.current.applyImpulse(
         { x: -direction.x * FORCE, y: 0, z: -direction.z * FORCE },
         true
@@ -137,7 +143,7 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
       TURN = 10;
     }
     if (onSpeedChange) {
-      onSpeedChange(carSpeed); // Pass the updated speed to App.jsx
+      onSpeedChange(Math.min(carSpeed,maxSpeed)); // Pass the updated speed to App.jsx
     }
 
     // Check proximity to boost
@@ -177,15 +183,11 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
 
     if (isFirstPerson) {
       // Set the camera's position to be near the car's bonnet
-      cameraRef.current.position.set(
-        carPosition.x,
-        carPosition.y + 0.8,
-        carPosition.z - 0.4
-      );
-
-      // Get the car's quaternion (rotation)
-      const carQuaternion = rigidBody.current.rotation(); // Get the car's quaternion rotation
-      cameraRef.current.quaternion.copy(carQuaternion); // Update the camera's quaternion to match the car's rotation
+        cameraRef.current.position.set(carPosition.x, carPosition.y +1.1, carPosition.z -1);
+        
+        // Get the car's quaternion (rotation)
+        const carQuaternion = rigidBody.current.rotation(); // Get the car's quaternion rotation
+        cameraRef.current.quaternion.copy(carQuaternion); // Update the camera's quaternion to match the car's rotation
 
       // Define a direction to look at (adjust these values to change the camera's facing position)
       const lookAtOffset = new THREE.Vector3(1.5, -9, -0.5); // Forward direction relative to the car
@@ -275,7 +277,8 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
           </group>
         </RigidBody>
         <GameWithSound />
-        <Speedometer speed={carSpeed} />
+        {/* <Speedometer speed={maxSpeed} /> */}
+
       </group>
 
       <PerspectiveCamera
