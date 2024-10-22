@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./Car";
 import { Timer } from "./Timer";
@@ -9,6 +9,7 @@ import SkidMarks from "./SkidMarks/SkidsMarks";
 import Loader from "./Loader"; // Import the Loader component
 import { NetherRawTrackWalls } from "../assets/track/Track2/NetherRawTrack";
 import { WholeNetherMap } from "../assets/track/Track2/WholeNetherMap";
+import * as THREE from "three"; // Import THREE.js to define the fog
 
 export default function Nether() {
   const [startTimer, setStartTimer] = useState(false);
@@ -36,7 +37,6 @@ export default function Nether() {
   }, []);
 
   const carRef = useRef();
-
   const [activeGroup, setActiveGroup] = useState(11);
 
   const handleGroupChange = (newGroup) => {
@@ -64,12 +64,26 @@ export default function Nether() {
     }
   };
 
+  // Fog setup component
+  function SceneFog() {
+    const { scene } = useThree();
+    useEffect(() => {
+      scene.fog = new THREE.Fog("#ff0000", 1, 1000); // Adjust fog density here
+      return () => {
+        scene.fog = null; // Cleanup fog on unmount
+      };
+    }, [scene]);
+
+    return null;
+  }
+
   return (
     <Canvas
       shadows
       camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
       style={{ position: "absolute", top: 0, left: 0 }}
     >
+      <SceneFog /> {/* Adding the fog component */}
       <Suspense fallback={<Loader />}>
         <ambientLight intensity={1} />
         <directionalLight
@@ -90,7 +104,7 @@ export default function Nether() {
 
         <WholeNetherMap activeGroup={2} />
 
-        <Physics gravity={[0, -90.81, 0]} debug>
+        <Physics gravity={[0, -90.81, 0]}>
           {/* Race track and ground */}
           <NetherRawTrackWalls />
 
@@ -109,6 +123,7 @@ export default function Nether() {
               />
             </mesh>
           </RigidBody>
+
           {/* Car component with built-in camera follow */}
           <Car rigidBody={carRef}  onSpeedChange={setCarSpeed}/>
           {/* <SkidMarks carRef={carRef} /> */}
