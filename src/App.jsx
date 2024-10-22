@@ -1,5 +1,4 @@
-
-import React, { useRef , useState, useEffect,Suspense } from "react";
+import React, { useRef, useState, useEffect, Suspense } from "react";
 import Nether from "./components/Nether";
 import { Canvas } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
@@ -18,7 +17,9 @@ export default function App() {
   // Listen for arrow key presses
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)) {
+      if (
+        ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)
+      ) {
         setStartTimer(true); // Start the timer when an arrow key is pressed
       }
       if (event.key === "r" || event.key === "R") {
@@ -106,7 +107,7 @@ export default function App() {
 
             <Map />
 
-            <Physics gravity={[0, -90.81, 0]} debug>
+            <Physics gravity={[0, -90.81, 0]}>
               {/* Race track and ground */}
               <RaceTrackWalls />
 

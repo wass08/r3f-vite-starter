@@ -168,7 +168,7 @@ export function WholeNetherMap({ activeGroup, ...props }) {
           />
         </group>
       )}
-      {(activeGroup == 2 || activeGroup + 1 == 2 || activeGroup - 1 == 2) && (
+      {(activeGroup == 5 || activeGroup + 1 == 5 || activeGroup - 1 == 5) && (
         <group position={[234, 100, -135]} rotation={[Math.PI / 2, 0, Math.PI]}>
           <mesh castShadow receiveShadow
             geometry={
@@ -516,7 +516,7 @@ export function WholeNetherMap({ activeGroup, ...props }) {
           />
         </group>
       )}
-      {(activeGroup == 4 || activeGroup - 1 == 4 || activeGroup + 1 == 4) && (
+      {(activeGroup == 3 || activeGroup - 1 == 3 || activeGroup + 1 == 3) && (
         <group position={[90, 95, -118]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh castShadow receiveShadow
             geometry={
@@ -917,7 +917,7 @@ export function WholeNetherMap({ activeGroup, ...props }) {
           />
         </group>
       )}
-      {(activeGroup == 7 || activeGroup + 1 == 7 || activeGroup - 1 == 7) && (
+      {(activeGroup == 6 || activeGroup + 1 == 6 || activeGroup - 1 == 6) && (
         <group
           position={[248, 34, -80]}
           rotation={[Math.PI / 2, 0, Math.PI / 2]}
@@ -1029,7 +1029,7 @@ export function WholeNetherMap({ activeGroup, ...props }) {
           />
         </group>
       )}
-      {(activeGroup == 8 || activeGroup + 1 == 8 || activeGroup - 1 == 8) && (
+      {(activeGroup == 4 || activeGroup + 1 == 4 || activeGroup - 1 == 4) && (
         <group position={[170, 34, -146]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh castShadow receiveShadow
             geometry={
@@ -1138,7 +1138,7 @@ export function WholeNetherMap({ activeGroup, ...props }) {
           />
         </group>
       )}
-      {(activeGroup == 9 || activeGroup + 1 == 9 || activeGroup - 1 == 9) && (
+      {(activeGroup == 13 || activeGroup + 1 == 13 || activeGroup - 1 == 13) && (
         <group
           position={[204, 36, 61]}
           rotation={[Math.PI / 2, 0, Math.PI / 2]}
@@ -1233,9 +1233,9 @@ export function WholeNetherMap({ activeGroup, ...props }) {
           />
         </group>
       )}
-      {(activeGroup == 10 ||
-        activeGroup + 1 == 10 ||
-        activeGroup - 1 == 10) && (
+      {(activeGroup == 2 ||
+        activeGroup + 1 == 2 ||
+        activeGroup - 1 == 2) && (
         <group
           position={[51, 36, -61]}
           rotation={[Math.PI / 2, 0, -Math.PI / 2]}
@@ -1340,9 +1340,9 @@ export function WholeNetherMap({ activeGroup, ...props }) {
           />
         </group>
       )}
-      {(activeGroup == 11 ||
-        activeGroup - 1 == 11 ||
-        activeGroup + 1 == 11) && (
+      {(activeGroup == 1 ||
+        activeGroup - 1 == 1 ||
+        activeGroup%12 + 1 == 1) && (
         <group rotation={[Math.PI / 2, 0, 0]}>
           <mesh castShadow receiveShadow
             geometry={
@@ -1555,9 +1555,9 @@ export function WholeNetherMap({ activeGroup, ...props }) {
           />
         </group>
       )}
-      {(activeGroup == 12 ||
-        activeGroup - 1 == 12 ||
-        activeGroup + 1 == 12) && (
+      {(activeGroup == 7 ||
+        activeGroup - 1 == 7 ||
+        activeGroup + 1 == 7) && (
         <group position={[255, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI]}>
           <mesh castShadow receiveShadow
             geometry={
