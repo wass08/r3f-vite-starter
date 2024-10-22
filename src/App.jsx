@@ -11,6 +11,7 @@ import HUD from "./components/HUD";
 import Loader from "./components/Loader";
 import { NetherRawTrackWalls } from "./assets/track/Track2/NetherRawTrack";
 import { WholeNetherMap } from "./assets/track/Track2/WholeNetherMap";
+import { Map } from "./assets/track/Track1/WholeMap";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -199,7 +200,7 @@ export default function App() {
           <HUD speed={carSpeed} currentLap={3} maxLap={15} />
 
           <Canvas
-            shadows
+            // shadows
             camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
             style={{ position: "absolute", top: 0, left: 0 }}
           >
