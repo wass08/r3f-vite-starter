@@ -8,11 +8,12 @@ import { Map } from "./assets/track/Track1/WholeMap";
 import { Timer } from "./components/Timer";
 import BackgroundMusic from "./components/BackgroundMusic";
 import DustParticles from "./components/DustParticles/DustParticles";
-import SkidMarks from "./components/SkidMarks/SkidsMarks";
+import HUD from "./components/HUD";
 import Loader from "./components/Loader"; // Import the Loader component
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
+  const [carSpeed, setCarSpeed] = useState(0); // State for speed
 
   // Listen for arrow key presses
   useEffect(() => {
@@ -65,20 +66,42 @@ export default function App() {
 
   return (
     <div style={{ position: "relative", width: "100%", height: "100vh" }}>
-      <div
+       <div
         style={{
           position: "absolute",
           top: "20px",
-          left: "20px",
-          color: "white",
-          fontSize: "24px",
+          right: "20px",
+          color: "Black",
+          fontSize: "44px",
           zIndex: 1, // Ensures it stays on top of the Canvas
         }}
       >
         <Timer startTimer={startTimer} />
       </div>
-      <button onClick={() => handleGroupChange(1)}>Load Group 1</button>
-      <button onClick={() => handleGroupChange(2)}>Load Group 2</button>
+      <HUD speed={carSpeed} currentLap={3} maxLap={15}  /> {/* Pass speed to HUD */}
+      <button onClick={() => handleGroupChange(1) }
+      style={{
+        position: "absolute",
+        top: "20px",
+        left: "20px",
+        color: "Black",
+        fontSize: "44px",
+        zIndex: 1, // Ensures it stays on top of the Canvas
+      }}
+        
+        
+        >Load Group 1</button>
+      <button onClick={() => handleGroupChange(2)} 
+       style={{
+        position: "absolute",
+        top: "20px",
+        left: "320px",
+        color: "Black",
+        fontSize: "44px",
+        zIndex: 1, // Ensures it stays on top of the Canvas
+      }}
+        
+        >Load Group 2</button>
 
       {activeGroup == 1 && <Nether />}
       {activeGroup == 2 && (
@@ -105,7 +128,7 @@ export default function App() {
               shadow-bias={-0.001}
             />
 
-            <Map />
+            {/* <Map /> */}
 
             <Physics gravity={[0, -90.81, 0]}>
               {/* Race track and ground */}
@@ -127,7 +150,7 @@ export default function App() {
                 </mesh>
               </RigidBody>
               {/* Car component with built-in camera follow */}
-              <Car rigidBody={carRef} />
+              <Car rigidBody={carRef} onSpeedChange={setCarSpeed}  />
               {/* <SkidMarks carRef={carRef} /> */}
               <DustParticles carRef={carRef} />
             </Physics>
