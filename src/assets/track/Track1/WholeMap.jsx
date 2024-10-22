@@ -19,7 +19,7 @@ export function Map(props) {
   return (
     <group {...props} dispose={null} position={[49, -66,-17]}>
 
-      <group position={[2, 47, -189]} rotation={[Math.PI / 2, 0, -Math.PI / 2]}>
+      {/* <group position={[2, 47, -189]} rotation={[Math.PI / 2, 0, -Math.PI / 2]}>
         <mesh castShadow receiveShadow
           geometry={
             nodes["New_World_(6)__-909_53_162_to_-777_319_269003"].geometry
@@ -875,8 +875,8 @@ export function Map(props) {
           }
           material={materials["pink_petals_stem.005"]}
         />
-      </group>
-      <group position={[-401, 0, -179]} rotation={[Math.PI / 2, 0, Math.PI]}>
+      </group> */}
+      {/* <group position={[-401, 0, -179]} rotation={[Math.PI / 2, 0, Math.PI]}>
         <mesh castShadow receiveShadow
           geometry={
             nodes["New_World_(6)__-163_20_386_to_-6_319_582003"].geometry
@@ -1099,8 +1099,8 @@ export function Map(props) {
           }
           material={materials["pink_petals_stem.008"]}
         />
-      </group>
-      <group rotation={[Math.PI / 2, 0, 0]}>
+      </group> */}
+      {/* <group rotation={[Math.PI / 2, 0, 0]}>
         <mesh castShadow receiveShadow
           geometry={nodes["New_World_(6)__-163_20_386_to_-6_319_582"].geometry}
           material={materials["stone.008"]}
@@ -2110,7 +2110,7 @@ export function Map(props) {
           }
           material={materials["pink_petals_stem.011"]}
         />
-      </group>
+      </group> */}
     </group>
   );
 }
