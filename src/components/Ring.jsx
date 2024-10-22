@@ -78,7 +78,7 @@ export default function Ring({speed}) {
             </Circle>
         ))}
         <EffectComposer>
-            <Bloom luminanceThreshold={0} intensity={0.5} />
+            {/* <Bloom luminanceThreshold={0} intensity={0.5} /> */}
         </EffectComposer>
         </>
     );
