@@ -238,7 +238,7 @@ export function Car({rigidBody, onSpeedChange, ...props}) {
       <PerspectiveCamera ref={cameraRef} makeDefault  fov={75}
         position={[0, 5, -10]}
         near={0.1}
-        far={1000}
+        far={85}
        />
       <Boost Boostarray={Boostarray} />
 
