@@ -11,6 +11,8 @@ import BackgroundMusic from "./components/BackgroundMusic";
 import DustParticles from "./components/DustParticles/DustParticles";
 import HUD from "./components/HUD";
 import Loader from "./components/Loader"; // Import the Loader component
+import { WholeNetherMap } from "./assets/track/Track2/WholeNetherMap";
+import { NetherRawTrackWalls } from "./assets/track/Track2/NetherRawTrack";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -102,8 +104,8 @@ export default function App() {
         
         >Load Group 2</button>
 
-      {activeGroup == 1 && <Nether />}
-      {activeGroup == 2 && (
+      {/* {activeGroup == 1 && <Nether />} */}
+      {/* {activeGroup == 2 && ( */}
         <Canvas
           shadows
           camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
@@ -127,11 +129,12 @@ export default function App() {
               shadow-bias={-0.001}
             />
 
-            {/* <Map /> */}
+           {activeGroup == 2?<Map />:<WholeNetherMap />} 
 
-            <Physics gravity={[0, -90.81, 0]} debug>
+            <Physics gravity={[0, -90.81, 0]} >
               {/* Race track and ground */}
-              <RaceTrackWalls />
+              {activeGroup == 2?<RaceTrackWalls />:<NetherRawTrackWalls />} 
+
 
               {/* Ground plane */}
               <RigidBody type="fixed" position={[0, 0, 0]}>
@@ -156,7 +159,7 @@ export default function App() {
             <BackgroundMusic />
           </Suspense>
         </Canvas>
-      )}
+      {/* )} */}
     </div>
   );
 }
