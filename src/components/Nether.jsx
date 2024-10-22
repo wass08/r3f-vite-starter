@@ -12,6 +12,8 @@ import { WholeNetherMap } from "../assets/track/Track2/WholeNetherMap";
 
 export default function Nether() {
   const [startTimer, setStartTimer] = useState(false);
+  const [carSpeed, setCarSpeed] = useState(0); // State for speed
+
 
   // Listen for arrow key presses
   useEffect(() => {
@@ -71,7 +73,7 @@ export default function Nether() {
       <Suspense fallback={<Loader />}>
         <ambientLight intensity={1} />
         <directionalLight
-          color={"#fbe8fd"}
+          color={"#fa4c4c"}
           castShadow
           position={[85, 75, 0]}
           intensity={10}
@@ -108,7 +110,7 @@ export default function Nether() {
             </mesh>
           </RigidBody>
           {/* Car component with built-in camera follow */}
-          <Car rigidBody={carRef} />
+          <Car rigidBody={carRef}  onSpeedChange={setCarSpeed}/>
           {/* <SkidMarks carRef={carRef} /> */}
           <DustParticles carRef={carRef} />
         </Physics>
