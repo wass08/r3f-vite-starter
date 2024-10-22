@@ -6,8 +6,9 @@ import * as THREE from 'three';
 import Boost from './Boost';
 import GameWithSound from './GameWithSound';
 import DustParticles from './DustParticles/DustParticles';
+import Speedometer from './Speedometer';
 
-export function Car({rigidBody, ...props}) {
+export function Car({rigidBody, onSpeedChange, ...props}) {
 
   const { nodes, materials } = useGLTF('/Car.glb');
   // const rigidBody = useRef();
@@ -37,7 +38,7 @@ export function Car({rigidBody, ...props}) {
 
   const FORCE = boostActive ? 13 : 6; // Increase force when boost is active
   let TURN = boostActive ? 1 : 0.2;
-  const maxSpeed = 0.8;
+  const maxSpeed = 200;
   let carSpeed = 0;
 
   // Handling keypress events for movement
@@ -107,13 +108,13 @@ export function Car({rigidBody, ...props}) {
 
     // Apply forward/backward movement
     if (keys.forward) {
-      carSpeed = Math.min(carSpeed + 0.01, maxSpeed);
+      carSpeed +=10
       rigidBody.current.applyImpulse(
         { x: direction.x * FORCE, y: 0, z: direction.z * FORCE },
         true
       );
     } else if (keys.backward) {
-      carSpeed = Math.max(carSpeed - 0.01, -maxSpeed);
+      carSpeed +=10
       rigidBody.current.applyImpulse(
         { x: -direction.x * FORCE, y: 0, z: -direction.z * FORCE },
         true
@@ -129,6 +130,9 @@ export function Car({rigidBody, ...props}) {
     }
     if (keys.space) {
       TURN = 2;
+    }
+    if (onSpeedChange) {
+      onSpeedChange(carSpeed); // Pass the updated speed to App.jsx
     }
 
     // Check proximity to boost
@@ -227,6 +231,8 @@ export function Car({rigidBody, ...props}) {
           </group>
         </RigidBody>
         <GameWithSound />
+        <Speedometer speed={carSpeed} />
+
       </group>
 
       <PerspectiveCamera ref={cameraRef} makeDefault  fov={75}
@@ -235,6 +241,8 @@ export function Car({rigidBody, ...props}) {
         far={1000}
        />
       <Boost Boostarray={Boostarray} />
+
+
     </>
   );
 }
