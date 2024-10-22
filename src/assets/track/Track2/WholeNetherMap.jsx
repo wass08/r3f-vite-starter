@@ -15,151 +15,151 @@ export function WholeNetherMap({ activeGroup, ...props }) {
     <group {...props} dispose={null} position={[15, -140, -17]}>
       {(activeGroup == 1 || activeGroup - 1 == 1 || activeGroup + 1 == 1) && (
         <group position={[21, 100, 135]} rotation={[Math.PI / 2, 0, 0]}>
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051"].geometry
             }
             material={materials.polished_blackstone_bricks}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_1"].geometry
             }
             material={materials.nether_gold_ore}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_2"].geometry
             }
             material={materials.netherrack}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_3"].geometry
             }
             material={materials.warped_nylium}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_4"].geometry
             }
             material={materials.warped_nylium_side}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_5"].geometry
             }
             material={materials.lava_still}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_6"].geometry
             }
             material={materials.lava_flow}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_7"].geometry
             }
             material={materials.gravel}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_8"].geometry
             }
             material={materials.nether_sprouts}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_9"].geometry
             }
             material={materials.crimson_roots}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_10"]
                 .geometry
             }
             material={materials.warped_roots}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_11"]
                 .geometry
             }
             material={materials.crimson_fungus}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_12"]
                 .geometry
             }
             material={materials.warped_fungus}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_13"]
                 .geometry
             }
             material={materials.glowstone}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_14"]
                 .geometry
             }
             material={materials.shroomlight}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_15"]
                 .geometry
             }
             material={materials.nether_quartz_ore}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_16"]
                 .geometry
             }
             material={materials.warped_stem_top}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_17"]
                 .geometry
             }
             material={materials.warped_stem}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_18"]
                 .geometry
             }
             material={materials.warped_wart_block}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_19"]
                 .geometry
             }
             material={materials.white_concrete}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_20"]
                 .geometry
             }
             material={materials.black_concrete}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_21"]
                 .geometry
             }
             material={materials.twisting_vines}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051_22"]
                 .geometry
@@ -170,161 +170,161 @@ export function WholeNetherMap({ activeGroup, ...props }) {
       )}
       {(activeGroup == 2 || activeGroup + 1 == 2 || activeGroup - 1 == 2) && (
         <group position={[234, 100, -135]} rotation={[Math.PI / 2, 0, Math.PI]}>
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001"]
                 .geometry
             }
             material={materials.polished_blackstone_bricks}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_1"]
                 .geometry
             }
             material={materials.nether_gold_ore}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_2"]
                 .geometry
             }
             material={materials.netherrack}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_3"]
                 .geometry
             }
             material={materials.warped_nylium}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_4"]
                 .geometry
             }
             material={materials.warped_nylium_side}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_5"]
                 .geometry
             }
             material={materials.lava_still}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_6"]
                 .geometry
             }
             material={materials.lava_flow}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_7"]
                 .geometry
             }
             material={materials.gravel}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_8"]
                 .geometry
             }
             material={materials.nether_sprouts}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_9"]
                 .geometry
             }
             material={materials.crimson_roots}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_10"]
                 .geometry
             }
             material={materials.warped_roots}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_11"]
                 .geometry
             }
             material={materials.crimson_fungus}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_12"]
                 .geometry
             }
             material={materials.warped_fungus}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_13"]
                 .geometry
             }
             material={materials.glowstone}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_14"]
                 .geometry
             }
             material={materials.shroomlight}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_15"]
                 .geometry
             }
             material={materials.nether_quartz_ore}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_16"]
                 .geometry
             }
             material={materials.warped_stem_top}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_17"]
                 .geometry
             }
             material={materials.warped_stem}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_18"]
                 .geometry
             }
             material={materials.warped_wart_block}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_19"]
                 .geometry
             }
             material={materials.white_concrete}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_20"]
                 .geometry
             }
             material={materials.black_concrete}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_21"]
                 .geometry
             }
             material={materials.twisting_vines}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-242_38_-1135_to_-157_126_-1051001_22"]
                 .geometry
@@ -335,179 +335,179 @@ export function WholeNetherMap({ activeGroup, ...props }) {
       )}
       {(activeGroup == 3 || activeGroup + 1 == 3 || activeGroup - 1 == 3) && (
         <group position={[165, 95, 118]} rotation={[Math.PI / 2, 0, Math.PI]}>
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794"].geometry
             }
             material={materials["blackstone_top.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_1"].geometry
             }
             material={materials["blackstone.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_2"].geometry
             }
             material={materials["polished_blackstone_bricks.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_3"].geometry
             }
             material={materials["nether_gold_ore.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_4"].geometry
             }
             material={materials["netherrack.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_5"].geometry
             }
             material={materials["crimson_nylium.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_6"].geometry
             }
             material={materials["crimson_nylium_side.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_7"].geometry
             }
             material={materials["lava_still.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_8"].geometry
             }
             material={materials["lava_flow.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_9"].geometry
             }
             material={materials["gravel.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_10"]
                 .geometry
             }
             material={materials["crimson_roots.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_11"]
                 .geometry
             }
             material={materials.brown_mushroom}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_12"]
                 .geometry
             }
             material={materials["crimson_fungus.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_13"]
                 .geometry
             }
             material={materials["warped_fungus.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_14"]
                 .geometry
             }
             material={materials["fire_0.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_15"]
                 .geometry
             }
             material={materials.soul_sand}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_16"]
                 .geometry
             }
             material={materials["glowstone.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_17"]
                 .geometry
             }
             material={materials["shroomlight.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_18"]
                 .geometry
             }
             material={materials["nether_quartz_ore.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_19"]
                 .geometry
             }
             material={materials["crimson_stem_top.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_20"]
                 .geometry
             }
             material={materials["crimson_stem.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_21"]
                 .geometry
             }
             material={materials["magma.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_22"]
                 .geometry
             }
             material={materials["nether_wart_block.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_23"]
                 .geometry
             }
             material={materials["white_concrete.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_24"]
                 .geometry
             }
             material={materials["black_concrete.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_25"]
                 .geometry
             }
             material={materials["weeping_vines.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794_26"]
                 .geometry
@@ -518,189 +518,189 @@ export function WholeNetherMap({ activeGroup, ...props }) {
       )}
       {(activeGroup == 4 || activeGroup - 1 == 4 || activeGroup + 1 == 4) && (
         <group position={[90, 95, -118]} rotation={[Math.PI / 2, 0, 0]}>
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001"]
                 .geometry
             }
             material={materials["blackstone_top.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_1"]
                 .geometry
             }
             material={materials["blackstone.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_2"]
                 .geometry
             }
             material={materials["polished_blackstone_bricks.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_3"]
                 .geometry
             }
             material={materials["nether_gold_ore.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_4"]
                 .geometry
             }
             material={materials["netherrack.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_5"]
                 .geometry
             }
             material={materials["crimson_nylium.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_6"]
                 .geometry
             }
             material={materials["crimson_nylium_side.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_7"]
                 .geometry
             }
             material={materials["lava_still.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_8"]
                 .geometry
             }
             material={materials["lava_flow.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_9"]
                 .geometry
             }
             material={materials["gravel.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_10"]
                 .geometry
             }
             material={materials["crimson_roots.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_11"]
                 .geometry
             }
             material={materials.brown_mushroom}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_12"]
                 .geometry
             }
             material={materials["crimson_fungus.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_13"]
                 .geometry
             }
             material={materials["warped_fungus.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_14"]
                 .geometry
             }
             material={materials["fire_0.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_15"]
                 .geometry
             }
             material={materials.soul_sand}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_16"]
                 .geometry
             }
             material={materials["glowstone.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_17"]
                 .geometry
             }
             material={materials["shroomlight.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_18"]
                 .geometry
             }
             material={materials["nether_quartz_ore.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_19"]
                 .geometry
             }
             material={materials["crimson_stem_top.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_20"]
                 .geometry
             }
             material={materials["crimson_stem.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_21"]
                 .geometry
             }
             material={materials["magma.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_22"]
                 .geometry
             }
             material={materials["nether_wart_block.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_23"]
                 .geometry
             }
             material={materials["white_concrete.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_24"]
                 .geometry
             }
             material={materials["black_concrete.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_25"]
                 .geometry
             }
             material={materials["weeping_vines.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-484_31_-1887_to_-339_126_-1794001_26"]
                 .geometry
@@ -711,95 +711,95 @@ export function WholeNetherMap({ activeGroup, ...props }) {
       )}
       {(activeGroup == 5 || activeGroup + 1 == 5 || activeGroup - 1 == 5) && (
         <group position={[7, 34, 80]} rotation={[Math.PI / 2, 0, -Math.PI / 2]}>
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079"].geometry
             }
             material={materials["blackstone_top.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_1"].geometry
             }
             material={materials["blackstone.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_2"].geometry
             }
             material={materials["polished_blackstone_bricks.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_3"].geometry
             }
             material={materials["nether_gold_ore.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_4"].geometry
             }
             material={materials["lava_still.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_5"].geometry
             }
             material={materials["lava_flow.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_6"].geometry
             }
             material={materials["gravel.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_7"].geometry
             }
             material={materials["netherrack.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_8"].geometry
             }
             material={materials["glowstone.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_9"].geometry
             }
             material={materials["nether_quartz_ore.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_10"]
                 .geometry
             }
             material={materials["magma.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_11"]
                 .geometry
             }
             material={materials.basalt_top}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_12"]
                 .geometry
             }
             material={materials.basalt_side}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_13"]
                 .geometry
             }
             material={materials["white_concrete.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079_14"]
                 .geometry
@@ -810,105 +810,105 @@ export function WholeNetherMap({ activeGroup, ...props }) {
       )}
       {(activeGroup == 6 || activeGroup + 1 == 6 || activeGroup - 1 == 6) && (
         <group position={[85, 34, 146]} rotation={[Math.PI / 2, 0, Math.PI]}>
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001"]
                 .geometry
             }
             material={materials["blackstone_top.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_1"]
                 .geometry
             }
             material={materials["blackstone.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_2"]
                 .geometry
             }
             material={materials["polished_blackstone_bricks.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_3"]
                 .geometry
             }
             material={materials["nether_gold_ore.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_4"]
                 .geometry
             }
             material={materials["lava_still.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_5"]
                 .geometry
             }
             material={materials["lava_flow.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_6"]
                 .geometry
             }
             material={materials["gravel.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_7"]
                 .geometry
             }
             material={materials["netherrack.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_8"]
                 .geometry
             }
             material={materials["glowstone.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_9"]
                 .geometry
             }
             material={materials["nether_quartz_ore.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_10"]
                 .geometry
             }
             material={materials["magma.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_11"]
                 .geometry
             }
             material={materials.basalt_top}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_12"]
                 .geometry
             }
             material={materials.basalt_side}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_13"]
                 .geometry
             }
             material={materials["white_concrete.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079001_14"]
                 .geometry
@@ -922,105 +922,105 @@ export function WholeNetherMap({ activeGroup, ...props }) {
           position={[248, 34, -80]}
           rotation={[Math.PI / 2, 0, Math.PI / 2]}
         >
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002"]
                 .geometry
             }
             material={materials["blackstone_top.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_1"]
                 .geometry
             }
             material={materials["blackstone.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_2"]
                 .geometry
             }
             material={materials["polished_blackstone_bricks.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_3"]
                 .geometry
             }
             material={materials["nether_gold_ore.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_4"]
                 .geometry
             }
             material={materials["lava_still.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_5"]
                 .geometry
             }
             material={materials["lava_flow.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_6"]
                 .geometry
             }
             material={materials["gravel.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_7"]
                 .geometry
             }
             material={materials["netherrack.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_8"]
                 .geometry
             }
             material={materials["glowstone.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_9"]
                 .geometry
             }
             material={materials["nether_quartz_ore.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_10"]
                 .geometry
             }
             material={materials["magma.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_11"]
                 .geometry
             }
             material={materials.basalt_top}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_12"]
                 .geometry
             }
             material={materials.basalt_side}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_13"]
                 .geometry
             }
             material={materials["white_concrete.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079002_14"]
                 .geometry
@@ -1031,105 +1031,105 @@ export function WholeNetherMap({ activeGroup, ...props }) {
       )}
       {(activeGroup == 8 || activeGroup + 1 == 8 || activeGroup - 1 == 8) && (
         <group position={[170, 34, -146]} rotation={[Math.PI / 2, 0, 0]}>
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003"]
                 .geometry
             }
             material={materials["blackstone_top.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_1"]
                 .geometry
             }
             material={materials["blackstone.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_2"]
                 .geometry
             }
             material={materials["polished_blackstone_bricks.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_3"]
                 .geometry
             }
             material={materials["nether_gold_ore.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_4"]
                 .geometry
             }
             material={materials["lava_still.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_5"]
                 .geometry
             }
             material={materials["lava_flow.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_6"]
                 .geometry
             }
             material={materials["gravel.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_7"]
                 .geometry
             }
             material={materials["netherrack.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_8"]
                 .geometry
             }
             material={materials["glowstone.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_9"]
                 .geometry
             }
             material={materials["nether_quartz_ore.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_10"]
                 .geometry
             }
             material={materials["magma.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_11"]
                 .geometry
             }
             material={materials.basalt_top}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_12"]
                 .geometry
             }
             material={materials.basalt_side}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_13"]
                 .geometry
             }
             material={materials["white_concrete.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-130_-64_-2134_to_-78_126_-2079003_14"]
                 .geometry
@@ -1143,88 +1143,88 @@ export function WholeNetherMap({ activeGroup, ...props }) {
           position={[204, 36, 61]}
           rotation={[Math.PI / 2, 0, Math.PI / 2]}
         >
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211"].geometry
             }
             material={materials["blackstone_top.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_1"].geometry
             }
             material={materials["blackstone.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_2"].geometry
             }
             material={materials["polished_blackstone_bricks.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_3"].geometry
             }
             material={materials["nether_gold_ore.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_4"].geometry
             }
             material={materials["lava_still.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_5"].geometry
             }
             material={materials["lava_flow.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_6"].geometry
             }
             material={materials["gravel.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_7"].geometry
             }
             material={materials["netherrack.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_8"].geometry
             }
             material={materials["nether_quartz_ore.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_9"].geometry
             }
             material={materials["magma.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_10"]
                 .geometry
             }
             material={materials["basalt_top.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_11"]
                 .geometry
             }
             material={materials["basalt_side.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_12"]
                 .geometry
             }
             material={materials["white_concrete.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211_13"]
                 .geometry
@@ -1240,98 +1240,98 @@ export function WholeNetherMap({ activeGroup, ...props }) {
           position={[51, 36, -61]}
           rotation={[Math.PI / 2, 0, -Math.PI / 2]}
         >
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001"]
                 .geometry
             }
             material={materials["blackstone_top.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_1"]
                 .geometry
             }
             material={materials["blackstone.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_2"]
                 .geometry
             }
             material={materials["polished_blackstone_bricks.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_3"]
                 .geometry
             }
             material={materials["nether_gold_ore.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_4"]
                 .geometry
             }
             material={materials["lava_still.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_5"]
                 .geometry
             }
             material={materials["lava_flow.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_6"]
                 .geometry
             }
             material={materials["gravel.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_7"]
                 .geometry
             }
             material={materials["netherrack.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_8"]
                 .geometry
             }
             material={materials["nether_quartz_ore.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_9"]
                 .geometry
             }
             material={materials["magma.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_10"]
                 .geometry
             }
             material={materials["basalt_top.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_11"]
                 .geometry
             }
             material={materials["basalt_side.001"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_12"]
                 .geometry
             }
             material={materials["white_concrete.004"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-144_-64_-2270_to_-82_126_-2211001_13"]
                 .geometry
@@ -1344,209 +1344,209 @@ export function WholeNetherMap({ activeGroup, ...props }) {
         activeGroup - 1 == 11 ||
         activeGroup + 1 == 11) && (
         <group rotation={[Math.PI / 2, 0, 0]}>
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261"].geometry
             }
             material={materials["polished_blackstone_bricks.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_1"]
                 .geometry
             }
             material={materials["nether_gold_ore.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_2"]
                 .geometry
             }
             material={materials["netherrack.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_3"]
                 .geometry
             }
             material={materials["crimson_nylium.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_4"]
                 .geometry
             }
             material={materials["crimson_nylium_side.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_5"]
                 .geometry
             }
             material={materials["warped_nylium.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_6"]
                 .geometry
             }
             material={materials["warped_nylium_side.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_7"]
                 .geometry
             }
             material={materials["lava_still.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_8"]
                 .geometry
             }
             material={materials["lava_flow.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_9"]
                 .geometry
             }
             material={materials["nether_sprouts.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_10"]
                 .geometry
             }
             material={materials["crimson_roots.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_11"]
                 .geometry
             }
             material={materials["warped_roots.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_12"]
                 .geometry
             }
             material={materials["crimson_fungus.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_13"]
                 .geometry
             }
             material={materials["warped_fungus.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_14"]
                 .geometry
             }
             material={materials["fire_0.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_15"]
                 .geometry
             }
             material={materials["glowstone.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_16"]
                 .geometry
             }
             material={materials["shroomlight.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_17"]
                 .geometry
             }
             material={materials["nether_quartz_ore.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_18"]
                 .geometry
             }
             material={materials["crimson_stem_top.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_19"]
                 .geometry
             }
             material={materials["crimson_stem.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_20"]
                 .geometry
             }
             material={materials["warped_stem_top.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_21"]
                 .geometry
             }
             material={materials["warped_stem.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_22"]
                 .geometry
             }
             material={materials["nether_wart_block.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_23"]
                 .geometry
             }
             material={materials["warped_wart_block.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_24"]
                 .geometry
             }
             material={materials["white_concrete.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_25"]
                 .geometry
             }
             material={materials["black_concrete.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_26"]
                 .geometry
             }
             material={materials["weeping_vines.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_27"]
                 .geometry
             }
             material={materials["weeping_vines_plant.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_28"]
                 .geometry
             }
             material={materials["twisting_vines.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261_29"]
                 .geometry
@@ -1559,210 +1559,210 @@ export function WholeNetherMap({ activeGroup, ...props }) {
         activeGroup - 1 == 12 ||
         activeGroup + 1 == 12) && (
         <group position={[255, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI]}>
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003"]
                 .geometry
             }
             material={materials["polished_blackstone_bricks.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_1"]
                 .geometry
             }
             material={materials["nether_gold_ore.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_2"]
                 .geometry
             }
             material={materials["netherrack.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_3"]
                 .geometry
             }
             material={materials["crimson_nylium.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_4"]
                 .geometry
             }
             material={materials["crimson_nylium_side.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_5"]
                 .geometry
             }
             material={materials["warped_nylium.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_6"]
                 .geometry
             }
             material={materials["warped_nylium_side.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_7"]
                 .geometry
             }
             material={materials["lava_still.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_8"]
                 .geometry
             }
             material={materials["lava_flow.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_9"]
                 .geometry
             }
             material={materials["nether_sprouts.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_10"]
                 .geometry
             }
             material={materials["crimson_roots.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_11"]
                 .geometry
             }
             material={materials["warped_roots.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_12"]
                 .geometry
             }
             material={materials["crimson_fungus.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_13"]
                 .geometry
             }
             material={materials["warped_fungus.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_14"]
                 .geometry
             }
             material={materials["fire_0.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_15"]
                 .geometry
             }
             material={materials["glowstone.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_16"]
                 .geometry
             }
             material={materials["shroomlight.003"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_17"]
                 .geometry
             }
             material={materials["nether_quartz_ore.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_18"]
                 .geometry
             }
             material={materials["crimson_stem_top.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_19"]
                 .geometry
             }
             material={materials["crimson_stem.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_20"]
                 .geometry
             }
             material={materials["warped_stem_top.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_21"]
                 .geometry
             }
             material={materials["warped_stem.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_22"]
                 .geometry
             }
             material={materials["nether_wart_block.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_23"]
                 .geometry
             }
             material={materials["warped_wart_block.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_24"]
                 .geometry
             }
             material={materials["white_concrete.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_25"]
                 .geometry
             }
             material={materials["black_concrete.005"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_26"]
                 .geometry
             }
             material={materials["weeping_vines.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_27"]
                 .geometry
             }
             material={materials["weeping_vines_plant.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_28"]
                 .geometry
             }
             material={materials["twisting_vines.002"]}
           />
-          <mesh
+          <mesh castShadow receiveShadow
             geometry={
               nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261003_29"]
                 .geometry
