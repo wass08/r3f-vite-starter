@@ -72,7 +72,7 @@ export default function Nether() {
         <ambientLight intensity={1} />
         <directionalLight
           color={"#fbe8fd"}
-          castShadow
+        //   castShadow
           position={[85, 75, 0]}
           intensity={10}
           shadow-mapSize-width={2048}
@@ -86,9 +86,9 @@ export default function Nether() {
           shadow-bias={-0.001}
         />
 
-        <WholeNetherMap z />
+        <WholeNetherMap activeGroup={2} />
 
-        <Physics gravity={[0, -90.81, 0]} debug>
+        <Physics gravity={[0, -90.81, 0]} >
           {/* Race track and ground */}
           <NetherRawTrackWalls />
 
