@@ -1,13 +1,40 @@
-import React, { useState, Suspense } from "react";
-import Loader from "./Loader"; // Import the Loader component
-
+import React, { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./Car";
+import { Timer } from "./Timer";
+import BackgroundMusic from "./BackgroundMusic";
+import DustParticles from "./DustParticles/DustParticles";
+import SkidMarks from "./SkidMarks/SkidsMarks";
+import Loader from "./Loader"; // Import the Loader component
 import { NetherRawTrackWalls } from "../assets/track/Track2/NetherRawTrack";
 import { WholeNetherMap } from "../assets/track/Track2/WholeNetherMap";
 
 export default function Nether() {
+  const [startTimer, setStartTimer] = useState(false);
+
+  // Listen for arrow key presses
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (
+        ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)
+      ) {
+        setStartTimer(true); // Start the timer when an arrow key is pressed
+      }
+      if (event.key === "r" || event.key === "R") {
+        setStartTimer(false); // Reset the timer when "R" is pressed
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown); // Cleanup event listener on unmount
+    };
+  }, []);
+
+  const carRef = useRef();
+
   const [activeGroup, setActiveGroup] = useState(11);
 
   const handleGroupChange = (newGroup) => {
@@ -16,7 +43,6 @@ export default function Nether() {
   const [carPosition, setCarPosition] = useState(null);
 
   const handleCarPosition = (position) => {
-    // console.log(position);
     if (
       position.x >= 0 &&
       position.x <= 50 &&
@@ -35,16 +61,17 @@ export default function Nether() {
       // setActiveGroup(8);
     }
   };
+
   return (
     <Canvas
       shadows
       camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
+      style={{ position: "absolute", top: 0, left: 0 }}
     >
       <Suspense fallback={<Loader />}>
-        {/* Ambient and Directional Lighting */}
         <ambientLight intensity={1} />
         <directionalLight
-          color={"#fa3939"}
+          color={"#fbe8fd"}
           castShadow
           position={[85, 75, 0]}
           intensity={10}
@@ -58,11 +85,14 @@ export default function Nether() {
           shadow-camera-far={1500}
           shadow-bias={-0.001}
         />
-        {/* <Map /> */}
-        <WholeNetherMap activeGroup={activeGroup} />
 
-        <Physics gravity={[0, -50.81, 0]}>
+        <WholeNetherMap z />
+
+        <Physics gravity={[0, -90.81, 0]} debug>
+          {/* Race track and ground */}
           <NetherRawTrackWalls />
+
+          {/* Ground plane */}
           <RigidBody type="fixed" position={[0, 0, 0]}>
             <mesh
               receiveShadow
@@ -77,10 +107,12 @@ export default function Nether() {
               />
             </mesh>
           </RigidBody>
-
           {/* Car component with built-in camera follow */}
-          <Car onPositionChange={handleCarPosition} />
+          <Car rigidBody={carRef} />
+          {/* <SkidMarks carRef={carRef} /> */}
+          <DustParticles carRef={carRef} />
         </Physics>
+        {/* <BackgroundMusic /> */}
       </Suspense>
     </Canvas>
   );
