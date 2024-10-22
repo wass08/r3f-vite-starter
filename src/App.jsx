@@ -78,8 +78,29 @@ export default function App() {
         <Timer startTimer={startTimer} />
       </div>
       <HUD speed={carSpeed} currentLap={3} maxLap={15}  /> {/* Pass speed to HUD */}
-      <button onClick={() => handleGroupChange(1)}>Load Group 1</button>
-      <button onClick={() => handleGroupChange(2)}>Load Group 2</button>
+      <button onClick={() => handleGroupChange(1) }
+      style={{
+        position: "absolute",
+        top: "20px",
+        left: "20px",
+        color: "Black",
+        fontSize: "44px",
+        zIndex: 1, // Ensures it stays on top of the Canvas
+      }}
+        
+        
+        >Load Group 1</button>
+      <button onClick={() => handleGroupChange(2)} 
+       style={{
+        position: "absolute",
+        top: "20px",
+        left: "320px",
+        color: "Black",
+        fontSize: "44px",
+        zIndex: 1, // Ensures it stays on top of the Canvas
+      }}
+        
+        >Load Group 2</button>
 
       {activeGroup == 1 && <Nether />}
       {activeGroup == 2 && (
@@ -106,7 +127,7 @@ export default function App() {
               shadow-bias={-0.001}
             />
 
-            <Map />
+            {/* <Map /> */}
 
             <Physics gravity={[0, -90.81, 0]} debug>
               {/* Race track and ground */}
@@ -128,7 +149,7 @@ export default function App() {
                 </mesh>
               </RigidBody>
               {/* Car component with built-in camera follow */}
-              <Car rigidBody={carRef} />
+              <Car rigidBody={carRef} onSpeedChange={setCarSpeed}  />
               {/* <SkidMarks carRef={carRef} /> */}
               <DustParticles carRef={carRef} />
             </Physics>

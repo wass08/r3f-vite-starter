@@ -86,7 +86,7 @@ export default function Nether() {
           shadow-bias={-0.001}
         />
 
-        <WholeNetherMap z />
+        <WholeNetherMap activeGroup={2} />
 
         <Physics gravity={[0, -90.81, 0]} debug>
           {/* Race track and ground */}
