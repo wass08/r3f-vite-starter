@@ -234,42 +234,42 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
           scale={[0.4, 0.4, 0.4]}
         >
           <group rotation={[0, Math.PI / 2, 0]}>
-            <mesh
+            <mesh castShadow
               geometry={nodes.Punto_GT_0.geometry}
               material={materials.gt_black}
               receiveShadow
             />
-            <mesh
+            <mesh castShadow
               geometry={nodes.Punto_GT_1.geometry}
               material={materials.gt_license}
               receiveShadow
             />
-            <mesh
+            <mesh castShadow
               geometry={nodes.Punto_GT_2.geometry}
               material={materials.gt_tire}
               receiveShadow
             />
-            <mesh
+            <mesh castShadow
               geometry={nodes.Punto_GT_3.geometry}
               material={materials.gt_rim}
               receiveShadow
             />
-            <mesh
+            <mesh castShadow
               geometry={nodes.Punto_GT_4.geometry}
               material={materials.gt_windows}
               receiveShadow
             />
-            <mesh
+            <mesh castShadow
               geometry={nodes.Punto_GT_5.geometry}
               material={materials["Hemi.001"]}
               receiveShadow
             />
-            <mesh
+            <mesh castShadow
               geometry={nodes.Punto_GT_6.geometry}
               material={materials.gt_body}
               receiveShadow
             />
-            <mesh
+            <mesh castShadow
               geometry={nodes.Punto_GT_7.geometry}
               material={materials.gt_details}
               receiveShadow

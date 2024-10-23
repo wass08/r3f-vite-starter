@@ -200,7 +200,7 @@ export default function App() {
           <HUD speed={carSpeed} currentLap={3} maxLap={15} />
 
           <Canvas
-            // shadows
+            shadows
             camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
             style={{ position: "absolute", top: 0, left: 0 }}
           >
