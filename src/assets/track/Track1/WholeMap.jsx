@@ -8,7 +8,7 @@ import { useGLTF } from "@react-three/drei";
 import { getBaseUrl } from "../../../utils/getURL";
 export function Map(props) {
   
-  const { nodes, materials } = useGLTF(`${getBaseUrl}/WholeMap.glb`);
+  const { nodes, materials } = useGLTF(`/~scarhatt/WholeMap.glb`);
   useEffect(() => {
     // Reset emissive materials
     Object.values(materials).forEach((material) => {
@@ -2115,4 +2115,4 @@ export function Map(props) {
   );
 }
 
-useGLTF.preload(`${getBaseUrl}/WholeMap.glb`);
+useGLTF.preload(`/~scarhatt/WholeMap.glb`);
