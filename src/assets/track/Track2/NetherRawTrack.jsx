@@ -5,25 +5,88 @@ Command: npx gltfjsx@6.5.2 NetherRawTrack.glb
 
 import React from "react";
 import { useGLTF } from "@react-three/drei";
-import { RigidBody, Physics } from "@react-three/rapier";
-import { getBaseUrl } from "../../../utils/getURL";
+import { RigidBody } from "@react-three/rapier";
 
-export function NetherRawTrackWalls(props) {
-  const { nodes, materials } = useGLTF(`/~scarhatt/NetherRawTrack.glb`);
-  materials[nodes.blackstone_top014.material.name].transparent = true;
-  materials[nodes.blackstone_top014.material.name].opacity = 0;
+export function NetherRawTrack(props) {
+  const { nodes, materials } = useGLTF("/NetherRawTrack.glb");
+  materials["polished_blackstone_bricks.005"].transparent = true;
+  materials["polished_blackstone_bricks.005"].opacity = 0;
+
+  materials.polished_blackstone_bricks.transparent = true;
+  materials.polished_blackstone_bricks.opacity = 0;
+
+  materials["polished_blackstone_bricks.002"].transparent = true;
+  materials["polished_blackstone_bricks.002"].opacity = 0;
+
+  materials["netherrack.002"].transparent = true;
+  materials["netherrack.002"].opacity = 0;
+
+  materials["polished_blackstone_bricks.003"].transparent = true;
+  materials["polished_blackstone_bricks.003"].opacity = 0;
+
+  materials.basalt_side.transparent = true;
+  materials.basalt_side.opacity = 0;
+
+  materials["polished_blackstone_bricks.004"].transparent = true;
+  materials["polished_blackstone_bricks.004"].opacity = 0;
+
   return (
-    <group {...props} dispose={null}>
-      <RigidBody type="fixed" colliders="trimesh" position={[15, -140, -17]}>
-        <mesh
-          geometry={nodes.blackstone_top014.geometry}
-          material={nodes.blackstone_top014.material}
-          position={[255, 0, 0]}
-          rotation={[Math.PI / 2, 0, Math.PI]}
-        />
+    <group {...props} dispose={null} position={[17, -140, 0]}>
+      <RigidBody type="fixed" colliders="trimesh">
+        <group position={[255, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI]}>
+          <mesh
+            geometry={
+              nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261004"]
+                .geometry
+            }
+            material={materials["polished_blackstone_bricks.005"]}
+          />
+          <mesh
+            geometry={
+              nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261004_1"]
+                .geometry
+            }
+            material={materials.polished_blackstone_bricks}
+          />
+          <mesh
+            geometry={
+              nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261004_2"]
+                .geometry
+            }
+            material={materials["polished_blackstone_bricks.002"]}
+          />
+          <mesh
+            geometry={
+              nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261004_3"]
+                .geometry
+            }
+            material={materials["netherrack.002"]}
+          />
+          <mesh
+            geometry={
+              nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261004_4"]
+                .geometry
+            }
+            material={materials["polished_blackstone_bricks.003"]}
+          />
+          <mesh
+            geometry={
+              nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261004_5"]
+                .geometry
+            }
+            material={materials.basalt_side}
+          />
+          <mesh
+            geometry={
+              nodes["New_World_(8)__-386_-64_-1394_to_-287_126_-1261004_6"]
+                .geometry
+            }
+            material={materials["polished_blackstone_bricks.004"]}
+          />
+        </group>
       </RigidBody>
     </group>
   );
 }
 
-useGLTF.preload(`/~scarhatt/NetherRawTrack.glb`);
+useGLTF.preload("/NetherRawTrack.glb");
