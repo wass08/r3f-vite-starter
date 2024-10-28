@@ -287,7 +287,7 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
         fov={75}
         position={[0, 5, -10]}
         near={0.1}
-        far={150}
+        far={1000}
       />
       <Boost Boostarray={Boostarray} />
     </>

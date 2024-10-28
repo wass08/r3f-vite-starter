@@ -21,7 +21,7 @@ export default function App() {
   const [activeGroup, setActiveGroup] = useState(null);
   const carRef = useRef();
   const [checkpointCount, setCheckpointCount] = useState(0);
-  const [shadows, setShadows] = useState(true);
+  const [shadows, setShadows] = useState(false);
 
   const [checkpointsHit, setCheckpointsHit] = useState(new Set());
 
@@ -32,11 +32,15 @@ export default function App() {
     setCheckpointCount((prev) => prev + 1);
     // }
   };
-
+   
   // Disable controls if paused
   const isControlDisabled = isPaused;
 
   // Listen for key presses, including Esc to toggle pause
+  useEffect(() => {
+    console.log("shadows", shadows);
+    
+  }, [shadows]);
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (isControlDisabled) return; // Prevent controls if paused
@@ -151,7 +155,7 @@ export default function App() {
               color: "#fff",
               transition: "background-color 0.3s",
             }}
-            onClick={() => setShadows((prev) => !prev)}
+            onClick={() => setShadows(!shadows)}
             onMouseEnter={(e) => (e.target.style.backgroundColor = "#1e88e5")}
             onMouseLeave={(e) => (e.target.style.backgroundColor = "#2196F3")}
           >
@@ -246,23 +250,24 @@ export default function App() {
             Checkpoints Hit: {checkpointCount}
           </h1>
           <Canvas
-            shadows={shadows}
+            shadows
             camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
             style={{ position: "absolute", top: 0, left: 0 }}
           >
+            <fog attach="fog" color="#fc4b4b" near={1} far={85} /> {/* Add fog */}
             <Suspense fallback={<Loader />}>
               <ambientLight intensity={1} />
               <directionalLight
-                color={"#fbe8fd"}
-                castShadow
-                position={[85, 75, 0]}
+                color={"#fc4b4b"}
+                castShadow={shadows}
+                position={[85, 150, 0]}
                 intensity={10}
                 shadow-mapSize-width={2048}
                 shadow-mapSize-height={2048}
-                shadow-camera-left={-500}
-                shadow-camera-right={500}
-                shadow-camera-top={500}
-                shadow-camera-bottom={-500}
+                shadow-camera-left={-1000}
+                shadow-camera-right={1000}
+                shadow-camera-top={1000}
+                shadow-camera-bottom={-1000}
                 shadow-camera-near={1}
                 shadow-camera-far={1500}
                 shadow-bias={-0.001}
