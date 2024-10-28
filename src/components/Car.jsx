@@ -10,7 +10,7 @@ import Speedometer from "./Speedometer";
 import { getBaseUrl } from "../utils/getURL";
 
 export function Car({ rigidBody, onSpeedChange, ...props }) {
-  const { nodes, materials } = useGLTF(`/~scarhatt/Car.glb`);
+  const { nodes, materials } = useGLTF(`/Car.glb`);
   // const rigidBody = useRef();
   const cameraRef = useRef();
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
@@ -234,42 +234,42 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
           scale={[0.4, 0.4, 0.4]}
         >
           <group rotation={[0, Math.PI / 2, 0]}>
-            <mesh castShadow
+            <mesh
               geometry={nodes.Punto_GT_0.geometry}
               material={materials.gt_black}
               receiveShadow
             />
-            <mesh castShadow
+            <mesh
               geometry={nodes.Punto_GT_1.geometry}
               material={materials.gt_license}
               receiveShadow
             />
-            <mesh castShadow
+            <mesh
               geometry={nodes.Punto_GT_2.geometry}
               material={materials.gt_tire}
               receiveShadow
             />
-            <mesh castShadow
+            <mesh
               geometry={nodes.Punto_GT_3.geometry}
               material={materials.gt_rim}
               receiveShadow
             />
-            <mesh castShadow
+            <mesh
               geometry={nodes.Punto_GT_4.geometry}
               material={materials.gt_windows}
               receiveShadow
             />
-            <mesh castShadow
+            <mesh
               geometry={nodes.Punto_GT_5.geometry}
               material={materials["Hemi.001"]}
               receiveShadow
             />
-            <mesh castShadow
+            <mesh
               geometry={nodes.Punto_GT_6.geometry}
               material={materials.gt_body}
               receiveShadow
             />
-            <mesh castShadow
+            <mesh
               geometry={nodes.Punto_GT_7.geometry}
               material={materials.gt_details}
               receiveShadow
@@ -287,11 +287,11 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
         fov={75}
         position={[0, 5, -10]}
         near={0.1}
-        far={85}
+        far={150}
       />
       <Boost Boostarray={Boostarray} />
     </>
   );
 }
 
-useGLTF.preload(`/~scarhatt/Car.glb`);
+useGLTF.preload(`/Car.glb`);

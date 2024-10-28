@@ -1,17 +1,18 @@
 import React, { useRef, useState, useEffect, Suspense } from "react";
-import Nether from "./components/Nether";
 import { Canvas } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Car";
-import { RaceTrackWalls } from "./assets/track/Track1/CherryBlossomRawTrack";
 import { Timer } from "./components/Timer";
 import BackgroundMusic from "./components/BackgroundMusic";
 import DustParticles from "./components/DustParticles/DustParticles";
 import HUD from "./components/HUD";
 import Loader from "./components/Loader"; // Import the Loader component
-import { WholeNetherMap } from "./assets/track/Track2/WholeNetherMap";
-import { NetherRawTrackWalls } from "./assets/track/Track2/NetherRawTrack";
-import { Map } from "./assets/track/Track1/WholeMap";
+import { CherryBlossom } from "./assets/track/Track1/CherryBlossom";
+import { Nether } from "./assets/track/Track2/Nether";
+import { End } from "./assets/track/Track3/WholeEndMap";
+import { CherryBlossomRawTrack } from "./assets/track/Track1/CherryBlossomRawTrack";
+import { NetherRawTrack } from "./assets/track/Track2/NetherRawTrack";
+import { EndRawTrack } from "./assets/track/Track3/EndRawTrack";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -19,6 +20,18 @@ export default function App() {
   const [isPaused, setIsPaused] = useState(false); // Track if the game is paused
   const [activeGroup, setActiveGroup] = useState(null);
   const carRef = useRef();
+  const [checkpointCount, setCheckpointCount] = useState(0);
+  const [shadows, setShadows] = useState(true);
+
+  const [checkpointsHit, setCheckpointsHit] = useState(new Set());
+
+  const handleCheckpointHit = (checkpointId) => {
+    console.log(checkpointId);
+    // if (!checkpointsHit.has(checkpointId)) {
+    setCheckpointsHit((prev) => new Set([...prev, checkpointId]));
+    setCheckpointCount((prev) => prev + 1);
+    // }
+  };
 
   // Disable controls if paused
   const isControlDisabled = isPaused;
@@ -182,6 +195,30 @@ export default function App() {
           >
             Load Group 2
           </button>
+          <button
+            onClick={() => setActiveGroup(3)}
+            style={{
+              position: "absolute",
+              top: "20px",
+              left: "620px",
+              color: "Black",
+              fontSize: "44px",
+            }}
+          >
+            Load Group 3
+          </button>
+          <button
+            onClick={() => setActiveGroup(4)}
+            style={{
+              position: "absolute",
+              top: "20px",
+              left: "920px",
+              color: "Black",
+              fontSize: "44px",
+            }}
+          >
+            Load Group 4
+          </button>
         </div>
       ) : (
         <div style={{ position: "relative", width: "100%", height: "100vh" }}>
@@ -198,9 +235,18 @@ export default function App() {
             <Timer startTimer={startTimer} />
           </div>
           <HUD speed={carSpeed} currentLap={3} maxLap={15} />
-
+          <h1
+            style={{
+              zIndex: 1,
+              position: "absolute",
+              top: "20px",
+              left: "20px",
+            }}
+          >
+            Checkpoints Hit: {checkpointCount}
+          </h1>
           <Canvas
-            shadows
+            shadows={shadows}
             camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
             style={{ position: "absolute", top: 0, left: 0 }}
           >
@@ -221,14 +267,16 @@ export default function App() {
                 shadow-camera-far={1500}
                 shadow-bias={-0.001}
               />
-              {activeGroup == 2 ? <Map/> : <WholeNetherMap />}
+              {activeGroup == 1 && <CherryBlossom />}
+              {activeGroup == 2 && <Nether />}
+              {activeGroup == 3 && <End />}
+              {activeGroup == 4 && null}
 
               <Physics gravity={[0, -90.81, 0]} paused={isPaused}>
-                {activeGroup == 2 ? (
-                  <RaceTrackWalls />
-                ) : (
-                  <NetherRawTrackWalls />
-                )}
+                {activeGroup == 1 && <CherryBlossomRawTrack />}
+                {activeGroup == 2 && <NetherRawTrack />}
+                {activeGroup == 3 && <EndRawTrack />}
+                {activeGroup == 4 && null}
                 <RigidBody type="fixed" position={[0, 0, 0]}>
                   <mesh
                     receiveShadow
