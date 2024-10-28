@@ -10,7 +10,7 @@ import Speedometer from "./Speedometer";
 import { getBaseUrl } from "../utils/getURL";
 
 export function Car({ rigidBody, onSpeedChange, ...props }) {
-  const { nodes, materials } = useGLTF(`/Car.glb`);
+  const { nodes, materials } = useGLTF(`/~scarhatt/Car.glb`);
   // const rigidBody = useRef();
   const cameraRef = useRef();
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
@@ -294,4 +294,4 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
   );
 }
 
-useGLTF.preload(`/Car.glb`);
+useGLTF.preload(`/~scarhatt/Car.glb`);

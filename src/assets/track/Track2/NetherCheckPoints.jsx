@@ -7,7 +7,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function NetherCheckPoints(props) {
-  const { nodes, materials } = useGLTF("/NetherCheckPoints.glb");
+  const { nodes, materials } = useGLTF("/~scarhatt/NetherCheckPoints.glb");
   return (
     <group {...props} dispose={null} position={[17, -140, 0]}>
       <group position={[255, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI]}>
@@ -50,4 +50,4 @@ export function NetherCheckPoints(props) {
   );
 }
 
-useGLTF.preload('/NetherCheckPoints.glb')
+useGLTF.preload("/~scarhatt/NetherCheckPoints.glb");

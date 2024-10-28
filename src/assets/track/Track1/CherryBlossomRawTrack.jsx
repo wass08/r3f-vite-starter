@@ -8,7 +8,7 @@ import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 
 export function CherryBlossomRawTrack(props) {
-  const { nodes, materials } = useGLTF("/CherryBlossomRawTrack.glb");
+  const { nodes, materials } = useGLTF("/~scarhatt/CherryBlossomRawTrack.glb");
 
   // Set transparency and opacity to make each material invisible
   materials.stone.transparent = true;
@@ -84,4 +84,4 @@ export function CherryBlossomRawTrack(props) {
   );
 }
 
-useGLTF.preload("/CherryBlossomRawTrack.glb");
+useGLTF.preload("/~scarhatt/CherryBlossomRawTrack.glb");

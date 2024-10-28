@@ -8,7 +8,7 @@ import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 
 export function NetherRawTrack(props) {
-  const { nodes, materials } = useGLTF("/NetherRawTrack.glb");
+  const { nodes, materials } = useGLTF("/~scarhatt/NetherRawTrack.glb");
   materials["polished_blackstone_bricks.005"].transparent = true;
   materials["polished_blackstone_bricks.005"].opacity = 0;
 
@@ -89,4 +89,4 @@ export function NetherRawTrack(props) {
   );
 }
 
-useGLTF.preload("/NetherRawTrack.glb");
+useGLTF.preload("/~scarhatt/NetherRawTrack.glb");

@@ -7,7 +7,7 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function End(props) {
-  const { nodes, materials } = useGLTF("/WholeEndMap.glb");
+  const { nodes, materials } = useGLTF("/~scarhatt/WholeEndMap.glb");
   return (
     <group {...props} dispose={null} position={[-14, -40, 0]}>
       <mesh geometry={nodes.Cube.geometry} material={materials.Material} />
@@ -659,4 +659,4 @@ export function End(props) {
   );
 }
 
-useGLTF.preload("/WholeEndMap.glb");
+useGLTF.preload("/~scarhatt/WholeEndMap.glb");

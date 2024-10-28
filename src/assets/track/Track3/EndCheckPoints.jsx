@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 
 export function EndCheckPoints({ onCheckpointHit, ...props }) {
-  const { nodes, materials } = useGLTF("/EndCheckPoints.glb");
+  const { nodes, materials } = useGLTF("/~scarhatt/EndCheckPoints.glb");
   Object.values(materials).forEach((material) => {
     material.transparent = true;
     material.opacity = 0;
@@ -108,4 +108,4 @@ export function EndCheckPoints({ onCheckpointHit, ...props }) {
   );
 }
 
-useGLTF.preload("/EndCheckPoints.glb");
+useGLTF.preload("/~scarhatt/EndCheckPoints.glb");
