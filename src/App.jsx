@@ -13,6 +13,7 @@ import { End } from "./assets/track/Track3/WholeEndMap";
 import { CherryBlossomRawTrack } from "./assets/track/Track1/CherryBlossomRawTrack";
 import { NetherRawTrack } from "./assets/track/Track2/NetherRawTrack";
 import { EndRawTrack } from "./assets/track/Track3/EndRawTrack";
+import { Environment, Sky } from "@react-three/drei"; // Import Sky and Environment for HDR or skybox
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -272,6 +273,12 @@ export default function App() {
                 shadow-camera-far={1500}
                 shadow-bias={-0.001}
               />
+              {/* Skybox or Environment */}
+              <Environment files=" /images.jpeg" background={true} />
+
+              {/* Alternative: Basic sky using @react-three/drei */}
+              {/* <Sky sunPosition={[100, 10, 100]} azimuth={0.25} inclination={0.6} /> */}
+
               {activeGroup == 1 && <CherryBlossom />}
               {activeGroup == 2 && <Nether />}
               {activeGroup == 3 && <End />}
