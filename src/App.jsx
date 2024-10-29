@@ -287,7 +287,7 @@ export default function App() {
               {activeGroup == 3 && <End />}
               {activeGroup == 4 && null}
 
-              <Physics gravity={[0, -90.81, 0]} paused={isPaused} debug>
+              <Physics gravity={[0, -90.81, 0]} paused={isPaused} >
                 {activeGroup == 1 && <CherryBlossomRawTrack />}
                 {activeGroup == 2 && <NetherRawTrack />}
                 {activeGroup == 3 && <EndRawTrack />}
@@ -307,16 +307,16 @@ export default function App() {
                   </mesh>
                 </RigidBody>
 
-                <Car
-                  rigidBody={carRef}
-                  onSpeedChange={setCarSpeed}
-                  disabled={isPaused} // Disable car controls when paused
-                />
-                {/* <Hummer
+                {/* <Car
                   rigidBody={carRef}
                   onSpeedChange={setCarSpeed}
                   disabled={isPaused} // Disable car controls when paused
                 /> */}
+                <Hummer
+                  rigidBody={carRef}
+                  onSpeedChange={setCarSpeed}
+                  disabled={isPaused} // Disable car controls when paused
+                />
                 {/* <NeonCar
                   rigidBody={carRef}
                   onSpeedChange={setCarSpeed}

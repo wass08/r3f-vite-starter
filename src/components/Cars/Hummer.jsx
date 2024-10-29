@@ -39,7 +39,7 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
   const [boostActive, setBoostActive] = useState(false);
   const [boostTimer, setBoostTimer] = useState(0);
 
-  const FORCE = boostActive ? 13 : 50; // Increase force when boost is active
+  const FORCE = boostActive ? 1 : 50; // Increase force when boost is active
   let TURN = boostActive ? 1 : 3;
   const maxSpeed = 200;
   const [carSpeed, setCarSPeed] = useState(0);
@@ -237,7 +237,7 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
           rotation={[0, 0, 0]} // Initial rotation
           linearDamping={0.5}
           // angularDamping={0.8}
-          scale={[0.5, 0.5, 0.5]}
+          scale={[0.4, 0.4, 0.4]}
         >
           <group rotation={[0, 0, 0]}>
             <mesh
