@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
-import { Car } from "./components/Car";
+import { Car } from "./components/Cars/Car";
 import { Timer } from "./components/Timer";
 import BackgroundMusic from "./components/BackgroundMusic";
 import DustParticles from "./components/DustParticles/DustParticles";
@@ -14,6 +14,9 @@ import { CherryBlossomRawTrack } from "./assets/track/Track1/CherryBlossomRawTra
 import { NetherRawTrack } from "./assets/track/Track2/NetherRawTrack";
 import { EndRawTrack } from "./assets/track/Track3/EndRawTrack";
 import { Environment, Sky } from "@react-three/drei"; // Import Sky and Environment for HDR or skybox
+import { Hummer } from "./components/Cars/Hummer";
+import { NeonCar } from "./components/Cars/NeonCar";
+import { Nissan } from "./components/Cars/Nissan";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -33,14 +36,13 @@ export default function App() {
     setCheckpointCount((prev) => prev + 1);
     // }
   };
-   
+
   // Disable controls if paused
   const isControlDisabled = isPaused;
 
   // Listen for key presses, including Esc to toggle pause
   useEffect(() => {
     console.log("shadows", shadows);
-    
   }, [shadows]);
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -255,7 +257,8 @@ export default function App() {
             camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
             style={{ position: "absolute", top: 0, left: 0 }}
           >
-            <fog attach="fog" color="#fc4b4b" near={1} far={85} /> {/* Add fog */}
+            <fog attach="fog" color="#fc4b4b" near={1} far={85} />{" "}
+            {/* Add fog */}
             <Suspense fallback={<Loader />}>
               <ambientLight intensity={1} />
               <directionalLight
@@ -284,12 +287,12 @@ export default function App() {
               {activeGroup == 3 && <End />}
               {activeGroup == 4 && null}
 
-              <Physics gravity={[0, -90.81, 0]} paused={isPaused}>
+              <Physics gravity={[0, -90.81, 0]} paused={isPaused} debug>
                 {activeGroup == 1 && <CherryBlossomRawTrack />}
                 {activeGroup == 2 && <NetherRawTrack />}
                 {activeGroup == 3 && <EndRawTrack />}
                 {activeGroup == 4 && null}
-                <RigidBody type="fixed" position={[0, 0, 0]}>
+                <RigidBody type="fixed" position={[0, 0, 0]} >
                   <mesh
                     receiveShadow
                     rotation={[-Math.PI / 2, 0, 0]}
@@ -304,11 +307,27 @@ export default function App() {
                   </mesh>
                 </RigidBody>
 
-                <Car
+                {/* <Car
+                  rigidBody={carRef}
+                  onSpeedChange={setCarSpeed}
+                  disabled={isPaused} // Disable car controls when paused
+                /> */}
+                <Hummer
                   rigidBody={carRef}
                   onSpeedChange={setCarSpeed}
                   disabled={isPaused} // Disable car controls when paused
                 />
+                {/* <NeonCar
+                  rigidBody={carRef}
+                  onSpeedChange={setCarSpeed}
+                  disabled={isPaused} // Disable car controls when paused
+                /> */}
+                {/* <Nissan
+                  rigidBody={carRef}
+                  onSpeedChange={setCarSpeed}
+                  disabled={isPaused} // Disable car controls when paused
+                /> */}
+
                 <DustParticles carRef={carRef} />
               </Physics>
 
