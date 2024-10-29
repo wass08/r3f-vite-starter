@@ -307,16 +307,16 @@ export default function App() {
                   </mesh>
                 </RigidBody>
 
-                {/* <Car
-                  rigidBody={carRef}
-                  onSpeedChange={setCarSpeed}
-                  disabled={isPaused} // Disable car controls when paused
-                /> */}
-                <Hummer
+                <Car
                   rigidBody={carRef}
                   onSpeedChange={setCarSpeed}
                   disabled={isPaused} // Disable car controls when paused
                 />
+                {/* <Hummer
+                  rigidBody={carRef}
+                  onSpeedChange={setCarSpeed}
+                  disabled={isPaused} // Disable car controls when paused
+                /> */}
                 {/* <NeonCar
                   rigidBody={carRef}
                   onSpeedChange={setCarSpeed}
