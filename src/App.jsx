@@ -262,7 +262,7 @@ export default function App() {
         </div>
       ) : (
         <div style={{ position: "relative", width: "100%", height: "100vh" }}>
-          <HUD speed={carSpeed} mins={startTimer} currentLap={3} maxLap={15} />
+          <HUD speed={carSpeed} startTimer={startTimer} currentLap={3} maxLap={15} />
           <Canvas
             shadows
             camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}

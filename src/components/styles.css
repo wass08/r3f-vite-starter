@@ -39,5 +39,26 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 60px;
+    color: #ffffff;
+    text-shadow: 
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
   }
+
+  .agdasima-regular {
+    font-family: "Agdasima", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 60px;
+  }
+  
+  .agdasima-bold {
+    font-family: "Agdasima", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 60px;
+  }
+  
   
