@@ -18,6 +18,7 @@ import { Hummer } from "./components/Cars/Hummer";
 import { NeonCar } from "./components/Cars/NeonCar";
 import { Nissan } from "./components/Cars/Nissan";
 import MiniMap from "./components/MiniMap";
+import LeaderBoard from "./components/Leaderboard";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -83,9 +84,6 @@ export default function App() {
   }, [isControlDisabled]);
 
   return (
-    <Canvas orthographic>
-      <MiniMap />
-      <OrbitControls />
-    </Canvas>
+    <LeaderBoard />
   );
 }
