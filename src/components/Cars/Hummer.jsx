@@ -122,7 +122,7 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
       }
     }
     if (keys.forward) {
-      setCarSPeed(Math.min(Math.round(carSpeed + 0.1), maxSpeed));
+      setCarSPeed(Math.min(Math.round(carSpeed + 0.5), maxSpeed));
       rigidBody.current.applyImpulse(
         { x: direction.x * FORCE, y: 0, z: direction.z * FORCE },
         true
