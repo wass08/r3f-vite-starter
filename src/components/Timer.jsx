@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './styles.css'
 
 export function Timer({ startTimer }) {
   const [time, setTime] = useState(0);
@@ -23,5 +24,9 @@ export function Timer({ startTimer }) {
     };
   }, [startTimer]); // This will run when `startTimer` changes
 
-  return <div>Time Elapsed: {time} seconds</div>;
+  return(
+    <div className='bebas-neue-regular'>
+      Time Elapsed: {time} seconds
+    </div>
+    );
 }

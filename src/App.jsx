@@ -262,29 +262,7 @@ export default function App() {
         </div>
       ) : (
         <div style={{ position: "relative", width: "100%", height: "100vh" }}>
-          <div
-            style={{
-              position: "absolute",
-              top: "20px",
-              right: "20px",
-              color: "Black",
-              fontSize: "44px",
-              zIndex: 1,
-            }}
-          >
-            <Timer startTimer={startTimer} />
-          </div>
-          <HUD speed={carSpeed} currentLap={3} maxLap={15} />
-          <h1
-            style={{
-              zIndex: 1,
-              position: "absolute",
-              top: "20px",
-              left: "20px",
-            }}
-          >
-            Checkpoints Hit: {checkpointCount}
-          </h1>
+          <HUD speed={carSpeed} mins={startTimer} currentLap={3} maxLap={15} />
           <Canvas
             shadows
             camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}

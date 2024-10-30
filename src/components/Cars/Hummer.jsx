@@ -41,7 +41,7 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
 
   const FORCE = boostActive ? 1 : 50; // Increase force when boost is active
   let TURN = boostActive ? 1 : 3;
-  const maxSpeed = 200;
+  const maxSpeed = 300;
   const [carSpeed, setCarSPeed] = useState(0);
 
   // Handling keypress events for movement
