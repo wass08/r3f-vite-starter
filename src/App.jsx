@@ -26,9 +26,25 @@ export default function App() {
   const carRef = useRef();
   const [checkpointCount, setCheckpointCount] = useState(0);
   const [shadows, setShadows] = useState(false);
+  const [Fog, setFog] = useState(false);
 
   const [checkpointsHit, setCheckpointsHit] = useState(new Set());
-
+  let far = 100;
+  let color = "#fc4b4b";
+  let lightColor = "#fc4b4b";
+  if (activeGroup == 1) {
+    far = 125;
+    color = "#d691ca";
+    lightColor = "#f8def4";
+  } else if (activeGroup == 2) {
+    far = 85;
+    color = "#fc4b4b";
+    lightColor = "#fc4b4b";
+  } else if (activeGroup == 3) {
+    far = 100;
+    color = "#5a5151";
+    lightColor = "#ffffff";
+  }
   const handleCheckpointHit = (checkpointId) => {
     console.log(checkpointId);
     // if (!checkpointsHit.has(checkpointId)) {
@@ -164,7 +180,24 @@ export default function App() {
           >
             Toggle Shadows
           </button>
-
+          <button
+            style={{
+              padding: "12px 24px",
+              fontSize: "20px",
+              margin: "10px",
+              cursor: "pointer",
+              backgroundColor: "#2196F3",
+              border: "none",
+              borderRadius: "5px",
+              color: "#fff",
+              transition: "background-color 0.3s",
+            }}
+            onClick={() => setFog(!Fog)}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#1e88e5")}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "#2196F3")}
+          >
+            Toggle Fog
+          </button>
           <style>
             {`
       @keyframes fadeIn {
@@ -257,12 +290,12 @@ export default function App() {
             camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
             style={{ position: "absolute", top: 0, left: 0 }}
           >
-            <fog attach="fog" color="#fc4b4b" near={1} far={85} />{" "}
+            {Fog && <fog attach="fog" color={color} near={1} far={far} />}
             {/* Add fog */}
             <Suspense fallback={<Loader />}>
               <ambientLight intensity={1} />
               <directionalLight
-                color={"#fc4b4b"}
+                color={lightColor}
                 castShadow={shadows}
                 position={[85, 150, 0]}
                 intensity={10}
@@ -277,22 +310,39 @@ export default function App() {
                 shadow-bias={-0.001}
               />
               {/* Skybox or Environment */}
-              <Environment files=" /images.jpeg" background={true} />
 
               {/* Alternative: Basic sky using @react-three/drei */}
-              {/* <Sky sunPosition={[100, 10, 100]} azimuth={0.25} inclination={0.6} /> */}
 
-              {activeGroup == 1 && <CherryBlossom />}
-              {activeGroup == 2 && <Nether />}
-              {activeGroup == 3 && <End />}
+              {activeGroup == 1 && (
+                <>
+                  <CherryBlossom />
+                  <Sky
+                    sunPosition={[100, 10, 100]}
+                    azimuth={0.25}
+                    inclination={0.6}
+                  />
+                </>
+              )}
+              {activeGroup == 2 && (
+                <>
+                  <Nether />
+                  <Environment files=" /Nether.jpg" background={true} />
+                </>
+              )}
+              {activeGroup == 3 && (
+                <>
+                  <End />
+                  <Environment files=" /space.jpg" background={true} />
+                </>
+              )}
               {activeGroup == 4 && null}
 
-              <Physics gravity={[0, -90.81, 0]} paused={isPaused} >
+              <Physics gravity={[0, -90.81, 0]} paused={isPaused}>
                 {activeGroup == 1 && <CherryBlossomRawTrack />}
                 {activeGroup == 2 && <NetherRawTrack />}
                 {activeGroup == 3 && <EndRawTrack />}
                 {activeGroup == 4 && null}
-                <RigidBody type="fixed" position={[0, 0, 0]} >
+                <RigidBody type="fixed" position={[0, 0, 0]}>
                   <mesh
                     receiveShadow
                     rotation={[-Math.PI / 2, 0, 0]}
