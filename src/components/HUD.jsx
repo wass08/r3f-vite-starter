@@ -27,7 +27,7 @@ export default function HUD({currentLap, maxLap, speed, startTimer}) {
                 <Speedometer speed={speed}/>
             </group>
             <Timer startTimer={startTimer} />
-            {/*
+            
             <Html position={[-7.26,3.5,0]}>
                 <div className='bebas-neue-regular'>
                     LAPS
@@ -38,15 +38,8 @@ export default function HUD({currentLap, maxLap, speed, startTimer}) {
                     {modLap}/{maxLap}
                 </div>
             </Html>
-            */}
-            <Html position={[-6.5,-3,0]}>
-                <div style={{width: '10%', height: '10%', borderRadius: '15px', border: '2px solid #fff'}}>
-                    {/*this needs sorting out */}
-                    <Canvas style={{height: '100vh', zIndex:1}} camera={{position: [0,1.4,0]}}>
-                        <MiniMap mapNum={1}/>
-                    </Canvas>
-                </div>
-            </Html>
+           
+           
         </Canvas>
     );
 }

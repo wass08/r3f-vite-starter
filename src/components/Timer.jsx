@@ -11,7 +11,7 @@ export function Timer({ startTimer }) {
     
     if (startTimer && !timerRef.current) {  // Check if the timer has started
       timerRef.current = setInterval(() => {
-        setTime(prevTime => prevTime + 0.01); // Increment time by 10 miliseconds
+        setTime(prevTime => prevTime +0.1); // Increment time by 10 miliseconds
       }, 10);
     }
     else{

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, Suspense,lazy } from "react";
+import React, { useRef, useState, useEffect, Suspense, lazy } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Cars/Car";
@@ -130,10 +130,13 @@ export default function App() {
                   fontSize: "44px",
                   zIndex: 1,
                 }}
-              >
-                <Timer startTimer={startTimer} />
-              </div>
-              <HUD speed={carSpeed} currentLap={3} maxLap={15} />
+              ></div>
+              <HUD
+                speed={carSpeed}
+                currentLap={3}
+                maxLap={15}
+                startTimer={startTimer}
+              />
               <Canvas
                 shadows
                 camera={{
@@ -144,6 +147,7 @@ export default function App() {
                 }}
                 style={{ position: "absolute", top: 0, left: 0 }}
               >
+                {/* <Timer/> */}
                 {Fog && <fog attach="fog" color={color} near={1} far={far} />}
                 {/* Add fog */}
                 <ambientLight intensity={-2} />
