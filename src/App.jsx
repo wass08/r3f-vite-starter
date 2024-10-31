@@ -17,7 +17,8 @@ import { Environment, Sky } from "@react-three/drei"; // Import Sky and Environm
 import { Hummer } from "./components/Cars/Hummer";
 import { NeonCar } from "./components/Cars/NeonCar";
 import { Nissan } from "./components/Cars/Nissan";
-import ExhaustSmoke from "./components/ExhaustSmoke";
+import SmokeEffect from "./components/SmokeEffect/SmokeEffect";
+
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -380,7 +381,8 @@ export default function App() {
                 /> */}
 
                 <DustParticles carRef={carRef} />
-                <ExhaustSmoke carRef={carRef}/>
+                {/* {console.log( carRef.current.rotation())} */}
+                <SmokeEffect carRef={carRef} timer={startTimer}/>
               </Physics>
 
               <BackgroundMusic />
