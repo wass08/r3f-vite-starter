@@ -208,14 +208,14 @@ export default function App() {
                       disabled={isPaused} // Disable car controls when paused
                     />
                   )}
-                  {carIndex == 3 && (
+                  {/* {carIndex == 3 && (
                     <NeonCar
                       rigidBody={carRef}
                       onSpeedChange={setCarSpeed}
                       disabled={isPaused} // Disable car controls when paused
                     />
-                  )}
-                  {carIndex == 4 && (
+                  )} */}
+                  {carIndex == 3 && (
                     <Nissan
                       rigidBody={carRef}
                       onSpeedChange={setCarSpeed}

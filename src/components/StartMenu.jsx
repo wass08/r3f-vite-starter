@@ -34,7 +34,7 @@ export default function StartMenu({
 
   const handleCarChange = (direction) => {
     setCarIndex((prev) =>
-      direction === "next" ? (prev + 1) % 4 : Math.max(prev - 1, 0)
+      direction === "next" ? (prev + 1) % 3 : Math.max(prev - 1, 0)
     );
   };
 
