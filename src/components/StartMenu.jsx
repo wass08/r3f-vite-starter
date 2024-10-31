@@ -41,7 +41,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
 
   // 3. Monitor loading progress and update loading state
   React.useEffect(() => {
-    setLoading(progress < 100); // loading until progress reaches 100%
+    setLoading(progress < 90); // loading until progress reaches 100%
   }, [progress]);
 
   return (
