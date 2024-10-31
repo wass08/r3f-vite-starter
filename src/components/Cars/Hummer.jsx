@@ -116,18 +116,16 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
 
     // Apply forward/backward movement
     if (!keys.forward) {
-      if (carSpeed != 0) {
-        setCarSPeed(prevSpeed => Math.round(prevSpeed - 1));
-      }
+      setCarSPeed(0);
     }
     if (keys.forward) {
-      setCarSPeed(Math.min(Math.round(carSpeed + 0.5), maxSpeed));
+      setCarSPeed(Math.min(carSpeed + 3, maxSpeed));
       rigidBody.current.applyImpulse(
         { x: direction.x * FORCE, y: 0, z: direction.z * FORCE },
         true
       );
     } else if (keys.backward) {
-      setCarSPeed(Math.min(Math.round(carSpeed + 0.5), maxSpeed));
+      setCarSPeed(Math.min(carSpeed + 3, maxSpeed));
 
       rigidBody.current.applyImpulse(
         { x: -direction.x * FORCE, y: 0, z: -direction.z * FORCE },
