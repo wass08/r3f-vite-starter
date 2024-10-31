@@ -3,12 +3,11 @@ import { db } from '../firebase.config'
 import { collection, addDoc, getDocs, orderBy, query } from 'firebase/firestore';
 import './styles.css'
 
-export default function LeaderBoard() {
-    const mapNum = 1;
-    const time = 10;
+export default function LeaderBoard({mapNum, time}) {
+    // const mapNum = 1;
+    // const time = 10;
     const [name, setName] = useState('');
     const [submitted, setSubmitted] = useState(false);
-    const [myID, setMyID] = useState('');
     const [position, setPosition] = useState(0);
     const [allScores, setAllScores] = useState([]);
     const collectionName = 'Leaderboard'.concat(mapNum.toString());
@@ -23,7 +22,6 @@ export default function LeaderBoard() {
                 Name: name,
                 Time: time
               });
-            setMyID(docRef.id);
             console.log("Document written with ID: ", docRef.id);
 
             {/* need to get position of this user and top 5 scores */}
@@ -74,7 +72,7 @@ export default function LeaderBoard() {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* This is where top 10 scores go, use active row for this user if they in top 5 */}
+                            {/* This is where top 5 scores go, use active row for this user if they in top 5 */}
                             {allScores.map((score, i) => {
                                 if (position-1==i) {
                                     return (
