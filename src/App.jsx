@@ -20,7 +20,7 @@ import { Nissan } from "./components/Cars/Nissan";
 import PauseMenu from "./components/PauseMenu";
 import StartMenu from "./components/StartMenu";
 import { useProgress } from "@react-three/drei"; // For tracking loading progress
-
+import MiniMap from "./components/MiniMap";
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
   const [loading, setLoading] = useState(false); // Track loading state
@@ -227,6 +227,12 @@ export default function App() {
 
                 <BackgroundMusic />
               </Suspense>
+            </Canvas>
+          </div>
+
+          <div style={{ position: "absolute", bottom: "20px", right: "20px", width: "150px", height: "150px" }}>
+            <Canvas>
+              <MiniMap carRef={carRef} />
             </Canvas>
           </div>
         </>
