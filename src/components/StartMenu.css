@@ -1,10 +1,4 @@
-@font-face {
-    font-family: "CustomFont";
-    src: url('/public/fonts/minecraft_font.ttf');
-}
-body {
-  font-family: 'CustomFont';
-}
+
 
 .start-menu {
   display: flex;
@@ -25,5 +19,4 @@ button {
   margin: 10px;
   padding: 10px 20px;
   font-size: 16px;
-  font-family: 'CustomFont';
 }

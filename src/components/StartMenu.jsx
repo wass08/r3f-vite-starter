@@ -40,19 +40,6 @@ export default function StartMenu({
 
   return (
     <>
-      <style>
-        {`
-          @font-face {
-            font-family: 'MinecraftFont';
-            src: url('/fonts/minecraft_font.ttf') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-          }
-          .minecraft-style {
-            font-family: 'MinecraftFont', sans-serif;
-          }
-        `}
-      </style>
 
       <div
         className="minecraft-style"

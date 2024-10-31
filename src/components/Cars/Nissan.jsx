@@ -15,7 +15,7 @@ import Speedometer from "../Speedometer";
 import { getBaseUrl } from "../../utils/getURL";
 
 export function Nissan({ rigidBody, onSpeedChange, ...props }) {
-  const { nodes, materials } = useGLTF(`/Nissan.glb`);
+  const { nodes, materials } = useGLTF(`/~scarhatt/Nissan.glb`);
   // const rigidBody = useRef();
   const cameraRef = useRef();
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
@@ -266,4 +266,4 @@ export function Nissan({ rigidBody, onSpeedChange, ...props }) {
   );
 }
 
-useGLTF.preload(`/Nissan.glb`);
+useGLTF.preload(`/~scarhatt/Nissan.glb`);

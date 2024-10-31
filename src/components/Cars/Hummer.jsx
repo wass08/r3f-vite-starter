@@ -13,7 +13,7 @@ import DustParticles from "../DustParticles/DustParticles";
 import Speedometer from "../Speedometer";
 
 export function Hummer({ rigidBody, onSpeedChange, ...props }) {
-  const { nodes, materials } = useGLTF(`/Hummer.glb`);
+  const { nodes, materials } = useGLTF(`/~scarhatt/Hummer.glb`);
   // const rigidBody = useRef();
   const cameraRef = useRef();
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
@@ -264,4 +264,4 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
   );
 }
 
-useGLTF.preload(`/Hummer.glb`);
+useGLTF.preload(`/~scarhatt/Hummer.glb`);
