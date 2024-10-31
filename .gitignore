@@ -10,6 +10,7 @@ node_modules
 dist
 dist-ssr
 *.local
+*.config.js
 
 # Editor directories and files
 .vscode/*

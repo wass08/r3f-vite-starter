@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect, Suspense,lazy } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { useRef, useState, useEffect, Suspense, lazy } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Cars/Car";
 import { Timer } from "./components/Timer";
@@ -15,13 +15,16 @@ import { End } from "./assets/track/Track3/WholeEndMap";
 import { CherryBlossomRawTrack } from "./assets/track/Track1/CherryBlossomRawTrack";
 import { NetherRawTrack } from "./assets/track/Track2/NetherRawTrack";
 import { EndRawTrack } from "./assets/track/Track3/EndRawTrack";
-import { Environment, Sky } from "@react-three/drei"; // Import Sky and Environment for HDR or skybox
+import { Environment, Hud, OrbitControls, Sky } from "@react-three/drei"; // Import Sky and Environment for HDR or skybox
 import { Hummer } from "./components/Cars/Hummer";
 import { NeonCar } from "./components/Cars/NeonCar";
 import { Nissan } from "./components/Cars/Nissan";
 import PauseMenu from "./components/PauseMenu";
 import StartMenu from "./components/StartMenu";
 
+import MiniMap from "./components/MiniMap";
+import LeaderBoard from "./components/Leaderboard";
+import { useFrame } from "@react-three/fiber";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -127,10 +130,13 @@ export default function App() {
                   fontSize: "44px",
                   zIndex: 1,
                 }}
-              >
-                <Timer startTimer={startTimer} />
-              </div>
-              <HUD speed={carSpeed} currentLap={3} maxLap={15} />
+              ></div>
+              <HUD
+                speed={carSpeed}
+                currentLap={3}
+                maxLap={15}
+                startTimer={startTimer}
+              />
               <Canvas
                 shadows
                 camera={{
@@ -141,6 +147,7 @@ export default function App() {
                 }}
                 style={{ position: "absolute", top: 0, left: 0 }}
               >
+                {/* <Timer/> */}
                 {Fog && <fog attach="fog" color={color} near={1} far={far} />}
                 {/* Add fog */}
                 <ambientLight intensity={-2} />
