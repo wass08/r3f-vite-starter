@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { db } from '../firebase.config'
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, orderBy, query } from 'firebase/firestore';
 import './styles.css'
 
 export default function LeaderBoard() {
     const mapNum = 1;
-    const time = 5;
+    const time = 10;
     const [name, setName] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const [myID, setMyID] = useState('');
     const [position, setPosition] = useState(0);
-    const [topTen, setTopTen] = useState([]);
+    const [allScores, setAllScores] = useState([]);
     const collectionName = 'Leaderboard'.concat(mapNum.toString());
 
     const submit = async () => {
@@ -22,13 +23,28 @@ export default function LeaderBoard() {
                 Name: name,
                 Time: time
               });
+            setMyID(docRef.id);
             console.log("Document written with ID: ", docRef.id);
-            {/* need to get position of this user and top 10 scores */}
+
+            {/* need to get position of this user and top 5 scores */}
+
+            const collectionRef = collection(db, collectionName);
+            const querySnapshot = await getDocs(query(collectionRef, orderBy('Time', 'asc')));
+            const temp = [];
+            let pos = 1;
+            querySnapshot.forEach((doc) => {
+                if (docRef.id == doc.id) {
+                    setPosition(pos);
+                }
+                temp.push({Name: doc.data().Name, Time: doc.data().Time});
+                pos++;
+            })
+            setAllScores(temp.slice(0, 5));
             setSubmitted(true);
             }
             catch (error) {
                 alert("An error has occured, please try again");
-                console.error("Error adding document: ", error);
+                console.error("Error adding/retrieving document: ", error);
             }
         }
     }
@@ -43,9 +59,9 @@ export default function LeaderBoard() {
                         <tbody>
                             <tr className='active-row'>
                                 {/* this is where this users score goes /*/}
-                                <td>10</td>
-                                <td>Yusuf</td>
-                                <td>{time}</td>
+                                <td>{position}</td>
+                                <td>{name}</td>
+                                <td>{time.toFixed(2)}s</td>
                             </tr>
                         </tbody>
                     </table>
@@ -58,9 +74,30 @@ export default function LeaderBoard() {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* This is where top 10 scores go, use active row for this user if they in top 10 */}
+                            {/* This is where top 10 scores go, use active row for this user if they in top 5 */}
+                            {allScores.map((score, i) => {
+                                if (position-1==i) {
+                                    return (
+                                    <tr className='active-row' key={i}>
+                                        <td>{i+1}</td>
+                                        <td>{score.Name}</td>
+                                        <td>{(score.Time).toFixed(2)}s</td>
+                                    </tr>
+                                    )
+                                }
+                                else {
+                                    return (
+                                    <tr key={i}> 
+                                        <td>{i+1}</td>
+                                        <td>{score.Name}</td>
+                                        <td>{(score.Time).toFixed(2)}s</td>
+                                    </tr>
+                                    )
+                                }
+                            })}
                         </tbody>
                     </table>
+                    <button className='styled-button'>Continue</button>
                     </>
                 ) : (
                     <>
