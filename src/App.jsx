@@ -174,7 +174,7 @@ export default function App() {
                 )}
                 {activeGroup == 4 && null}
 
-                <Physics gravity={[0, -90.81, 0]} paused={isPaused} debug>
+                <Physics gravity={[0, -90.81, 0]} paused={isPaused} >
                   {activeGroup == 1 && <CherryBlossomRawTrack />}
                   {activeGroup == 2 && <NetherRawTrack />}
                   {activeGroup == 3 && <EndRawTrack />}

@@ -40,8 +40,8 @@ export function Nissan({ rigidBody, onSpeedChange, ...props }) {
   const [boostActive, setBoostActive] = useState(false);
   const [boostTimer, setBoostTimer] = useState(0);
 
-  const FORCE = boostActive ? 13 : 50; // Increase force when boost is active
-  let TURN = boostActive ? 1 : 3;
+  const FORCE = boostActive ? 13 : 9; // Increase force when boost is active
+  let TURN = boostActive ? 1 : 1;
   const maxSpeed = 200;
   const [carSpeed, setCarSPeed] = useState(0);
 
@@ -83,7 +83,7 @@ export function Nissan({ rigidBody, onSpeedChange, ...props }) {
   // Reset function to reset car's position, rotation, and speed
   const resetCar = () => {
     if (rigidBody.current) {
-      rigidBody.current.setTranslation({ x: 10, y: 1, z: 0 }); // Reset position
+      rigidBody.current.setTranslation({ x: 10, y: 4, z: 0 }); // Reset position
       const uprightRotation = new THREE.Quaternion();
       uprightRotation.setFromEuler(
         new THREE.Euler(0, Math.PI / 2, Math.PI / 2)
@@ -232,20 +232,20 @@ export function Nissan({ rigidBody, onSpeedChange, ...props }) {
         <RigidBody
           ref={rigidBody}
           type="dynamic"
-          colliders="hull"
-          position={[10, 0, 0]} // Initial position
+          colliders="cuboid"
+          position={[10, 4, 0]} // Initial position
           mass={20}
           rotation={[0, Math.PI / 2, Math.PI / 2]} // Initial rotationlinearDamping={0.5}
           // angularDamping={0.8}
           scale={[0.5, 0.5, 0.5]}
         >
-          <group rotation={[0, 0, 0]}>
+          <group rotation={[Math.PI/2, Math.PI/2, 0]} >
             <mesh
               geometry={nodes.skylineeeee.geometry}
               material={materials["Element.001"]}
-              position={[-4.264, 0, 0]}
-              rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-              scale={0.15}
+              // position={[-4.264, 0, -3]}
+              rotation={[0, Math.PI, 0]}
+              scale={0.13}
             />
           </group>
         </RigidBody>
