@@ -19,7 +19,7 @@ const Loader = ({ progress }) => {
 
     return () => clearInterval(factInterval);
   }, []);
-  const roundedProgress = Math.round(progress/2); // Round the progress value
+  const roundedProgress = Math.round(progress*2); // Round the progress value
   return (
     <div style={styles.loaderContainer}>
       <h2 style={styles.header}>Welcome to Blocky Cars</h2>
