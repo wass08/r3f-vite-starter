@@ -243,7 +243,7 @@ export function Nissan({ rigidBody, onSpeedChange, ...props }) {
             <mesh
               geometry={nodes.skylineeeee.geometry}
               material={materials["Element.001"]}
-              // position={[-4.264, 0, -3]}
+              position={[0, 0, -1]}
               rotation={[0, Math.PI, 0]}
               scale={0.13}
             />
