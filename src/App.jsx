@@ -1,9 +1,11 @@
-import React, { useRef, useState, useEffect, Suspense } from "react";
+import React, { useRef, useState, useEffect, Suspense,lazy } from "react";
 import { Canvas } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Cars/Car";
 import { Timer } from "./components/Timer";
 import BackgroundMusic from "./components/BackgroundMusic";
+import { useProgress } from "@react-three/drei"; // 1. Import useProgress
+
 import DustParticles from "./components/DustParticles/DustParticles";
 import HUD from "./components/HUD";
 import Loader from "./components/Loader"; // Import the Loader component
@@ -19,7 +21,7 @@ import { NeonCar } from "./components/Cars/NeonCar";
 import { Nissan } from "./components/Cars/Nissan";
 import PauseMenu from "./components/PauseMenu";
 import StartMenu from "./components/StartMenu";
-import { useProgress } from "@react-three/drei"; // For tracking loading progress
+
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -36,6 +38,7 @@ export default function App() {
   const [startGame, setStartGame] = useState(false); // Track if the game is started
   const handleStartGame = () => setStartGame(true); // Start the game
   const onCarIndex = (i) => setCarIndex(i);
+
   const carRef = useRef();
 
   let far = 100;
@@ -112,44 +115,50 @@ export default function App() {
               shadows={shadows}
             />
           )}
+
           <div style={{ position: "relative", width: "100%", height: "100vh" }}>
-            <div
-              style={{
-                position: "absolute",
-                top: "20px",
-                right: "20px",
-                color: "Black",
-                fontSize: "44px",
-                zIndex: 1,
-              }}
-            >
-              <Timer startTimer={startTimer} />
-            </div>
-            <HUD speed={carSpeed} currentLap={3} maxLap={15} />
-            <Canvas
-              shadows
-              camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
-              style={{ position: "absolute", top: 0, left: 0 }}
-            >
-              {Fog && <fog attach="fog" color={color} near={1} far={far} />}
-              {/* Add fog */}
-              <ambientLight intensity={-2} />
-              <directionalLight
-                color={lightColor}
-                castShadow={shadows}
-                position={[85, 150, 0]}
-                intensity={10}
-                shadow-mapSize-width={2048}
-                shadow-mapSize-height={2048}
-                shadow-camera-left={-1000}
-                shadow-camera-right={1000}
-                shadow-camera-top={1000}
-                shadow-camera-bottom={-1000}
-                shadow-camera-near={1}
-                shadow-camera-far={1500}
-                shadow-bias={-0.001}
-              />
-              <Suspense fallback={<Loader />}>
+            <Suspense fallback={<Loader progress={progress} />}>
+              <div
+                style={{
+                  position: "absolute",
+                  top: "20px",
+                  right: "20px",
+                  color: "Black",
+                  fontSize: "44px",
+                  zIndex: 1,
+                }}
+              >
+                <Timer startTimer={startTimer} />
+              </div>
+              <HUD speed={carSpeed} currentLap={3} maxLap={15} />
+              <Canvas
+                shadows
+                camera={{
+                  fov: 60,
+                  near: 0.1,
+                  far: 2000,
+                  position: [0, 50, 200],
+                }}
+                style={{ position: "absolute", top: 0, left: 0 }}
+              >
+                {Fog && <fog attach="fog" color={color} near={1} far={far} />}
+                {/* Add fog */}
+                <ambientLight intensity={-2} />
+                <directionalLight
+                  color={lightColor}
+                  castShadow={shadows}
+                  position={[85, 150, 0]}
+                  intensity={10}
+                  shadow-mapSize-width={2048}
+                  shadow-mapSize-height={2048}
+                  shadow-camera-left={-1000}
+                  shadow-camera-right={1000}
+                  shadow-camera-top={1000}
+                  shadow-camera-bottom={-1000}
+                  shadow-camera-near={1}
+                  shadow-camera-far={1500}
+                  shadow-bias={-0.001}
+                />
                 {activeGroup == 1 && (
                   <>
                     <CherryBlossom />
@@ -208,14 +217,14 @@ export default function App() {
                       disabled={isPaused} // Disable car controls when paused
                     />
                   )}
-                  {carIndex == 3 && (
+                  {/* {carIndex == 3 && (
                     <NeonCar
                       rigidBody={carRef}
                       onSpeedChange={setCarSpeed}
                       disabled={isPaused} // Disable car controls when paused
                     />
-                  )}
-                  {carIndex == 4 && (
+                  )} */}
+                  {carIndex == 3 && (
                     <Nissan
                       rigidBody={carRef}
                       onSpeedChange={setCarSpeed}
@@ -226,8 +235,8 @@ export default function App() {
                 </Physics>
 
                 <BackgroundMusic />
-              </Suspense>
-            </Canvas>
+              </Canvas>
+            </Suspense>
           </div>
         </>
       )}
