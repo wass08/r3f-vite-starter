@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Cars/Car";
 import { Timer } from "./components/Timer";
@@ -13,12 +13,13 @@ import { End } from "./assets/track/Track3/WholeEndMap";
 import { CherryBlossomRawTrack } from "./assets/track/Track1/CherryBlossomRawTrack";
 import { NetherRawTrack } from "./assets/track/Track2/NetherRawTrack";
 import { EndRawTrack } from "./assets/track/Track3/EndRawTrack";
-import { Environment, OrbitControls, Sky } from "@react-three/drei"; // Import Sky and Environment for HDR or skybox
+import { Environment, Hud, OrbitControls, Sky } from "@react-three/drei"; // Import Sky and Environment for HDR or skybox
 import { Hummer } from "./components/Cars/Hummer";
 import { NeonCar } from "./components/Cars/NeonCar";
 import { Nissan } from "./components/Cars/Nissan";
 import MiniMap from "./components/MiniMap";
 import LeaderBoard from "./components/Leaderboard";
+import { useFrame } from "@react-three/fiber";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -83,7 +84,21 @@ export default function App() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isControlDisabled]);
 
+  const CameraControl = () => {
+    const cameraRef = useRef();
+  
+    useFrame(() => {
+      if (cameraRef.current) {
+        // Set the camera to look straight down on the XZ plane
+        cameraRef.current.rotation.set(-Math.PI / 2, 0, 0); // -90 degrees
+      }
+    });
+  
+    return <perspectiveCamera ref={cameraRef} position={[0, 5, 0]} />;
+  };
+
+  
   return (
-    <LeaderBoard />
+    <HUD/>
   );
 }

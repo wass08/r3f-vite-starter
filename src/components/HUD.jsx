@@ -1,8 +1,10 @@
 import Speedometer from "./Speedometer";
 import { Canvas } from "@react-three/fiber";
-import { Text, Html } from "@react-three/drei";
+import { Text, Html, OrbitControls } from "@react-three/drei";
 import './styles.css';
 import { Timer } from './Timer';
+import MiniMap from "./MiniMap";
+import { useRef, useEffect } from "react";
 
 
 export default function HUD({currentLap, maxLap, speed, startTimer}) {
@@ -10,6 +12,14 @@ export default function HUD({currentLap, maxLap, speed, startTimer}) {
     if (maxLap > 10 && currentLap < 10) {
         modLap = '0'.concat(modLap.toString());
     }
+    {/* for ortho camera
+    const cameraRef = useRef();
+
+    useEffect(() => {
+        cameraRef.current.position.set(50, 500, 50); 
+        cameraRef.current.lookAt(0, 0, 0);
+    }, []);
+    */}
 
     return (
         <Canvas style={{ background: 'transparent', height: '100vh', zIndex:1 }}>
@@ -29,6 +39,14 @@ export default function HUD({currentLap, maxLap, speed, startTimer}) {
                 </div>
             </Html>
             */}
+            <Html position={[-6.5,-3,0]}>
+                <div style={{width: '10%', height: '10%', borderRadius: '15px', border: '2px solid #fff'}}>
+                    {/*this needs sorting out */}
+                    <Canvas style={{height: '100vh', zIndex:1}} camera={{position: [0,1.4,0]}}>
+                        <MiniMap mapNum={1}/>
+                    </Canvas>
+                </div>
+            </Html>
         </Canvas>
     );
 }
