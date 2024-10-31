@@ -172,13 +172,13 @@ export default function App() {
                 {activeGroup == 2 && (
                   <>
                     <Nether />
-                    <Environment files=" /Nether.jpg" background={true} />
+                    <Environment files=" /~scarhatt/Nether.jpg" background={true} />
                   </>
                 )}
                 {activeGroup == 3 && (
                   <>
                     <End />
-                    <Environment files=" /space.jpg" background={true} />
+                    <Environment files=" /~scarhatt/space.jpg" background={true} />
                   </>
                 )}
                 {activeGroup == 4 && null}
