@@ -1,10 +1,7 @@
-import React from 'react';
-import { Html } from '@react-three/drei';
+import { useProgress } from "@react-three/drei";
 
-const Loader = () => (
-  <Html center>
-    <div className="loader">Loading...</div>
-  </Html>
-);
+export default function Loader() {
+  const { progress } = useProgress(); // Get loading progress
 
-export default Loader;
+  return <></>;
+}

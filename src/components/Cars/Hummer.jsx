@@ -11,7 +11,6 @@ import Boost from "../Boost";
 import GameWithSound from "../GameWithSound";
 import DustParticles from "../DustParticles/DustParticles";
 import Speedometer from "../Speedometer";
-import { getBaseUrl } from "../../utils/getURL";
 
 export function Hummer({ rigidBody, onSpeedChange, ...props }) {
   const { nodes, materials } = useGLTF(`/Hummer.glb`);
