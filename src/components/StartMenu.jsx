@@ -7,6 +7,9 @@ import { EndHome } from "../assets/Home/EndHome";
 import { CherryBlossomHome } from "../assets/Home/CherryBlossomHome";
 import { Hummer } from "./Cars/Hummer";
 import Loader from "./Loader";
+import { HomeHummer } from "../assets/Home/HomeHummer";
+import { HomeNissan } from "../assets/Home/HomeNissan";
+import { HomeCar } from "../assets/Home/HomeCar";
 
 export default function StartMenu({ onTrackSelect, onCarSelect }) {
   const { progress } = useProgress(); // 2. Get progress from useProgress
@@ -63,7 +66,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
               zIndex: 1,
             }}
           >
-            <h1 style={{ fontSize: "48px", marginBottom: "20px" }}>
+            <h1 style={{ fontSize: "48px", marginBottom: "150px" }}>
               Blocky Cars
             </h1>
 
@@ -84,8 +87,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
                 {"<"} Prev Car
               </button>
 
-              <span style={{ fontSize: "24px" }}>Car {carIndex + 1}</span>
-
+  
               <button
                 onClick={() => handleCarChange("next")}
                 disabled={loading}
@@ -163,6 +165,10 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
             {Home === 1 && <CherryBlossomHome />}
             {Home === 2 && <NetherHome />}
             {Home === 3 && <EndHome />}
+            {carIndex+1 === 2 && <HomeHummer position={[0, 46, 192]} rotation={[0, 3*Math.PI /4 , 0]} scale={[0.5,0.5,0.5]} />} 
+            {carIndex+1 === 3 && <HomeNissan position={[-2, 46, 191]} rotation={[0, 3*Math.PI /4 , 0]} scale={[0.5,0.5,0.5]} />}
+            {carIndex+1 === 1 && <HomeCar position={[-0.05, 46, 192.65]} rotation={[0, 7*Math.PI / 4, 0]} scale={[0.8, 0.8, 0.8]} />}
+            
           </Canvas>
         </Suspense>
       )}

@@ -388,4 +388,4 @@ export function CherryBlossom(props) {
   )
 }
 
-useGLTF.preload("/~scarhatt/CherryBlossom.glb");
+// useGLTF.preload('/CherryBlossom.glb')
