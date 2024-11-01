@@ -294,7 +294,7 @@ export function Car({ rigidBody, onSpeedChange,map, ...props }) {
         far={85}
       />
       
-      <Boost Boostarray={Boostarray} />
+      {/* <Boost Boostarray={Boostarray} /> */}
     </>
   );
 }

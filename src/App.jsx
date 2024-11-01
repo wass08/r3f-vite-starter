@@ -39,7 +39,7 @@ export default function App() {
   const onCarIndex = (i) => setCarIndex(i);
   const carRef = useRef();
 
-  const[Laps,setLaps]=useState(0)
+  const[Laps,setLaps]=useState(0);
 
 
 
@@ -65,6 +65,12 @@ export default function App() {
   useEffect(() => {
     console.log("shadows", shadows);
   }, [shadows]);
+
+  
+
+
+
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (isControlDisabled) return; // Prevent controls if paused
@@ -73,6 +79,7 @@ export default function App() {
         ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)
       ) {
         setStartTimer(true); // Start the timer
+        // setLaps(0);
       }
       if (event.key === "r" || event.key === "R") {
         setStartTimer(false); // Reset the timer
@@ -95,7 +102,9 @@ export default function App() {
     setActiveGroup(track); // Set the selected track
     setLoading(true); // Start loading process
   };
-  console.log(Laps);
+
+
+  
   
 
   return (
@@ -130,9 +139,9 @@ export default function App() {
                 zIndex: 1,
               }}
             >
-              <Timer startTimer={startTimer} />
+              <Timer startTimer={startTimer} Laps={Laps} />
             </div>
-            <HUD speed={carSpeed} currentLap={Laps} maxLap={3} />
+            <HUD speed={carSpeed} currentLap={Laps-1} maxLap={3} />
             <Canvas
               shadows
               camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
@@ -159,8 +168,8 @@ export default function App() {
               <Suspense fallback={<Loader />}>
                 {activeGroup == 1 && (
                   <>
-                    {/* <CherryBlossom /> */}
-                    {/* <Sky
+                    {/* <CherryBlossom />
+                    <Sky
                       sunPosition={[100, 10, 100]}
                       azimuth={0.25}
                       inclination={0.6}
@@ -182,7 +191,7 @@ export default function App() {
                 {activeGroup == 4 && null}
 
                 <Physics gravity={[0, -90.81, 0]} paused={isPaused} debug >
-                  {activeGroup == 1 && <CherryBlossomRawTrack />}
+                  {/* {activeGroup == 1 && <CherryBlossomRawTrack />} */}
                   {activeGroup == 2 && <NetherRawTrack />}
                   {activeGroup == 3 && <EndRawTrack />}
                   {activeGroup == 4 && null}

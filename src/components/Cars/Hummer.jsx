@@ -261,7 +261,7 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
         near={0.1}
         far={85}
       />
-      <Boost Boostarray={Boostarray} />
+      {/* <Boost Boostarray={Boostarray} /> */}
     </>
   );
 }
