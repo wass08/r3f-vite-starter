@@ -63,7 +63,7 @@ export default function Ring({speed}) {
                 {7-i}
             </Text>
         ))}
-        <Text position={[0,-0.3,0]} fontSize={0.3} color="orange">
+        <Text position={[0,-0.3,0]} fontSize={0.2} color="orange">
             {speed}
         </Text>
         <Text position={[0,-0.5,0]} fontSize={0.1} color="white">
@@ -78,7 +78,7 @@ export default function Ring({speed}) {
             </Circle>
         ))}
         <EffectComposer>
-            <Bloom luminanceThreshold={0} intensity={0.5} /> 
+            {/* <Bloom luminanceThreshold={0} intensity={0.5} /> */}
         </EffectComposer>
         </>
     );

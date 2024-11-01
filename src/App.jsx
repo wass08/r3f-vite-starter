@@ -15,16 +15,14 @@ import { End } from "./assets/track/Track3/WholeEndMap";
 import { CherryBlossomRawTrack } from "./assets/track/Track1/CherryBlossomRawTrack";
 import { NetherRawTrack } from "./assets/track/Track2/NetherRawTrack";
 import { EndRawTrack } from "./assets/track/Track3/EndRawTrack";
-import { Environment, Hud, OrbitControls, Sky } from "@react-three/drei"; // Import Sky and Environment for HDR or skybox
+import { Environment, Sky } from "@react-three/drei"; // Import Sky and Environment for HDR or skybox
 import { Hummer } from "./components/Cars/Hummer";
 import { NeonCar } from "./components/Cars/NeonCar";
 import { Nissan } from "./components/Cars/Nissan";
 import PauseMenu from "./components/PauseMenu";
 import StartMenu from "./components/StartMenu";
-
-import MiniMap from "./components/MiniMap";
-import LeaderBoard from "./components/Leaderboard";
-import { useFrame } from "@react-three/fiber";
+import { useProgress } from "@react-three/drei"; // For tracking loading progress
+import Checkpoint from "./components/Checkpoint";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -44,6 +42,12 @@ export default function App() {
   const onCarIndex = (i) => setCarIndex(i);
 
   const carRef = useRef();
+
+  const[Laps,setLaps]=useState(0);
+  const [end,setEnd]=useState(false)
+  const [totalTime,setTotalTime]=useState(0);
+
+
 
   let far = 100;
   let color = "#fc4b4b";
@@ -67,6 +71,12 @@ export default function App() {
   useEffect(() => {
     console.log("shadows", shadows);
   }, [shadows]);
+
+  
+
+
+
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (isControlDisabled) return; // Prevent controls if paused
@@ -75,6 +85,7 @@ export default function App() {
         ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)
       ) {
         setStartTimer(true); // Start the timer
+        // setLaps(0);
       }
       if (event.key === "r" || event.key === "R") {
         setStartTimer(false); // Reset the timer
@@ -220,6 +231,7 @@ export default function App() {
                       rigidBody={carRef}
                       onSpeedChange={setCarSpeed}
                       disabled={isPaused} // Disable car controls when paused
+                      map={activeGroup}
                     />
                   )}
                   {carIndex == 2 && (
@@ -244,6 +256,7 @@ export default function App() {
                     />
                   )}
                   <DustParticles carRef={carRef} />
+                  <Checkpoint carRef={carRef} setLaps={setLaps}/>
                 </Physics>
 
                 <BackgroundMusic />

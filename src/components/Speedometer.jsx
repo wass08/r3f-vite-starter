@@ -6,7 +6,7 @@ import { MeshStandardMaterial, BufferGeometry, Float32BufferAttribute } from 'th
 
 export default function Speedometer({speed}) {
 
-    const MAX_SPEED = 300;
+    const MAX_SPEED = 200;
     const angle = 4*Math.PI/6 - (15*Math.PI/12)*(speed/MAX_SPEED);
 
     const geometry = useMemo(() => {
