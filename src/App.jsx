@@ -138,6 +138,7 @@ export default function App() {
                 startTimer={startTimer}
               />
               <Canvas
+              antialias
                 shadows
                 camera={{
                   fov: 60,
