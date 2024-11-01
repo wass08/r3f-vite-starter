@@ -7,7 +7,7 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function HomeHummer(props) {
-  const { nodes, materials } = useGLTF("/Hummer.glb");
+  const { nodes, materials } = useGLTF("/~scarhatt/Hummer.glb");
   return (
     <group {...props} dispose={null}>
       <mesh 
@@ -20,4 +20,4 @@ export function HomeHummer(props) {
   );
 }
 
-useGLTF.preload("/Hummer.glb");
+// useGLTF.preload("/Hummer.glb");

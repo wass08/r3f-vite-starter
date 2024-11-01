@@ -168,7 +168,6 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
             {carIndex+1 === 2 && <HomeHummer position={[0, 46, 192]} rotation={[0, 3*Math.PI /4 , 0]} scale={[0.5,0.5,0.5]} />} 
             {carIndex+1 === 3 && <HomeNissan position={[-2, 46, 191]} rotation={[0, 3*Math.PI /4 , 0]} scale={[0.5,0.5,0.5]} />}
             {carIndex+1 === 1 && <HomeCar position={[-0.05, 46, 192.65]} rotation={[0, 7*Math.PI / 4, 0]} scale={[0.8, 0.8, 0.8]} />}
-            
           </Canvas>
         </Suspense>
       )}
