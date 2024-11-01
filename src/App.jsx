@@ -40,6 +40,8 @@ export default function App() {
   const carRef = useRef();
 
   const[Laps,setLaps]=useState(0);
+  const [end,setEnd]=useState(false)
+  const [totalTime,setTotalTime]=useState(0);
 
 
 
@@ -103,6 +105,8 @@ export default function App() {
     setLoading(true); // Start loading process
   };
 
+  if (end) return <div> you won and you time is {totalTime}</div>;
+
 
   
   
@@ -139,9 +143,9 @@ export default function App() {
                 zIndex: 1,
               }}
             >
-              <Timer startTimer={startTimer} Laps={Laps} />
+              <Timer startTimer={startTimer} Laps={Laps} setTotalTime={setTotalTime} />
             </div>
-            <HUD speed={carSpeed} currentLap={Laps-1} maxLap={3} />
+            <HUD speed={carSpeed} currentLap={Laps-1} maxLap={3} setEnd={setEnd}/>
             <Canvas
               shadows
               camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
@@ -168,12 +172,12 @@ export default function App() {
               <Suspense fallback={<Loader />}>
                 {activeGroup == 1 && (
                   <>
-                    {/* <CherryBlossom />
+                    <CherryBlossom />
                     <Sky
                       sunPosition={[100, 10, 100]}
                       azimuth={0.25}
                       inclination={0.6}
-                    /> */}
+                    />
                   </>
                 )}
                 {activeGroup == 2 && (
@@ -191,7 +195,7 @@ export default function App() {
                 {activeGroup == 4 && null}
 
                 <Physics gravity={[0, -90.81, 0]} paused={isPaused} debug >
-                  {/* {activeGroup == 1 && <CherryBlossomRawTrack />} */}
+                  {activeGroup == 1 && <CherryBlossomRawTrack />}
                   {activeGroup == 2 && <NetherRawTrack />}
                   {activeGroup == 3 && <EndRawTrack />}
                   {activeGroup == 4 && null}

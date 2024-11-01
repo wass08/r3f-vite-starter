@@ -38,8 +38,10 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
-export function Timer({ startTimer, Laps }) {
+export function Timer({ startTimer, Laps,setTotalTime }) {
   const [time, setTime] = useState(0);
+  setTotalTime(time);
+  
   const timerRef = useRef(null); // Use ref to store the interval ID
   const [LapTimes, setLapTimes] = useState({});
 

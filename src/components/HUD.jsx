@@ -3,7 +3,11 @@ import { Canvas } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 
 
-export default function HUD({currentLap, maxLap, speed, currentTime}) {
+export default function HUD({currentLap, maxLap, speed, currentTime,setEnd}) {
+
+    if(currentLap===maxLap){
+        setEnd(true);
+    }
 
     return (
         <Canvas style={{ background: 'transparent', height: '100vh', zIndex:1 }}>
@@ -22,6 +26,8 @@ export default function HUD({currentLap, maxLap, speed, currentTime}) {
             <Text position={[6,3.3,0]} color="black" fontSize={0.9} >
                 {currentTime}
             </Text> 
+
         </Canvas>
+
     );
 }
