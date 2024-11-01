@@ -2154,4 +2154,4 @@ export function Nether(props) {
   );
 }
 
-useGLTF.preload("/Nether.glb");
+// useGLTF.preload("/Nether.glb");
