@@ -20,6 +20,7 @@ import { Nissan } from "./components/Cars/Nissan";
 import PauseMenu from "./components/PauseMenu";
 import StartMenu from "./components/StartMenu";
 import { useProgress } from "@react-three/drei"; // For tracking loading progress
+import Checkpoint from "./components/Checkpoint";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -37,6 +38,10 @@ export default function App() {
   const handleStartGame = () => setStartGame(true); // Start the game
   const onCarIndex = (i) => setCarIndex(i);
   const carRef = useRef();
+
+  const[Laps,setLaps]=useState(0)
+
+
 
   let far = 100;
   let color = "#fc4b4b";
@@ -90,6 +95,8 @@ export default function App() {
     setActiveGroup(track); // Set the selected track
     setLoading(true); // Start loading process
   };
+  console.log(Laps);
+  
 
   return (
     <>
@@ -125,7 +132,7 @@ export default function App() {
             >
               <Timer startTimer={startTimer} />
             </div>
-            <HUD speed={carSpeed} currentLap={3} maxLap={15} />
+            <HUD speed={carSpeed} currentLap={Laps} maxLap={3} />
             <Canvas
               shadows
               camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
@@ -152,12 +159,12 @@ export default function App() {
               <Suspense fallback={<Loader />}>
                 {activeGroup == 1 && (
                   <>
-                    <CherryBlossom />
-                    <Sky
+                    {/* <CherryBlossom /> */}
+                    {/* <Sky
                       sunPosition={[100, 10, 100]}
                       azimuth={0.25}
                       inclination={0.6}
-                    />
+                    /> */}
                   </>
                 )}
                 {activeGroup == 2 && (
@@ -174,7 +181,7 @@ export default function App() {
                 )}
                 {activeGroup == 4 && null}
 
-                <Physics gravity={[0, -90.81, 0]} paused={isPaused} >
+                <Physics gravity={[0, -90.81, 0]} paused={isPaused} debug >
                   {activeGroup == 1 && <CherryBlossomRawTrack />}
                   {activeGroup == 2 && <NetherRawTrack />}
                   {activeGroup == 3 && <EndRawTrack />}
@@ -199,6 +206,7 @@ export default function App() {
                       rigidBody={carRef}
                       onSpeedChange={setCarSpeed}
                       disabled={isPaused} // Disable car controls when paused
+                      map={activeGroup}
                     />
                   )}
                   {carIndex == 2 && (
@@ -223,6 +231,7 @@ export default function App() {
                     />
                   )}
                   <DustParticles carRef={carRef} />
+                  <Checkpoint carRef={carRef} setLaps={setLaps}/>
                 </Physics>
 
                 <BackgroundMusic />

@@ -10,12 +10,12 @@ export default function HUD({currentLap, maxLap, speed, currentTime}) {
             <group position={[6.5,-3,0]}>
                 <Speedometer speed={speed}/>
             </group>
-            {/* <Text position={[-6.5,3.3,0]} color="black" fontSize={0.9} >
+            <Text position={[-6.5,3.3,0]} color="black" fontSize={0.9} >
                 {currentLap}/{maxLap}
-            </Text>   */}
-            {/* <Text position={[-5,3.5,0]} color="black" fontSize={0.3} >
+            </Text>  
+            <Text position={[-5,3.5,0]} color="black" fontSize={0.3} >
                 LAPS
-            </Text> */}
+            </Text>
             {/* <Text position={[4,3.5,0]} color="black" fontSize={0.3} >
                 TIME
             </Text> */}
