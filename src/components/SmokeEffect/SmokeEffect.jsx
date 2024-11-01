@@ -3,49 +3,54 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import SmokeParticle from "./SmokeParticle";
 import * as THREE from "three";
 
-const SmokeEffect = ({ carRef , timer}) => {
+const SmokeEffect = ({ carRef, timer, carIndex }) => {
   const [particles, setParticles] = useState([]);
 
-
   useEffect(() => {
-    if (!timer){
-    const carPostion = carRef.current.translation();
+    if (!timer) {
+      const carPostion = carRef.current.translation();
 
-    const carRotation = new THREE.Quaternion(
-      carRef.current.rotation().x,
-      carRef.current.rotation().y,
-      carRef.current.rotation().z,
-      carRef.current.rotation().w
-    );
-    const particlePos = new THREE.Vector3(
-      carPostion.x,
-      carPostion.y + 0.15,
-      carPostion.z + 1.4
-    );
+      const carRotation = new THREE.Quaternion(
+        carRef.current.rotation().x,
+        carRef.current.rotation().y,
+        carRef.current.rotation().z,
+        carRef.current.rotation().w
+      );
+      const particlePos = new THREE.Vector3(
+        carPostion.x,
+        carPostion.y + 0.15,
+        carPostion.z + 1.4
+      );
 
-    const heading = getCarHeading(carRef.current.rotation());
-    const v = getOrientedVelocity(heading);
+      const heading = getCarHeading(carRef.current.rotation());
+      const v = getOrientedVelocity(heading);
 
-    const interval = setInterval(() => {
-      setParticles((prev) => [
-        ...prev,
-        {
-          position: particlePos,
-          velocity: v,
-          lifetime: 1100,
-        },
-      ]);
-    }, 200);
+      const interval = setInterval(() => {
+        setParticles((prev) => [
+          ...prev,
+          {
+            position: particlePos,
+            velocity: v,
+            lifetime: 1100,
+          },
+        ]);
+      }, 200);
 
-    return () => clearInterval(interval);
-  }
-  else {setParticles([])}
-  }, [carRef?.current?.translation()]);
+      return () => clearInterval(interval);
+    } else {
+      setParticles([]);
+    }
+  }, [carRef, timer]);
 
   return (
     <group>
       {particles.map((particle, index) => (
-        <SmokeParticle key={index} {...particle} timer={timer} />
+        <SmokeParticle
+          key={index}
+          {...particle}
+          timer={timer}
+          carIndex={carIndex}
+        />
       ))}
     </group>
   );
@@ -54,7 +59,6 @@ const SmokeEffect = ({ carRef , timer}) => {
 export default SmokeEffect;
 
 function getCarHeading(quaternion) {
-
   const quat = new THREE.Quaternion(
     quaternion.x,
     quaternion.y,

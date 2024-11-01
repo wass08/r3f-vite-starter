@@ -140,7 +140,7 @@ export default function App() {
                 startTimer={startTimer}
               />
               <Canvas
-              antialias
+                antialias
                 shadows
                 camera={{
                   fov: 60,
@@ -242,6 +242,12 @@ export default function App() {
                     />
                   )}
                   <DustParticles carRef={carRef} />
+                  <SmokeEffect
+                    carRef={carRef}
+                    timer={startTimer}
+                    carIndex={carIndex}
+                  />
+                  <LeafParticle color={color} count={250} />
                 </Physics>
 
                 <BackgroundMusic />
