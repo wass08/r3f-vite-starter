@@ -25,8 +25,6 @@ import StartMenu from "./components/StartMenu";
 import MiniMap from "./components/MiniMap";
 import LeaderBoard from "./components/Leaderboard";
 import { useFrame } from "@react-three/fiber";
-import SmokeEffect from "./components/SmokeEffect/SmokeEffect";
-import LeafParticle from "./components/LeafParticle";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -39,6 +37,7 @@ export default function App() {
   const [checkpointCount, setCheckpointCount] = useState(0);
   const [shadows, setShadows] = useState(false);
   const [Fog, setFog] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
   const [checkpointsHit, setCheckpointsHit] = useState(new Set());
   const [startGame, setStartGame] = useState(false); // Track if the game is started
   const handleStartGame = () => setStartGame(true); // Start the game
@@ -119,6 +118,9 @@ export default function App() {
               Fog={Fog}
               shadows={shadows}
             />
+          )}
+          {gameOver && (
+            <LeaderBoard mapNum={activeGroup} time={500} setEnd ={setGameOver} />
           )}
 
           <div style={{ position: "relative", width: "100%", height: "100vh" }}>
@@ -242,12 +244,6 @@ export default function App() {
                     />
                   )}
                   <DustParticles carRef={carRef} />
-                  <SmokeEffect
-                    carRef={carRef}
-                    timer={startTimer}
-                    carIndex={carIndex}
-                  />
-                  <LeafParticle color={color} count={250} />
                 </Physics>
 
                 <BackgroundMusic />
