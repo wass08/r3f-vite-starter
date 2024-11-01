@@ -4,8 +4,7 @@ import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Cars/Car";
 import { Timer } from "./components/Timer";
 import BackgroundMusic from "./components/BackgroundMusic";
-import { useProgress } from "@react-three/drei"; // 1. Import useProgress
-
+import LeaderBoard from "./components/Leaderboard";
 import DustParticles from "./components/DustParticles/DustParticles";
 import HUD from "./components/HUD";
 import Loader from "./components/Loader"; // Import the Loader component
@@ -130,8 +129,8 @@ export default function App() {
               shadows={shadows}
             />
           )}
-          {gameOver && (
-            <LeaderBoard mapNum={activeGroup} time={500} setEnd ={setGameOver} />
+          {end && (
+            <LeaderBoard mapNum={activeGroup} time={500} setEnd={setEnd} />
           )}
 
           <div style={{ position: "relative", width: "100%", height: "100vh" }}>
@@ -145,13 +144,20 @@ export default function App() {
                   fontSize: "44px",
                   zIndex: 1,
                 }}
-              ></div>
+              >
+                <Timer
+                  startTimer={startTimer}
+                  Laps={Laps}
+                  setTotalTime={setTotalTime}
+                />
+              </div>
               <HUD
                 speed={carSpeed}
-                currentLap={3}
-                maxLap={15}
-                startTimer={startTimer}
+                currentLap={Laps - 1}
+                maxLap={3}
+                setEnd={setEnd}
               />
+
               <Canvas
                 antialias
                 shadows
@@ -256,7 +262,7 @@ export default function App() {
                     />
                   )}
                   <DustParticles carRef={carRef} />
-                  <Checkpoint carRef={carRef} setLaps={setLaps}/>
+                  <Checkpoint carRef={carRef} setLaps={setLaps} />
                 </Physics>
 
                 <BackgroundMusic />
