@@ -1,27 +1,45 @@
 import Speedometer from "./Speedometer";
 import { Canvas } from "@react-three/fiber";
-import { Text } from "@react-three/drei";
+import { Text, Html, OrbitControls } from "@react-three/drei";
+import './styles.css';
+import { Timer } from './Timer';
+import MiniMap from "./MiniMap";
+import { useRef, useEffect } from "react";
 
 
-export default function HUD({currentLap, maxLap, speed, currentTime}) {
+export default function HUD({currentLap, maxLap, speed, startTimer}) {
+    let modLap = currentLap
+    if (maxLap > 10 && currentLap < 10) {
+        modLap = '0'.concat(modLap.toString());
+    }
+    {/* for ortho camera
+    const cameraRef = useRef();
+
+    useEffect(() => {
+        cameraRef.current.position.set(50, 500, 50); 
+        cameraRef.current.lookAt(0, 0, 0);
+    }, []);
+    */}
 
     return (
         <Canvas style={{ background: 'transparent', height: '100vh', zIndex:1 }}>
             <group position={[6.5,-3,0]}>
                 <Speedometer speed={speed}/>
             </group>
-            {/* <Text position={[-6.5,3.3,0]} color="black" fontSize={0.9} >
-                {currentLap}/{maxLap}
-            </Text>   */}
-            {/* <Text position={[-5,3.5,0]} color="black" fontSize={0.3} >
-                LAPS
-            </Text> */}
-            {/* <Text position={[4,3.5,0]} color="black" fontSize={0.3} >
-                TIME
-            </Text> */}
-            <Text position={[6,3.3,0]} color="black" fontSize={0.9} >
-                {currentTime}
-            </Text> 
+            <Timer startTimer={startTimer} />
+            
+            <Html position={[-7.26,3.5,0]}>
+                <div className='bebas-neue-regular'>
+                    LAPS
+                </div>
+            </Html>
+            <Html position={[-6.26,3.5,0]}>
+                <div className='bebas-neue-regular'>
+                    {modLap}/{maxLap}
+                </div>
+            </Html>
+           
+           
         </Canvas>
     );
 }

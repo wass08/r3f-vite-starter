@@ -11,7 +11,6 @@ import Boost from "../Boost";
 import GameWithSound from "../GameWithSound";
 import DustParticles from "../DustParticles/DustParticles";
 import Speedometer from "../Speedometer";
-import { getBaseUrl } from "../../utils/getURL";
 
 export function Hummer({ rigidBody, onSpeedChange, ...props }) {
   const { nodes, materials } = useGLTF(`/Hummer.glb`);
@@ -39,8 +38,8 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
   const [boostActive, setBoostActive] = useState(false);
   const [boostTimer, setBoostTimer] = useState(0);
 
-  const FORCE = boostActive ? 1 : 50; // Increase force when boost is active
-  let TURN = boostActive ? 1 : 3;
+  const FORCE = boostActive ? 1 : 8; // Increase force when boost is active
+  let TURN = boostActive ? 1 : 0.4;
   const maxSpeed = 200;
   const [carSpeed, setCarSPeed] = useState(0);
 
@@ -117,16 +116,18 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
 
     // Apply forward/backward movement
     if (!keys.forward) {
-      setCarSPeed(0);
+      if (carSpeed != 0) {
+        setCarSPeed(prevSpeed => Math.round(prevSpeed - 1));
+      }
     }
     if (keys.forward) {
-      setCarSPeed(Math.min(carSpeed + 3, maxSpeed));
+      setCarSPeed(Math.min(Math.round(carSpeed + 0.5), maxSpeed));
       rigidBody.current.applyImpulse(
         { x: direction.x * FORCE, y: 0, z: direction.z * FORCE },
         true
       );
     } else if (keys.backward) {
-      setCarSPeed(Math.min(carSpeed + 3, maxSpeed));
+      setCarSPeed(Math.min(Math.round(carSpeed + 0.5), maxSpeed));
 
       rigidBody.current.applyImpulse(
         { x: -direction.x * FORCE, y: 0, z: -direction.z * FORCE },
@@ -232,9 +233,9 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
           ref={rigidBody}
           type="dynamic"
           colliders="cuboid"
-          position={[10, 2, 0]} // Initial position
+          position={[10, 4, 0]} // Initial position
           mass={200}
-          rotation={[0, 0, 0]} // Initial rotation
+          rotation={[0,Math.PI / 2, Math.PI / 2]} // Initial rotation
           linearDamping={0.5}
           // angularDamping={0.8}
           scale={[0.4, 0.4, 0.4]}
@@ -243,8 +244,10 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
             <mesh
               geometry={nodes.hummer_h1_3.geometry}
               material={materials.Element}
+              // position={[10, 10, 0]} // Initial position
+
               rotation={[0, -Math.PI / 2, -Math.PI / 2]}
-              scale={0.15}
+              scale={0.123}
             />
           </group>
         </RigidBody>
