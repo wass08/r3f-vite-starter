@@ -18,6 +18,7 @@ import { Hummer } from "./components/Cars/Hummer";
 import { NeonCar } from "./components/Cars/NeonCar";
 import { Nissan } from "./components/Cars/Nissan";
 import SmokeEffect from "./components/SmokeEffect/SmokeEffect";
+import LeafParticle from "./components/LeafParticle";
 
 
 export default function App() {
@@ -383,6 +384,7 @@ export default function App() {
                 <DustParticles carRef={carRef} />
                 {/* {console.log( carRef.current.rotation())} */}
                 <SmokeEffect carRef={carRef} timer={startTimer}/>
+                <LeafParticle count={100}/>
               </Physics>
 
               <BackgroundMusic />
