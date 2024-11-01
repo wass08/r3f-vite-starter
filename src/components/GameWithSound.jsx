@@ -1,81 +1,100 @@
 import React, { useEffect, useState } from 'react';
-import acc from '../assets/audio_files/CarSound.mp3'; // Path to your car sound file
-import skid from '../assets/audio_files/Skidsound.mp3'; // Path to your tire skid sound file
+import acc from '../assets/audio_files/CarSound.mp3';
+import skid from '../assets/audio_files/Skidsound.mp3';
 
 const GameWithSound = () => {
-  const [carAudio] = useState(new Audio(acc)); // Create an audio object for the car sound
-  const [tireAudio] = useState(new Audio(skid)); // Create an audio object for the tire sound
+  const [carAudio] = useState(new Audio(acc));
+  const [tireAudio] = useState(new Audio(skid));
+  const [carLoopTimeout, setCarLoopTimeout] = useState(null);
+  const [isCarMoving, setIsCarMoving] = useState(false); // Track car movement
 
   useEffect(() => {
-   
-    carAudio.volume = 0.65; 
-    tireAudio.volume = 0.4;
-    
+    carAudio.volume = 0.35;
+    tireAudio.volume = 0.3;
+
     const handleKeyDown = (event) => {
       if (event.code === 'ArrowUp' && carAudio.paused) {
-        playCarSound(); 
-      }
-      else if (event.code === 'ArrowRight' && tireAudio.paused) {
-        playTireSound(); 
-      }
-      else if (event.code === 'ArrowLeft' && tireAudio.paused) {
-        playTireSound(); 
+        playCarSound();
+        setIsCarMoving(true); // Car starts moving forward
+
+        // Start a timeout to enable looping after 20 seconds
+        const timeout = setTimeout(() => {
+          startCarAudioLoop();
+        }, 19000);
+        setCarLoopTimeout(timeout);
+      } else if (event.code === 'ArrowDown' && carAudio.paused) {
+        playCarSound();
+        setIsCarMoving(true); // Car starts moving backward
+      } else if (['ArrowRight', 'ArrowLeft'].includes(event.code) && isCarMoving && tireAudio.paused) {
+        playTireSound(); // Play tire sound only if car is moving
       }
     };
 
-  
     const handleKeyUp = (event) => {
-      if (event.code === 'ArrowUp') {
-        stopCarSound(); 
-      }
-      else if (event.code === 'ArrowRight') {
-        stopTireSound(); 
-      }
-      else if (event.code === 'ArrowLeft') {
+      if (event.code === 'ArrowUp' || event.code === 'ArrowDown') {
+        stopCarSound();
+        setIsCarMoving(false); // Car stops moving
+
+        // Clear the loop timeout and remove looping
+        clearTimeout(carLoopTimeout);
+        stopCarAudioLoop();
+      } else if (['ArrowRight', 'ArrowLeft'].includes(event.code)) {
         stopTireSound();
       }
     };
 
-
     const playCarSound = () => {
-      carAudio.currentTime = 0; 
-      carAudio.play().catch((error) => {
-        console.error('Car audio play failed:', error); // Handle any errors
-      });
+      carAudio.currentTime = 5; // Start car audio at 5 seconds initially
+      carAudio.play().catch((error) => console.error('Car audio play failed:', error));
     };
 
-    
     const stopCarSound = () => {
-      carAudio.pause(); 
-      carAudio.currentTime = 0; 
+      carAudio.pause();
+      carAudio.currentTime = 5; // Reset to 5 seconds when stopped
     };
 
-    
+    const startCarAudioLoop = () => {
+      carAudio.currentTime = 19; // Start looping segment from 19 seconds
+      carAudio.loop = false; // Disable default loop to handle custom looping
+
+      carAudio.addEventListener('timeupdate', loopBetweenSegments);
+    };
+
+    const stopCarAudioLoop = () => {
+      carAudio.removeEventListener('timeupdate', loopBetweenSegments);
+      carAudio.loop = false;
+      carAudio.currentTime = 5; // Reset to 5 seconds for the next play
+    };
+
+    const loopBetweenSegments = () => {
+      if (carAudio.currentTime >= 25) {
+        carAudio.currentTime = 19; // Reset to 19 seconds to create the loop
+        carAudio.play();
+      }
+    };
+
     const playTireSound = () => {
-      tireAudio.currentTime = 0; 
-      tireAudio.play().catch((error) => {
-        console.error('Tire audio play failed:', error); 
-      });
+      tireAudio.currentTime = 0;
+      tireAudio.play().catch((error) => console.error('Tire audio play failed:', error));
     };
 
-    
     const stopTireSound = () => {
-      tireAudio.pause(); 
-      tireAudio.currentTime = 0; 
+      tireAudio.pause();
+      tireAudio.currentTime = 0;
     };
 
-    // Attach event listeners for keydown and keyup events
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
 
-    // Cleanup event listeners when component is unmounted
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
+      clearTimeout(carLoopTimeout);
+      stopCarAudioLoop(); // Cleanup loop when unmounting
     };
-  }, [carAudio, tireAudio]);
+  }, [carAudio, tireAudio, carLoopTimeout, isCarMoving]);
 
-  return null; // This component doesn't render anything visually 
+  return null;
 };
 
-export default GameWithSound;
+export default GameWithSound; 

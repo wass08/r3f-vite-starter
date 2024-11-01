@@ -225,16 +225,16 @@ export default function App() {
                   <DustParticles carRef={carRef} />
                 </Physics>
 
-                <BackgroundMusic />
+                <BackgroundMusic  track={activeGroup} />
               </Suspense>
             </Canvas>
           </div>
 
-          <div style={{ position: "absolute", bottom: "20px", right: "20px", width: "150px", height: "150px" }}>
+          {/* <div style={{ position: "absolute", bottom: "20px", right: "20px", width: "150px", height: "150px" }}>
             <Canvas>
               <MiniMap carRef={carRef} />
             </Canvas>
-          </div>
+          </div> */}
         </>
       )}
     </>
