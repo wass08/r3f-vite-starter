@@ -165,6 +165,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
           </div>
 
           <Canvas
+            antialias
             shadows
             camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
             style={{ position: "absolute", top: 0, left: 0 }}

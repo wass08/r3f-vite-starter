@@ -3,7 +3,7 @@ import { db } from '../firebase.config'
 import { collection, addDoc, getDocs, orderBy, query } from 'firebase/firestore';
 import './styles.css'
 
-export default function LeaderBoard({mapNum, time}) {
+export default function LeaderBoard({mapNum, time, setEnd}) {
     // const mapNum = 1;
     // const time = 10;
     const [name, setName] = useState('');
@@ -95,7 +95,7 @@ export default function LeaderBoard({mapNum, time}) {
                             })}
                         </tbody>
                     </table>
-                    <button className='styled-button'>Continue</button>
+                    <button className='styled-button' onClick={setEnd(false)}>Continue</button>
                     </>
                 ) : (
                     <>
