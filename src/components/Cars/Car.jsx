@@ -8,13 +8,16 @@ import GameWithSound from "../GameWithSound";
 import DustParticles from "../DustParticles/DustParticles";
 import Speedometer from "../Speedometer";
 import { getBaseUrl } from "../../utils/getURL";
+import Checkpoint from "../Checkpoint";
 
 export function Car({ rigidBody, onSpeedChange, ...props }) {
   const { nodes, materials } = useGLTF(`/~scarhatt/Car.glb`);
   // const rigidBody = useRef();
+  const carRef=useRef();
   const cameraRef = useRef();
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
   const [isFirstPerson, setIsFirstPerson] = useState(false); // Toggle for camera mode
+  
 
   const Boostarray = [
     [0, 1, 0],
@@ -290,7 +293,8 @@ export function Car({ rigidBody, onSpeedChange, ...props }) {
         near={0.1}
         far={85}
       />
-      <Boost Boostarray={Boostarray} />
+      
+      {/* <Boost Boostarray={Boostarray} /> */}
     </>
   );
 }

@@ -24,3 +24,4 @@ dist-ssr
 public/CherryBlossom.glb
 public/Nether.glb
 public/WholeEndMap.glb
+*.config.js

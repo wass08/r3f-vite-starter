@@ -1,11 +1,10 @@
-import React, { useRef, useState, useEffect, Suspense,lazy } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { useRef, useState, useEffect, Suspense, lazy } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
 import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Cars/Car";
 import { Timer } from "./components/Timer";
 import BackgroundMusic from "./components/BackgroundMusic";
-import { useProgress } from "@react-three/drei"; // 1. Import useProgress
-
+import LeaderBoard from "./components/Leaderboard";
 import DustParticles from "./components/DustParticles/DustParticles";
 import HUD from "./components/HUD";
 import Loader from "./components/Loader"; // Import the Loader component
@@ -21,7 +20,8 @@ import { NeonCar } from "./components/Cars/NeonCar";
 import { Nissan } from "./components/Cars/Nissan";
 import PauseMenu from "./components/PauseMenu";
 import StartMenu from "./components/StartMenu";
-
+import { useProgress } from "@react-three/drei"; // For tracking loading progress
+import Checkpoint from "./components/Checkpoint";
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -32,14 +32,21 @@ export default function App() {
   const { progress } = useProgress(); // Hook to get loading progress
   const [carIndex, setCarIndex] = useState(1);
   const [checkpointCount, setCheckpointCount] = useState(0);
-  const [shadows, setShadows] = useState(false);
+  const [shadows, setShadows] = useState(true);
   const [Fog, setFog] = useState(true);
   const [checkpointsHit, setCheckpointsHit] = useState(new Set());
   const [startGame, setStartGame] = useState(false); // Track if the game is started
   const handleStartGame = () => setStartGame(true); // Start the game
   const onCarIndex = (i) => setCarIndex(i);
-
+  const gameOver = (i) => {
+    setStartGame(false);
+    setEnd(i);
+  };
   const carRef = useRef();
+
+  const [Laps, setLaps] = useState(0);
+  const [end, setEnd] = useState(false);
+  const [totalTime, setTotalTime] = useState(0);
 
   let far = 100;
   let color = "#fc4b4b";
@@ -61,9 +68,6 @@ export default function App() {
   const isControlDisabled = isPaused;
   // Listen for key presses, including Esc to toggle pause
   useEffect(() => {
-    console.log("shadows", shadows);
-  }, [shadows]);
-  useEffect(() => {
     const handleKeyDown = (event) => {
       if (isControlDisabled) return; // Prevent controls if paused
 
@@ -71,6 +75,7 @@ export default function App() {
         ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)
       ) {
         setStartTimer(true); // Start the timer
+        // setLaps(0);
       }
       if (event.key === "r" || event.key === "R") {
         setStartTimer(false); // Reset the timer
@@ -115,6 +120,13 @@ export default function App() {
               shadows={shadows}
             />
           )}
+          {end && (
+            <LeaderBoard
+              mapNum={activeGroup}
+              time={totalTime}
+              setEnd={gameOver}
+            />
+          )}
 
           <div style={{ position: "relative", width: "100%", height: "100vh" }}>
             <Suspense fallback={<Loader progress={progress} />}>
@@ -128,10 +140,21 @@ export default function App() {
                   zIndex: 1,
                 }}
               >
-                <Timer startTimer={startTimer} />
+                <Timer
+                  startTimer={startTimer}
+                  Laps={Laps}
+                  setTotalTime={setTotalTime}
+                />
               </div>
-              <HUD speed={carSpeed} currentLap={3} maxLap={15} />
+              <HUD
+                speed={carSpeed}
+                currentLap={Laps - 1}
+                maxLap={0.5}
+                setEnd={setEnd}
+              />
+
               <Canvas
+                antialias
                 shadows
                 camera={{
                   fov: 60,
@@ -141,6 +164,7 @@ export default function App() {
                 }}
                 style={{ position: "absolute", top: 0, left: 0 }}
               >
+                {/* <Timer/> */}
                 {Fog && <fog attach="fog" color={color} near={1} far={far} />}
                 {/* Add fog */}
                 <ambientLight intensity={-2} />
@@ -208,6 +232,7 @@ export default function App() {
                       rigidBody={carRef}
                       onSpeedChange={setCarSpeed}
                       disabled={isPaused} // Disable car controls when paused
+                      map={activeGroup}
                     />
                   )}
                   {carIndex == 2 && (
@@ -232,6 +257,7 @@ export default function App() {
                     />
                   )}
                   <DustParticles carRef={carRef} />
+                  <Checkpoint carRef={carRef} setLaps={setLaps} />
                 </Physics>
 
                 <BackgroundMusic />

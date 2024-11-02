@@ -659,4 +659,4 @@ export function End(props) {
   );
 }
 
-useGLTF.preload("/~scarhatt/WholeEndMap.glb");
+// useGLTF.preload("/WholeEndMap.glb");

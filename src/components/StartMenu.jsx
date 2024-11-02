@@ -1,24 +1,27 @@
 import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useProgress } from "@react-three/drei"; // 1. Import useProgress
+import { useProgress } from "@react-three/drei";
 import { Nether } from "../assets/track/Track2/Nether";
 import { NetherHome } from "../assets/Home/NetherHome";
 import { EndHome } from "../assets/Home/EndHome";
 import { CherryBlossomHome } from "../assets/Home/CherryBlossomHome";
 import { Hummer } from "./Cars/Hummer";
 import Loader from "./Loader";
+import { HomeHummer } from "../assets/Home/HomeHummer";
+import { HomeNissan } from "../assets/Home/HomeNissan";
+import { HomeCar } from "../assets/Home/HomeCar";
 
 export default function StartMenu({ onTrackSelect, onCarSelect }) {
-  const { progress } = useProgress(); // 2. Get progress from useProgress
+  const { progress } = useProgress();
   const [loading, setLoading] = useState(true);
   const [Home, setHome] = useState(1);
   const [carIndex, setCarIndex] = useState(0);
+  const [showCredits, setShowCredits] = useState(false); // State to control the credits modal
 
   let color = "#fc4b4b";
   let lightColor = "#fc4b4b";
   let far = 100;
 
-  // Update scene colors based on Home state
   if (Home === 1) {
     far = 125;
     color = "#d691ca";
@@ -39,15 +42,14 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
     );
   };
 
-  // 3. Monitor loading progress and update loading state
   React.useEffect(() => {
-    setLoading(progress < 100); // loading until progress reaches 100%
+    setLoading(progress < 100);
   }, [progress]);
 
   return (
     <>
       {loading ? (
-        <Loader progress={progress} /> // Show Loader component when loading
+        <Loader progress={progress} />
       ) : (
         <Suspense fallback={<Loader />}>
           <div
@@ -63,7 +65,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
               zIndex: 1,
             }}
           >
-            <h1 style={{ fontSize: "48px", marginBottom: "20px" }}>
+            <h1 style={{ fontSize: "48px", marginBottom: "150px" }}>
               Blocky Cars
             </h1>
 
@@ -83,9 +85,6 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
               >
                 {"<"} Prev Car
               </button>
-
-              <span style={{ fontSize: "24px" }}>Car {carIndex + 1}</span>
-
               <button
                 onClick={() => handleCarChange("next")}
                 disabled={loading}
@@ -136,9 +135,37 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
                 Play
               </button>
             </div>
+
+            <button
+              onClick={() => setShowCredits(true)} // Open the credits modal
+              style={{
+                ...buttonStyle,
+                marginTop: "10px",
+                backgroundColor: "#333",
+              }}
+            >
+              Credits
+            </button>
+
+            {showCredits && (
+              <div style={modalStyle}>
+                <h2>Credits</h2>
+                <p>
+                  Thanks to all the contributors and artists for the 3D models
+                  used in this game!
+                </p>
+                <button
+                  onClick={() => setShowCredits(false)}
+                  style={buttonStyle}
+                >
+                  Close
+                </button>
+              </div>
+            )}
           </div>
 
           <Canvas
+            antialias
             shadows
             camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
             style={{ position: "absolute", top: 0, left: 0 }}
@@ -163,6 +190,27 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
             {Home === 1 && <CherryBlossomHome />}
             {Home === 2 && <NetherHome />}
             {Home === 3 && <EndHome />}
+            {carIndex + 1 === 2 && (
+              <HomeHummer
+                position={[0, 46, 192]}
+                rotation={[0, (3 * Math.PI) / 4, 0]}
+                scale={[0.5, 0.5, 0.5]}
+              />
+            )}
+            {carIndex + 1 === 3 && (
+              <HomeNissan
+                position={[-2, 46, 191]}
+                rotation={[0, (3 * Math.PI) / 4, 0]}
+                scale={[0.5, 0.5, 0.5]}
+              />
+            )}
+            {carIndex + 1 === 1 && (
+              <HomeCar
+                position={[-0.05, 46, 192.65]}
+                rotation={[0, (7 * Math.PI) / 4, 0]}
+                scale={[0.8, 0.8, 0.8]}
+              />
+            )}
           </Canvas>
         </Suspense>
       )}
@@ -189,4 +237,18 @@ const sideButtonStyle = {
   border: "none",
   borderRadius: "5px",
   color: "#fff",
+};
+
+const modalStyle = {
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  padding: "20px",
+  backgroundColor: "#333",
+  color: "#fff",
+  borderRadius: "8px",
+  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+  textAlign: "center",
+  zIndex: 1000,
 };
