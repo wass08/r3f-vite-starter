@@ -155,7 +155,7 @@ export default function App() {
               />
 
               <Canvas
-                antialias
+                antialias="true"
                 shadows
                 camera={{
                   fov: 60,
