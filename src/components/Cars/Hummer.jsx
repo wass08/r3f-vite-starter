@@ -235,7 +235,7 @@ export function Hummer({ rigidBody, onSpeedChange, ...props }) {
         <RigidBody
           ref={rigidBody}
           type="dynamic"
-          colliders="cuboid"
+          colliders="hull"
           position={[10, 4, 0]} // Initial position
           mass={200}
           rotation={[0,Math.PI / 2, Math.PI / 2]} // Initial rotation

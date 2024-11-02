@@ -151,7 +151,7 @@ export default function App() {
               <HUD
                 speed={carSpeed}
                 currentLap={Laps - 1}
-                maxLap={0.5}
+                maxLap={2}
                 setEnd={setEnd}
                 setTimer={(i) => setStartTimer(i)}
               />
@@ -210,7 +210,7 @@ export default function App() {
                 )}
                 {activeGroup == 4 && null}
 
-                <Physics gravity={[0, -90.81, 0]} paused={isPaused}>
+                <Physics gravity={[0, -90.81, 0]} paused={isPaused} debug >
                   {activeGroup == 1 && <CherryBlossomRawTrack />}
                   {activeGroup == 2 && <NetherRawTrack />}
                   {activeGroup == 3 && <EndRawTrack />}
