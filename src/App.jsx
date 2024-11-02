@@ -38,14 +38,16 @@ export default function App() {
   const [startGame, setStartGame] = useState(false); // Track if the game is started
   const handleStartGame = () => setStartGame(true); // Start the game
   const onCarIndex = (i) => setCarIndex(i);
-  const gameOver = (i) => {
+  const [end, setEnd] = useState(false);
+  const gameOver = () => {
+    setEnd(false);
     setStartGame(false);
-    setEnd(i);
+    console.log("Game Over");
+    
   };
   const carRef = useRef();
 
   const [Laps, setLaps] = useState(0);
-  const [end, setEnd] = useState(false);
   const [totalTime, setTotalTime] = useState(0);
 
   let far = 100;
@@ -149,12 +151,13 @@ export default function App() {
               <HUD
                 speed={carSpeed}
                 currentLap={Laps - 1}
-                maxLap={0.5}
+                maxLap={2}
                 setEnd={setEnd}
+                setTimer={(i) => setStartTimer(i)}
               />
 
               <Canvas
-                antialias
+                antialias="true"
                 shadows
                 camera={{
                   fov: 60,
@@ -207,7 +210,7 @@ export default function App() {
                 )}
                 {activeGroup == 4 && null}
 
-                <Physics gravity={[0, -90.81, 0]} paused={isPaused}>
+                <Physics gravity={[0, -90.81, 0]} paused={isPaused} debug >
                   {activeGroup == 1 && <CherryBlossomRawTrack />}
                   {activeGroup == 2 && <NetherRawTrack />}
                   {activeGroup == 3 && <EndRawTrack />}

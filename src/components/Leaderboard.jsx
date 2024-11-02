@@ -111,7 +111,7 @@ export default function LeaderBoard({ mapNum, time, setEnd }) {
                 })}
               </tbody>
             </table>
-            <button className="styled-button" onClick={() => setEnd(false)}>
+            <button className="styled-button" onClick={() => setEnd()}>
               Continue
             </button>
           </>
@@ -135,3 +135,5 @@ export default function LeaderBoard({ mapNum, time, setEnd }) {
     </div>
   );
 }
+// "FREE | Hummer H1 - Minecraft" (https://skfb.ly/6TLJF) by LZBlocks is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).4
+// "FREE | Nissan Skyline R34 GTR V-Spec II" (https://skfb.ly/6RCPz) by LZBlocks is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
