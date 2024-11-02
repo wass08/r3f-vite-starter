@@ -10,6 +10,7 @@ import Loader from "./Loader";
 import { HomeHummer } from "../assets/Home/HomeHummer";
 import { HomeNissan } from "../assets/Home/HomeNissan";
 import { HomeCar } from "../assets/Home/HomeCar";
+import logo from "./images/logo.png"
 
 export default function StartMenu({ onTrackSelect, onCarSelect }) {
   const { progress } = useProgress();
@@ -67,7 +68,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
             }}
           >
             <h1 style={{ fontSize: "48px", marginBottom: "150px" }}>
-              Blocky Cars
+              <img src={logo} />
             </h1>
 
             <div
