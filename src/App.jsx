@@ -151,6 +151,7 @@ export default function App() {
                 currentLap={Laps - 1}
                 maxLap={0.5}
                 setEnd={setEnd}
+                setTimer={(i) => setStartTimer(i)}
               />
 
               <Canvas
