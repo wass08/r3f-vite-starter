@@ -8,7 +8,6 @@ import { useGLTF } from "@react-three/drei";
 
 export function HomeHummer(props) {
   const { nodes, materials } = useGLTF("/~scarhatt/Hummer.glb");
-  const { nodes, materials } = useGLTF("/~scarhatt/Hummer.glb");
   return (
     <group {...props} dispose={null}>
       <mesh
