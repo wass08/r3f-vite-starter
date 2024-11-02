@@ -216,6 +216,8 @@ body {
   background-color: orange;
 }
 /* Add this to your styles.css file */
+/* Modal styles */
+/* Modal styles */
 .modal {
   position: fixed;
   top: 50%;
@@ -223,7 +225,7 @@ body {
   transform: translate(-50%, -50%);
   width: 400px; /* Fixed width */
   height: 300px; /* Fixed height */
-  background-color: rgb(0, 0, 0);
+  background-color: #333; /* Dark background */
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
@@ -233,8 +235,10 @@ body {
   justify-content: center;
   align-items: center;
   color: white; /* Ensure text is visible on dark background */
+  border-radius: 10px; /* Rounded corners */
 }
 
+/* Overlay styles */
 .overlay {
   position: fixed;
   top: 0;
@@ -243,4 +247,41 @@ body {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
+}
+
+/* Button styles */
+.button {
+  width: 75%; /* 75% of the modal width */
+  height: auto; /* Auto-adjust height */
+  padding: 10px; /* Padding inside the button */
+  margin: 15px 0;
+  background-color: var(--var-soft-blue); /* Darkish blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 15px; /* Rounded edges */
+  font-size: 16px; /* Font size matching the input */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  text-align: center; /* Center text */
+}
+
+.button:hover {
+  background-color: darkblue; /* Slightly lighter blue on hover */
+}
+
+.button:active {
+  background-color: #1b2733; /* Darker blue when button is pressed */
+}
+
+/* Key styles */
+.key {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #555;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  min-width: 30px;
 }

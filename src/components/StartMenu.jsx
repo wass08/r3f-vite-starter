@@ -171,6 +171,48 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
                     Thanks to all the contributors and artists for the 3D models
                     used in this game!
                   </p>
+                  <ul>
+                    <li>
+                      "FREE | Hummer H1 - Minecraft" (
+                      <a
+                        href="https://skfb.ly/6TLJF"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        https://skfb.ly/6TLJF
+                      </a>
+                      ) by LZBlocks is licensed under Creative Commons
+                      Attribution (
+                      <a
+                        href="http://creativecommons.org/licenses/by/4.0/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        http://creativecommons.org/licenses/by/4.0/
+                      </a>
+                      ).
+                    </li>
+                    <li>
+                      "FREE | Nissan Skyline R34 GTR V-Spec II" (
+                      <a
+                        href="https://skfb.ly/6RCPz"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        https://skfb.ly/6RCPz
+                      </a>
+                      ) by LZBlocks is licensed under Creative Commons
+                      Attribution (
+                      <a
+                        href="http://creativecommons.org/licenses/by/4.0/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        http://creativecommons.org/licenses/by/4.0/
+                      </a>
+                      ).
+                    </li>
+                  </ul>
                   <button
                     onClick={() => setShowCredits(false)}
                     style={buttonStyle}
@@ -186,16 +228,30 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
                 <div className="modal">
                   <h2>Game Controls</h2>
                   <ul>
-                    <li>Move Forward: W</li>
-                    <li>Move Backward: S</li>
-                    <li>Turn Left: A</li>
-                    <li>Turn Right: D</li>
-                    <li>Jump: Space</li>
+                    <li>
+                      <span className="key">W</span> Move Forward{" "}
+                      <span className="key">↑</span>
+                    </li>
+                    <li>
+                      <span className="key">S</span> Move Backward{" "}
+                      <span className="key">↓</span>
+                    </li>
+                    <li>
+                      <span className="key">A</span> Turn Left{" "}
+                      <span className="key">←</span>
+                    </li>
+                    <li>
+                      <span className="key">D</span> Turn Right{" "}
+                      <span className="key">→</span>
+                    </li>
+                    <li>
+                      <span className="key">Space</span> Drift
+                    </li>
                     {/* Add more controls as needed */}
                   </ul>
                   <button
                     onClick={() => setShowControls(false)}
-                    style={buttonStyle}
+                    className="button"
                   >
                     Close
                   </button>

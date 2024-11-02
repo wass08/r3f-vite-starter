@@ -38,14 +38,16 @@ export default function App() {
   const [startGame, setStartGame] = useState(false); // Track if the game is started
   const handleStartGame = () => setStartGame(true); // Start the game
   const onCarIndex = (i) => setCarIndex(i);
-  const gameOver = (i) => {
+  const [end, setEnd] = useState(false);
+  const gameOver = () => {
+    setEnd(false);
     setStartGame(false);
-    setEnd(i);
+    console.log("Game Over");
+    
   };
   const carRef = useRef();
 
   const [Laps, setLaps] = useState(0);
-  const [end, setEnd] = useState(false);
   const [totalTime, setTotalTime] = useState(0);
 
   let far = 100;

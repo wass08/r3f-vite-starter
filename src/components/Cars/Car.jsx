@@ -10,14 +10,13 @@ import Speedometer from "../Speedometer";
 import { getBaseUrl } from "../../utils/getURL";
 import Checkpoint from "../Checkpoint";
 
-export function Car({ rigidBody, onSpeedChange,map, ...props }) {
+export function Car({ rigidBody, onSpeedChange, map, ...props }) {
   const { nodes, materials } = useGLTF(`/Car.glb`);
   // const rigidBody = useRef();
-  const carRef=useRef();
+  const carRef = useRef();
   const cameraRef = useRef();
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
   const [isFirstPerson, setIsFirstPerson] = useState(false); // Toggle for camera mode
-  
 
   const Boostarray = [
     [0, 1, 0],
@@ -46,23 +45,28 @@ export function Car({ rigidBody, onSpeedChange,map, ...props }) {
   // Handling keypress events for movement
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === "ArrowUp") setKeys((keys) => ({ ...keys, forward: true }));
-      if (e.key === "ArrowDown")
+      if (e.key === "ArrowUp" || e.key === "w" || e.key === "W")
+        setKeys((keys) => ({ ...keys, forward: true }));
+      if (e.key === "ArrowDown" || e.key === "s" || e.key === "S")
         setKeys((keys) => ({ ...keys, backward: true }));
-      if (e.key === "ArrowLeft") setKeys((keys) => ({ ...keys, left: true }));
-      if (e.key === "ArrowRight") setKeys((keys) => ({ ...keys, right: true }));
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A")
+        setKeys((keys) => ({ ...keys, left: true }));
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D")
+        setKeys((keys) => ({ ...keys, right: true }));
       if (e.key === " ") setKeys((keys) => ({ ...keys, space: true }));
       if (e.key === "r" || e.key === "R")
         setKeys((keys) => ({ ...keys, reset: true })); // Reset on 'R'
-      if (e.key === "c") setIsFirstPerson((prev) => !prev); // Toggle camera mode on 'C' key press
+      if (e.key === "c" || e.key === "C") setIsFirstPerson((prev) => !prev); // Toggle camera mode on 'C' key press
     };
 
     const handleKeyUp = (e) => {
-      if (e.key === "ArrowUp") setKeys((keys) => ({ ...keys, forward: false }));
-      if (e.key === "ArrowDown")
+      if (e.key === "ArrowUp" || e.key === "w" || e.key === "W")
+        setKeys((keys) => ({ ...keys, forward: false }));
+      if (e.key === "ArrowDown" || e.key === "s" || e.key === "S")
         setKeys((keys) => ({ ...keys, backward: false }));
-      if (e.key === "ArrowLeft") setKeys((keys) => ({ ...keys, left: false }));
-      if (e.key === "ArrowRight")
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A")
+        setKeys((keys) => ({ ...keys, left: false }));
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D")
         setKeys((keys) => ({ ...keys, right: false }));
       if (e.key === " ") setKeys((keys) => ({ ...keys, space: false }));
       if (e.key === "r" || e.key === "R")
@@ -293,7 +297,7 @@ export function Car({ rigidBody, onSpeedChange,map, ...props }) {
         near={0.1}
         far={85}
       />
-      
+
       {/* <Boost Boostarray={Boostarray} /> */}
     </>
   );

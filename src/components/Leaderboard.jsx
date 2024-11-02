@@ -111,7 +111,7 @@ export default function LeaderBoard({ mapNum, time, setEnd }) {
                 })}
               </tbody>
             </table>
-            <button className="styled-button" onClick={() => setEnd(false)}>
+            <button className="styled-button" onClick={() => setEnd()}>
               Continue
             </button>
           </>
