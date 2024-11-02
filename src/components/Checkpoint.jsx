@@ -52,7 +52,7 @@ const Checkpoint = ({ carRef, position = [10, 1, 6], orientation = "horizontal" 
 
     // Get car's current position only if carRef exists
     const carPosition = carRef?.current?.translation();
-    console.log(carPosition.z);
+    // console.log(carPosition.z);
     
 
     // // const carPosition = carRef.current.translation();
