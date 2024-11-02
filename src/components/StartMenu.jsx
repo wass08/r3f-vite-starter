@@ -10,6 +10,7 @@ import Loader from "./Loader";
 import { HomeHummer } from "../assets/Home/HomeHummer";
 import { HomeNissan } from "../assets/Home/HomeNissan";
 import { HomeCar } from "../assets/Home/HomeCar";
+import logo from "./images/logo.png"
 
 export default function StartMenu({ onTrackSelect, onCarSelect }) {
   const { progress } = useProgress();
@@ -17,6 +18,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
   const [Home, setHome] = useState(1);
   const [carIndex, setCarIndex] = useState(0);
   const [showCredits, setShowCredits] = useState(false); // State to control the credits modal
+  const [showControls, setShowControls] = useState(false); // State for controls modal
 
   let color = "#fc4b4b";
   let lightColor = "#fc4b4b";
@@ -66,7 +68,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
             }}
           >
             <h1 style={{ fontSize: "48px", marginBottom: "150px" }}>
-              Blocky Cars
+              <img src={logo} />
             </h1>
 
             <div
@@ -135,37 +137,75 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
                 Play
               </button>
             </div>
-
-            <button
-              onClick={() => setShowCredits(true)} // Open the credits modal
-              style={{
-                ...buttonStyle,
-                marginTop: "10px",
-                backgroundColor: "#333",
-              }}
+            <div
+              className="button-container"
+              style={{ display: "flex", gap: "10px" }}
             >
-              Credits
-            </button>
+              <button
+                onClick={() => setShowCredits(true)} // Open the credits modal
+                style={{
+                  ...buttonStyle,
+                  marginTop: "10px",
+                  backgroundColor: "#333",
+                }}
+              >
+                Credits
+              </button>
+              <button
+                onClick={() => setShowControls(true)}
+                style={{
+                  ...buttonStyle,
+                  marginTop: "10px",
+                  backgroundColor: "#333",
+                }}
+              >
+                Controls
+              </button>
+            </div>
 
             {showCredits && (
-              <div style={modalStyle}>
-                <h2>Credits</h2>
-                <p>
-                  Thanks to all the contributors and artists for the 3D models
-                  used in this game!
-                </p>
-                <button
-                  onClick={() => setShowCredits(false)}
-                  style={buttonStyle}
-                >
-                  Close
-                </button>
+              <div className="overlay" onClick={() => setShowCredits(false)}>
+                <div className="modal">
+                  <h2>Credits</h2>
+                  <p>
+                    Thanks to all the contributors and artists for the 3D models
+                    used in this game!
+                  </p>
+                  <button
+                    onClick={() => setShowCredits(false)}
+                    style={buttonStyle}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            )}
+            {/* Controls Modal */}
+            {showControls && (
+              <div className="overlay" onClick={() => setShowControls(false)}>
+                <div className="modal">
+                  <h2>Game Controls</h2>
+                  <ul>
+                    <li>Move Forward: W</li>
+                    <li>Move Backward: S</li>
+                    <li>Turn Left: A</li>
+                    <li>Turn Right: D</li>
+                    <li>Jump: Space</li>
+                    {/* Add more controls as needed */}
+                  </ul>
+                  <button
+                    onClick={() => setShowControls(false)}
+                    style={buttonStyle}
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             )}
           </div>
 
           <Canvas
-            antialias
+            antialias="true"
             shadows
             camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
             style={{ position: "absolute", top: 0, left: 0 }}
