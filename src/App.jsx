@@ -32,14 +32,13 @@ export default function App() {
   const { progress } = useProgress(); // Hook to get loading progress
   const [carIndex, setCarIndex] = useState(1);
   const [checkpointCount, setCheckpointCount] = useState(0);
-  const [shadows, setShadows] = useState(false);
+  const [shadows, setShadows] = useState(true);
   const [Fog, setFog] = useState(true);
-  const [gameOver, setGameOver] = useState(false);
   const [checkpointsHit, setCheckpointsHit] = useState(new Set());
   const [startGame, setStartGame] = useState(false); // Track if the game is started
   const handleStartGame = () => setStartGame(true); // Start the game
   const onCarIndex = (i) => setCarIndex(i);
-
+  const gameOver = (i) => setEnd(i);
   const carRef = useRef();
 
   const[Laps,setLaps]=useState(0);
@@ -67,15 +66,6 @@ export default function App() {
   // Disable controls if paused
   const isControlDisabled = isPaused;
   // Listen for key presses, including Esc to toggle pause
-  useEffect(() => {
-    console.log("shadows", shadows);
-  }, [shadows]);
-
-  
-
-
-
-
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (isControlDisabled) return; // Prevent controls if paused
@@ -130,7 +120,7 @@ export default function App() {
             />
           )}
           {end && (
-            <LeaderBoard mapNum={activeGroup} time={500} setEnd={setEnd} />
+            <LeaderBoard mapNum={activeGroup} time={totalTime} setEnd={gameOver} />
           )}
 
           <div style={{ position: "relative", width: "100%", height: "100vh" }}>
@@ -154,7 +144,7 @@ export default function App() {
               <HUD
                 speed={carSpeed}
                 currentLap={Laps - 1}
-                maxLap={3}
+                maxLap={1}
                 setEnd={setEnd}
               />
 

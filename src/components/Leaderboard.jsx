@@ -8,6 +8,7 @@ export default function LeaderBoard({mapNum, time, setEnd}) {
     // const time = 10;
     const [name, setName] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const [myID, setMyID] = useState('');
     const [position, setPosition] = useState(0);
     const [allScores, setAllScores] = useState([]);
     const collectionName = 'Leaderboard'.concat(mapNum.toString());
