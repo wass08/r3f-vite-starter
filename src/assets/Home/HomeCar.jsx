@@ -7,7 +7,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function HomeCar(props) {
-  const { nodes, materials } = useGLTF('/Car.glb')
+  const { nodes, materials } = useGLTF('/~scarhatt/Car.glb');
   return (
     <group {...props} dispose={null}>
       <group position={[-0.039, -0.035, -0.026]} rotation={[-Math.PI / 2, 0, 0]} scale={0.461}>
@@ -25,4 +25,4 @@ export function HomeCar(props) {
   )
 }
 
-useGLTF.preload('/Car.glb')
+useGLTF.preload('/~scarhatt/Car.glb');

@@ -15,4 +15,4 @@ export function HomeNissan(props) {
   )
 }
 
-useGLTF.preload('/Nissan.glb')
+useGLTF.preload('/~scarhatt/Nissan.glb');
