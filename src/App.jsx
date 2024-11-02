@@ -119,9 +119,9 @@ export default function App() {
               shadows={shadows}
             />
           )}
-          {/* {end && ( */}
-            {/* <LeaderBoard mapNum={activeGroup} time={totalTime} setEnd={gameOver} /> */}
-          {/* )} */}
+          {end && (
+             <LeaderBoard mapNum={activeGroup} time={totalTime} setEnd={gameOver} />
+          )}
 
           <div style={{ position: "relative", width: "100%", height: "100vh" }}>
             <Suspense fallback={<Loader progress={progress} />}>
