@@ -38,14 +38,15 @@ export default function App() {
   const [startGame, setStartGame] = useState(false); // Track if the game is started
   const handleStartGame = () => setStartGame(true); // Start the game
   const onCarIndex = (i) => setCarIndex(i);
-  const gameOver = (i) => setEnd(i);
+  const gameOver = (i) => {
+    setStartGame(false);
+    setEnd(i);
+  };
   const carRef = useRef();
 
-  const[Laps,setLaps]=useState(0);
-  const [end,setEnd]=useState(false)
-  const [totalTime,setTotalTime]=useState(0);
-
-
+  const [Laps, setLaps] = useState(0);
+  const [end, setEnd] = useState(false);
+  const [totalTime, setTotalTime] = useState(0);
 
   let far = 100;
   let color = "#fc4b4b";
@@ -120,7 +121,11 @@ export default function App() {
             />
           )}
           {end && (
-             <LeaderBoard mapNum={activeGroup} time={totalTime} setEnd={gameOver} />
+            <LeaderBoard
+              mapNum={activeGroup}
+              time={totalTime}
+              setEnd={gameOver}
+            />
           )}
 
           <div style={{ position: "relative", width: "100%", height: "100vh" }}>
@@ -144,7 +149,7 @@ export default function App() {
               <HUD
                 speed={carSpeed}
                 currentLap={Laps - 1}
-                maxLap={1}
+                maxLap={0.5}
                 setEnd={setEnd}
               />
 
