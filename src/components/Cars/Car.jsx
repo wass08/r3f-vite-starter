@@ -10,7 +10,7 @@ import Speedometer from "../Speedometer";
 import { getBaseUrl } from "../../utils/getURL";
 import Checkpoint from "../Checkpoint";
 
-export function Car({ rigidBody, onSpeedChange, ...props }) {
+export function Car({ rigidBody, onSpeedChange,map, ...props }) {
   const { nodes, materials } = useGLTF(`/~scarhatt/Car.glb`);
   // const rigidBody = useRef();
   const carRef=useRef();

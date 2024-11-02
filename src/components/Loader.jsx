@@ -26,6 +26,7 @@ const Loader = ({ progress }) => {
       <Canvas>
         <Speedometer speed={roundedProgress} />
       </Canvas>
+      <p>Loading...</p>
 
       <p style={styles.fact}>{facts[factIndex]}</p>
     </div>
