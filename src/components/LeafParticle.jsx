@@ -1,17 +1,18 @@
 // LeafParticle.js
 
-import React, { useRef, useEffect } from 'react';
-import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
+import React, { useRef, useEffect } from "react";
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
-const LeafParticle = ({ color = '#3A5F0B', count = 50 }) => {
+const LeafParticle = ({ color = "#3A5F0B", count = 50 }) => {
   const particlesRef = useRef([]);
 
   // Set up positions and velocities for each particle
+
   const initialPositions = Array.from({ length: count }, () => ({
-    x: (Math.random() - 0.5) * 10,
+    x: (Math.random() - 0.5) * 70,
     y: Math.random() * 5 + 5,
-    z: (Math.random() - 0.5) * 10,
+    z: (Math.random() - 0.5) * 70,
   }));
 
   const velocities = Array.from({ length: count }, () => ({
@@ -44,7 +45,8 @@ const LeafParticle = ({ color = '#3A5F0B', count = 50 }) => {
           ref={(el) => (particlesRef.current[i] = el)}
           position={[pos.x, pos.y, pos.z]}
         >
-          <boxGeometry args={[0.2, 0.2, 0.2]} />
+          <planeGeometry args={[0.1, 0.1]} />
+
           <meshStandardMaterial color={color} />
         </mesh>
       ))}
