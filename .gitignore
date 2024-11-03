@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
 node_modules
 dist
 dist-ssr
@@ -22,3 +21,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+public/CherryBlossom.glb
+public/Nether.glb
+public/WholeEndMap.glb
+*.config.js

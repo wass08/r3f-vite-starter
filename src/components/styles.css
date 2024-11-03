@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap");
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  overflow: hidden;
+  background-color: #282c34;
+}
+
+.main-menu {
+  text-align: center;
+  color: #ffffff;
+}
+
+.menu-options {
+  margin-top: 20px;
+}
+
+.menu-item {
+  display: inline-block;
+  margin: 10px;
+  padding: 20px 40px;
+  font-size: 24px;
+  color: #ffffff;
+  border: 4px solid #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.7);
+}
+
+:root {
+  font-size: 15px;
+
+  /* Primary */
+  --var-soft-blue: hsl(215, 51%, 70%);
+  --var-cyan: hsl(178, 100%, 50%);
+  /* Neutral */
+  --var-main-darkest: hsl(217, 54%, 11%);
+  --var-card-dark: hsl(216, 50%, 16%);
+  --var-line-dark: hsl(215, 32%, 27%);
+  --var-lightest: white;
+
+  /* Fonts */
+
+  --var-heading: normal normal 600 1.5em/1.6em "Outfit", sans-serif;
+
+  --var-small-heading: normal normal 400 1em/1em "Outfit", sans-serif;
+
+  --var-para: normal normal 300 1em/1.55em "Outfit", sans-serif;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  overflow: hidden;
+  background-color: #282c34;
+}
+
+.main-menu {
+  text-align: center;
+  color: #ffffff;
+}
+
+.menu-options {
+  margin-top: 20px;
+}
+
+.menu-item {
+  display: inline-block;
+  margin: 10px;
+  padding: 20px 40px;
+  font-size: 24px;
+  color: #ffffff;
+  border: 4px solid #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.7);
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+  color: #ffffff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.agdasima-regular {
+  font-family: "Agdasima", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+}
+
+.agdasima-bold {
+  font-family: "Agdasima", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 60px;
+}
+
+.card-container {
+  display: flex;
+  width: auto;
+  max-width: 800px;
+  margin: 2em auto;
+  background-color: var(--var-card-dark);
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  align-items: center;
+  flex-direction: column;
+}
+
+.custom-p {
+  font: var(--var-para);
+  color: var(--var-soft-blue);
+  font-size: 18px;
+}
+
+.styled-input {
+  width: 75%; /* 75% of the viewport width */
+  height: auto; /* Auto-adjust height */
+  padding: 10px; /* Add some padding inside the input */
+  padding-right: 40px;
+  margin: 15px 0;
+  border-radius: 15px; /* Rounded edges */
+  border: 1px solid #ccc; /* Border for better visibility */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  font-size: 16px; /* Set a comfortable font size */
+  outline: none; /* Remove default outline */
+  transition: box-shadow 0.3s ease; /* Transition for a smooth effect */
+
+  /* Add a hover effect */
+  &:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  }
+
+  /* Add a focus effect */
+  &:focus {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Further increase shadow on focus */
+    border-color: #007bff; /* Change border color on focus */
+  }
+}
+
+.styled-button {
+  width: 75%; /* 75% of the viewport width */
+  height: auto; /* Auto-adjust height */
+  padding: 10px; /* Padding inside the button */
+  margin: 15px 0;
+  background-color: var(--var-soft-blue); /* Darkish blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 15px; /* Rounded edges */
+  font-size: 16px; /* Font size matching the input */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+
+  &:hover {
+    background-color: darkblue; /* Slightly lighter blue on hover */
+  }
+
+  &:active {
+    background-color: #1b2733; /* Darker blue when button is pressed */
+  }
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(184, 180, 180, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: var(--var-soft-blue);
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #fffdfd;
+  background-color: #e6e6e6;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #e6e6e6;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid black;
+}
+
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  background-color: orange;
+}
+/* Add this to your styles.css file */
+/* Modal styles */
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px; /* Fixed width */
+  height: 80%; /* Fixed height */
+  background-color: #333; /* Dark background */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow: auto; /* Add scroll if content overflows */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white; /* Ensure text is visible on dark background */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Overlay styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Button styles */
+.button {
+  width: 75%; /* 75% of the modal width */
+  height: auto; /* Auto-adjust height */
+  padding: 10px; /* Padding inside the button */
+  margin: 15px 0;
+  background-color: var(--var-soft-blue); /* Darkish blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 15px; /* Rounded edges */
+  font-size: 16px; /* Font size matching the input */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  text-align: center; /* Center text */
+}
+
+.button:hover {
+  background-color: darkblue; /* Slightly lighter blue on hover */
+}
+
+.button:active {
+  background-color: #1b2733; /* Darker blue when button is pressed */
+}
+
+/* Key styles */
+.key {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #555;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  min-width: 30px;
+}
