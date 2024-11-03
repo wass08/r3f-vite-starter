@@ -10,6 +10,7 @@ import Loader from "./Loader";
 import { HomeHummer } from "../assets/Home/HomeHummer";
 import { HomeNissan } from "../assets/Home/HomeNissan";
 import { HomeCar } from "../assets/Home/HomeCar";
+import BackgroundMusic from "./BackgroundMusic";
 
 export default function StartMenu({ onTrackSelect, onCarSelect }) {
   const { progress } = useProgress();
@@ -211,6 +212,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
                 scale={[0.8, 0.8, 0.8]}
               />
             )}
+            <BackgroundMusic track={1} />
           </Canvas>
         </Suspense>
       )}

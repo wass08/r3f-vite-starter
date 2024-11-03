@@ -3,10 +3,11 @@ import { Canvas } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 
 
-export default function HUD({currentLap, maxLap, speed, currentTime,setEnd}) {
+export default function HUD({currentLap, maxLap, speed, currentTime,setEnd,setLaps}) {
 
     if(currentLap===maxLap){
         setEnd(true);
+        setLaps(1);
     }
 
     return (

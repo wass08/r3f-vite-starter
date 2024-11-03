@@ -146,9 +146,10 @@ export default function App() {
                 currentLap={Laps - 1}
                 maxLap={1}
                 setEnd={setEnd}
+                setLaps={setLaps}
               />
 
-              <Canvas
+            <Canvas
                 antialias
                 shadows
                 camera={{
@@ -256,15 +257,12 @@ export default function App() {
                 </Physics>
 
                 <BackgroundMusic  track={activeGroup} />
-              </Suspense>
             </Canvas>
+            </Suspense>
+
           </div>
 
-          {/* <div style={{ position: "absolute", bottom: "20px", right: "20px", width: "150px", height: "150px" }}>
-            <Canvas>
-              <MiniMap carRef={carRef} />
-            </Canvas>
-          </div> */}
+  
         </>
       )}
     </>
