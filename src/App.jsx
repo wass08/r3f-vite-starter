@@ -4,7 +4,7 @@ import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Cars/Car";
 import { Timer } from "./components/Timer";
 import BackgroundMusic from "./components/BackgroundMusic";
-// import LeaderBoard from "./components/Leaderboard";
+import LeaderBoard from "./components/Leaderboard";
 import DustParticles from "./components/DustParticles/DustParticles";
 import HUD from "./components/HUD";
 import Loader from "./components/Loader"; // Import the Loader component
@@ -39,6 +39,7 @@ export default function App() {
   const handleStartGame = () => setStartGame(true); // Start the game
   const onCarIndex = (i) => setCarIndex(i);
   const [end, setEnd] = useState(false);
+  
   const gameOver = () => {
     setEnd(false);
     setStartGame(false);
@@ -150,7 +151,7 @@ export default function App() {
               <HUD
                 speed={carSpeed}
                 currentLap={Laps - 1}
-                maxLap={2}
+                maxLap={.5}
                 setEnd={setEnd}
                 setTimer={(i) => setStartTimer(i)}
                 setLaps={setLaps}

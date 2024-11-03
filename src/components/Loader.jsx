@@ -36,9 +36,7 @@ const Loader = ({ progress }) => {
   const roundedProgress = Math.round(progress*2); // Round the progress value
   return (
     <div style={styles.loaderContainer}>
-      <h1 style={{ fontSize: "48px", marginBottom: "150px" }}>
-        <img src={logo} />
-      </h1>
+     <h2 style={styles.header}>Welcome to Blocky Cars</h2>
 
       <Canvas>
         <Speedometer speed={roundedProgress} />
