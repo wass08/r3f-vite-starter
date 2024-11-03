@@ -21,8 +21,8 @@ import { Nissan } from "./components/Cars/Nissan";
 import PauseMenu from "./components/PauseMenu";
 import StartMenu from "./components/StartMenu";
 import { useProgress } from "@react-three/drei"; // For tracking loading progress
-import Checkpoint from "./components/Checkpoint";
-
+import SmokeEffect from "./components/SmokeEffect/SmokeEffect"
+import LeafParticle from "./components/LeafParticle";
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
   const [loading, setLoading] = useState(false); // Track loading state
