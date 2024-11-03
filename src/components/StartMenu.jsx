@@ -113,7 +113,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
                 onMouseEnter={(e) => (e.target.style.backgroundColor = "green")}
                 onMouseLeave={(e) =>
                   (e.target.style.backgroundColor =
-                    Home ===1 ? "green" : "#2196F3")
+                    Home === 1 ? "green" : "#2196F3")
                 }
               >
                 Cherry Blossom
@@ -226,6 +226,26 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
                         https://skfb.ly/6RCPz
                       </a>
                       ) by LZBlocks is licensed under Creative Commons
+                      Attribution (
+                      <a
+                        href="http://creativecommons.org/licenses/by/4.0/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        http://creativecommons.org/licenses/by/4.0/
+                      </a>
+                      ).
+                    </li>
+                    <li>
+                      "(FREE) 1995 Fiat Punto GT" (
+                      <a
+                        href="https://skfb.ly/6WMvy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        https://skfb.ly/6WMvy
+                      </a>
+                      ) by Lionsharp Studios is licensed under Creative Commons
                       Attribution (
                       <a
                         href="http://creativecommons.org/licenses/by/4.0/"
