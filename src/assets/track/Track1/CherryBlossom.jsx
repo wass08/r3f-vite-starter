@@ -7,7 +7,7 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function CherryBlossom(props) {
-  const { nodes, materials } = useGLTF("/~scarhatt/CherryBlossom.glb");
+  const { nodes, materials } = useGLTF("/CherryBlossom.glb");
   return (
     <group {...props} dispose={null} position={[5, -76, 0]}>
       <group position={[24, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>

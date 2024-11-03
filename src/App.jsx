@@ -199,19 +199,13 @@ export default function App() {
                 {activeGroup == 2 && (
                   <>
                     <Nether />
-                    <Environment
-                      files=" /~scarhatt/Nether.jpg"
-                      background={true}
-                    />
+                    <Environment files="  /Nether.jpg" background={true} />
                   </>
                 )}
                 {activeGroup == 3 && (
                   <>
                     <End />
-                    <Environment
-                      files=" /~scarhatt/space.jpg"
-                      background={true}
-                    />
+                    <Environment files="  /space.jpg" background={true} />
                   </>
                 )}
                 {activeGroup == 4 && null}
@@ -275,13 +269,10 @@ export default function App() {
                   {/* <LeafParticle color={color} count={250} /> */}
                 </Physics>
 
-                <BackgroundMusic  track={activeGroup} />
-            </Canvas>
+                <BackgroundMusic track={activeGroup} />
+              </Canvas>
             </Suspense>
-
           </div>
-
-  
         </>
       )}
     </>

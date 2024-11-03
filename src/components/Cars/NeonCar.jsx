@@ -14,7 +14,7 @@ import Speedometer from "../Speedometer";
 import { getBaseUrl } from "../../utils/getURL";
 
 export function NeonCar({ rigidBody, onSpeedChange, ...props }) {
-  const { nodes, materials } = useGLTF(`/~scarhatt/NeonCar.glb`);
+  const { nodes, materials } = useGLTF(` /NeonCar.glb`);
   // const rigidBody = useRef();
   const cameraRef = useRef();
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
@@ -248,8 +248,8 @@ export function NeonCar({ rigidBody, onSpeedChange, ...props }) {
             <mesh
               geometry={nodes.Object_305.geometry}
               material={materials["super_car.png"]}
-              position={[0,0,0]}
-              rotation={[-Math.PI/2, 0, 0]}
+              position={[0, 0, 0]}
+              rotation={[-Math.PI / 2, 0, 0]}
             />
           </group>
         </RigidBody>
@@ -270,4 +270,4 @@ export function NeonCar({ rigidBody, onSpeedChange, ...props }) {
   );
 }
 
-useGLTF.preload(`/~scarhatt/NeonCar.glb`);
+useGLTF.preload(` /NeonCar.glb`);

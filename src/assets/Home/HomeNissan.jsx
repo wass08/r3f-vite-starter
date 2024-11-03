@@ -7,7 +7,7 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function HomeNissan(props) {
-  const { nodes, materials } = useGLTF("/~scarhatt/Nissan.glb");
+  const { nodes, materials } = useGLTF("/Nissan.glb");
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -21,4 +21,4 @@ export function HomeNissan(props) {
   );
 }
 
-useGLTF.preload("/~scarhatt/Nissan.glb");
+useGLTF.preload("/Nissan.glb");

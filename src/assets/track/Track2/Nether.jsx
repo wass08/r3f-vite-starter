@@ -7,7 +7,7 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function Nether(props) {
-  const { nodes, materials } = useGLTF("/~scarhatt/Nether.glb");
+  const { nodes, materials } = useGLTF("/ether.glb");
   return (
     <group {...props} dispose={null} position={[17, -140, 0]}>
       <group position={[21, 100, 135]} rotation={[Math.PI / 2, 0, 0]}>

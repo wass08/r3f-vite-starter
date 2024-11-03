@@ -7,7 +7,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function EndHome(props) {
-  const { nodes, materials } = useGLTF('/~scarhatt/EndHome.glb')
+  const { nodes, materials } = useGLTF('/EndHome.glb')
   return (
     <group {...props} dispose={null}>
       <group position={[16,6, 130]} rotation={[Math.PI / 2, 0, Math.PI]}>
@@ -40,4 +40,4 @@ export function EndHome(props) {
   )
 }
 
-useGLTF.preload('/~scarhatt/EndHome.glb')
+useGLTF.preload('/EndHome.glb')

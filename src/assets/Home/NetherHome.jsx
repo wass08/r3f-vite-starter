@@ -7,7 +7,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function NetherHome(props) {
-  const { nodes, materials } = useGLTF('/~scarhatt/NetherHome.glb')
+  const { nodes, materials } = useGLTF('/NetherHome.glb')
   return (
     <group {...props} dispose={null} rotation={[0, Math.PI / 2, 0]}>
       <group position={[-199, -95,-15]} rotation={[Math.PI / 2, 0, Math.PI]}>
@@ -225,4 +225,4 @@ export function NetherHome(props) {
   );
 }
 
-useGLTF.preload('/~scarhatt/NetherHome.glb')
+useGLTF.preload('/NetherHome.glb')

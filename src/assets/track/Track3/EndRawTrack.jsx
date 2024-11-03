@@ -8,7 +8,7 @@ import { useGLTF } from "@react-three/drei";
 import { RigidBody, Physics } from "@react-three/rapier";
 
 export function EndRawTrack(props) {
-  const { nodes, materials } = useGLTF("/~scarhatt/EndRawTrack.glb");
+  const { nodes, materials } = useGLTF(" /EndRawTrack.glb");
   materials["polished_blackstone_bricks.003"].transparent = true;
   materials["polished_blackstone_bricks.003"].opacity = 0; // Adjust opacity as needed
 
@@ -49,4 +49,4 @@ export function EndRawTrack(props) {
   );
 }
 
-useGLTF.preload("/~scarhatt/EndRawTrack.glb");
+useGLTF.preload(" /EndRawTrack.glb");
