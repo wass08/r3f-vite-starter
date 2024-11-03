@@ -100,7 +100,6 @@ export default function App() {
     setActiveGroup(track); // Set the selected track
     setLoading(true); // Start loading process
   };
-  console.log(totalTime);
   
 
   return (

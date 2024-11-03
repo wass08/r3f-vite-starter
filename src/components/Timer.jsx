@@ -15,8 +15,8 @@ if(time>0 && !end){
   useEffect(() => {
     if (startTimer && !IsPaused && !timerRef.current) {
       timerRef.current = setInterval(() => {
-        setTime((prevTime) => prevTime + 0.05); // Increment time by 1 second
-      }, 1);
+        setTime((prevTime) => prevTime + 1); // Increment time by 1 second
+      }, 1000);
     } else if ((!startTimer || IsPaused) && timerRef.current) {
       clearInterval(timerRef.current);
       timerRef.current = null;
@@ -62,7 +62,7 @@ if(time>0 && !end){
     };
   }, []);
 
-  let secs = (time%60).toFixed(2);
+  let secs = (time%60);
   let mins = Math.floor(time/60);
   
   if (secs < 10) {
