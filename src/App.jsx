@@ -259,8 +259,13 @@ export default function App() {
                       disabled={isPaused} // Disable car controls when paused
                     />
                   )}
-                  <DustParticles carRef={carRef} />
-                  <Checkpoint carRef={carRef} setLaps={setLaps} />
+                  <DustParticles carRef={carRef}  carIndex={carIndex}/>
+                  <SmokeEffect
+                    carRef={carRef}
+                    timer={startTimer}
+                    carIndex={carIndex}
+                  />
+                  <LeafParticle color={color} count={250} />
                 </Physics>
 
                 <BackgroundMusic />
