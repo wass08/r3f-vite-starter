@@ -166,11 +166,8 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
             {showCredits && (
               <div className="overlay" onClick={() => setShowCredits(false)}>
                 <div className="modal">
-                  <h2>Credits</h2>
-                  <p>
-                    Thanks to all the contributors and artists for the 3D models
-                    used in this game!
-                  </p>
+      
+                  <h2>Cars Models</h2>
                   <ul>
                     <li>
                       "FREE | Hummer H1 - Minecraft" (
@@ -246,6 +243,12 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
                     </li>
                     <li>
                       <span className="key">Space</span> Drift
+                    </li>
+                    <li>
+                      <span className="key">c</span> Switch Camera
+                    </li>
+                    <li>
+                      <span className="key">R</span> Reset
                     </li>
                     {/* Add more controls as needed */}
                   </ul>
