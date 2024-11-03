@@ -21,8 +21,9 @@ import { Nissan } from "./components/Cars/Nissan";
 import PauseMenu from "./components/PauseMenu";
 import StartMenu from "./components/StartMenu";
 import { useProgress } from "@react-three/drei"; // For tracking loading progress
-import SmokeEffect from "./components/SmokeEffect/SmokeEffect"
+import SmokeEffect from "./components/SmokeEffect/SmokeEffect";
 import LeafParticle from "./components/LeafParticle";
+import Checkpoint from "./components/Checkpoint";
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
   const [loading, setLoading] = useState(false); // Track loading state
@@ -43,7 +44,6 @@ export default function App() {
     setEnd(false);
     setStartGame(false);
     console.log("Game Over");
-    
   };
   const carRef = useRef();
 
@@ -150,7 +150,7 @@ export default function App() {
               </div>
               <HUD
                 speed={carSpeed}
-                currentLap={Laps }
+                currentLap={Laps - 1}
                 maxLap={2}
                 setEnd={setEnd}
                 setTimer={(i) => setStartTimer(i)}
@@ -210,7 +210,7 @@ export default function App() {
                 )}
                 {activeGroup == 4 && null}
 
-                <Physics gravity={[0, -90.81, 0]} paused={isPaused}  >
+                <Physics gravity={[0, -90.81, 0]} paused={isPaused}>
                   {activeGroup == 1 && <CherryBlossomRawTrack />}
                   {activeGroup == 2 && <NetherRawTrack />}
                   {activeGroup == 3 && <EndRawTrack />}
@@ -259,12 +259,13 @@ export default function App() {
                       disabled={isPaused} // Disable car controls when paused
                     />
                   )}
-                  <DustParticles carRef={carRef}  carIndex={carIndex}/>
+                  <DustParticles carRef={carRef} carIndex={carIndex} />
                   <SmokeEffect
                     carRef={carRef}
                     timer={startTimer}
                     carIndex={carIndex}
                   />
+                  <Checkpoint carRef={carRef} setLaps={setLaps} />
                   {/* <LeafParticle color={color} count={250} /> */}
                 </Physics>
 
