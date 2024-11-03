@@ -248,6 +248,17 @@ export function Nissan({ rigidBody, onSpeedChange, ...props }) {
               scale={0.13}
             />
           </group>
+          <spotLight
+            // ref={headlightLeft}
+            position={[2, -5, -0]} // Position relative to the car
+            // position={[rigidBody?.current?.translation()]}
+            angle={0.7}
+            penumbra={0.3}
+            intensity={200} // Increase intensity for brightness
+            distance={10}
+            color="orange"
+            castShadow
+          />
         </RigidBody>
         <GameWithSound />
         {/* <Speedometer speed={maxSpeed} /> */}

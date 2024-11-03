@@ -4,7 +4,7 @@ import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Cars/Car";
 import { Timer } from "./components/Timer";
 import BackgroundMusic from "./components/BackgroundMusic";
-import LeaderBoard from "./components/Leaderboard";
+// import LeaderBoard from "./components/Leaderboard";
 import DustParticles from "./components/DustParticles/DustParticles";
 import HUD from "./components/HUD";
 import Loader from "./components/Loader"; // Import the Loader component
@@ -119,9 +119,9 @@ export default function App() {
               shadows={shadows}
             />
           )}
-          {end && (
+          {/* {end && (
              <LeaderBoard mapNum={activeGroup} time={totalTime} setEnd={gameOver} />
-          )}
+          )} */}
 
           <div style={{ position: "relative", width: "100%", height: "100vh" }}>
             <Suspense fallback={<Loader progress={progress} />}>
@@ -256,6 +256,7 @@ export default function App() {
                 </Physics>
 
                 <BackgroundMusic />
+               
               </Canvas>
             </Suspense>
           </div>
