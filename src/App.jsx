@@ -157,7 +157,7 @@ export default function App() {
               <HUD
                 speed={carSpeed}
                 currentLap={Laps - 1}
-                maxLap={0.5}
+                maxLap={activeGroup===1?2:activeGroup===2?3:4}
                 setEnd={setEnd}
                 setTimer={(i) => setStartTimer(i)}
                 setLaps={setLaps}

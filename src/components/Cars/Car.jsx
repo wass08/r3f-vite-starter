@@ -190,28 +190,28 @@ export function Car({ rigidBody, onSpeedChange,map, ...props }) {
     // cameraRef.current.lookAt(lookAtTarget.current);
 
     if (isFirstPerson) {
-      // Set the camera's position to be near the car's bonnet
-      cameraRef.current.position.set(
-        carPosition.x,
-        carPosition.y + 1.1,
-        carPosition.z - 1
-      );
+      const carQuaternion = rigidBody.current.rotation(); // Get the car's quaternion (rotation)
+        const firstPersonOffset = new THREE.Vector3(1, -0.95, 0); // Adjust offset as needed
+        // const firstPersonOffset = new THREE.Vector3(1.1, 0, 0);
+        // const firstPersonOffset = new THREE.Vector3(1, -2, 0);
 
-      // Get the car's quaternion (rotation)
-      const carQuaternion = rigidBody.current.rotation(); // Get the car's quaternion rotation
-      cameraRef.current.quaternion.copy(carQuaternion); // Update the camera's quaternion to match the car's rotation
+        // Apply the car's rotation to the offset to keep it fixed relative to the car
+        firstPersonOffset.applyQuaternion(carQuaternion);
 
-      // Define a direction to look at (adjust these values to change the camera's facing position)
-      const lookAtOffset = new THREE.Vector3(1.5, -9, -0.5); // Forward direction relative to the car
-      lookAtOffset.applyQuaternion(carQuaternion); // Rotate the look-at offset by the car's rotation
+        // Set the camera position based on the car's current position plus the offset
+        cameraRef.current.position.set(
+          carPosition.x + firstPersonOffset.x,
+          carPosition.y + firstPersonOffset.y,
+          carPosition.z + firstPersonOffset.z
+        );
 
-      // Calculate the target position for the camera to look at
-      const targetPosition = cameraRef.current.position
-        .clone()
-        .add(lookAtOffset);
+        // Define a look-at offset to control the camera's viewing direction
+        const lookAtOffset = new THREE.Vector3(0, -1, 0).applyQuaternion(carQuaternion);
 
-      // Make the camera look at the calculated target position
-      cameraRef.current.lookAt(targetPosition);
+        // Calculate where the camera should look, then update it
+        const targetPosition = cameraRef.current.position.clone().add(lookAtOffset);
+        cameraRef.current.lookAt(targetPosition);
+
     } else {
       // Third-person camera behind and above the car
       const carRotation = rigidBody.current.rotation();

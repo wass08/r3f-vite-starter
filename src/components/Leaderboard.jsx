@@ -71,6 +71,7 @@ export default function LeaderBoard({ mapNum, time, setEnd,end }) {
         {submitted ? (
           <>
             <h1 className="bebas-neue-regular">Leaderboard</h1>
+            {mapNum===1?<h1>Cherry Blossom</h1>:mapNum===2?<h1>Nether</h1>:<h1>End Map</h1>}
             <table className="styled-table">
               <tbody>
                 <tr className="active-row">
