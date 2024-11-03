@@ -100,6 +100,8 @@ export default function App() {
     setActiveGroup(track); // Set the selected track
     setLoading(true); // Start loading process
   };
+  console.log(totalTime);
+  
 
   return (
     <>
@@ -147,6 +149,9 @@ export default function App() {
                   startTimer={startTimer}
                   Laps={Laps}
                   setTotalTime={setTotalTime}
+                  IsPaused={isPaused}
+                  end={end}
+
                 />
               </div>
               <HUD
