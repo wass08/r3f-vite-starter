@@ -224,7 +224,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px; /* Fixed width */
-  height: 300px; /* Fixed height */
+  height: 80%; /* Fixed height */
   background-color: #333; /* Dark background */
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
