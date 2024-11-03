@@ -9,9 +9,11 @@ import {
 } from "firebase/firestore";
 import "./styles.css";
 
-export default function LeaderBoard({ mapNum, time, setEnd }) {
+export default function LeaderBoard({ mapNum, time, setEnd,end }) {
   // const mapNum = 1;
   // const time = 10;
+  console.log(end);
+  
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [myID, setMyID] = useState("");
