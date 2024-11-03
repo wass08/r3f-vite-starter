@@ -18,6 +18,9 @@ export function Car({ rigidBody, onSpeedChange,map, ...props }) {
   const lookAtTarget = useRef(new THREE.Vector3()); // A point for the camera to look at
   const [isFirstPerson, setIsFirstPerson] = useState(false); // Toggle for camera mode
 
+  const headlightLeft = useRef();
+  
+
   const Boostarray = [
     [0, 1, 0],
     [20, 1, 0],
@@ -226,6 +229,19 @@ export function Car({ rigidBody, onSpeedChange,map, ...props }) {
       lookAtTarget.current.lerp(carPosition, delta * 10);
       cameraRef.current.lookAt(lookAtTarget.current);
     }
+
+
+    // if (headlightLeft.current) {
+    //   const carRotation = rigidBody.current.rotation();
+    //   console.log(carRotation);
+      
+    //   // headlightLeft.current.target.position.set(
+    //   //   carRotation.x , // Offset to the left headlight position
+    //   //   carRotation.y,
+    //   //   carRotation.z  // Adjust for a forward position
+    //   // );
+   
+    // }
   });
 
   return (
@@ -284,6 +300,19 @@ export function Car({ rigidBody, onSpeedChange,map, ...props }) {
               receiveShadow
             />
           </group>
+
+          <spotLight
+            // ref={headlightLeft}
+            position={[2, -5, -2]} // Position relative to the car
+            // position={[rigidBody?.current?.translation()]}
+            angle={0.7}
+            penumbra={0.3}
+            intensity={200} // Increase intensity for brightness
+            distance={10}
+            color="orange"
+            castShadow
+          />
+     
         </RigidBody>
         <GameWithSound />
         {/* <Speedometer speed={maxSpeed} /> */}

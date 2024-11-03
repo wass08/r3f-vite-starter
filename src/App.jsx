@@ -4,7 +4,7 @@ import { RigidBody, Physics } from "@react-three/rapier";
 import { Car } from "./components/Cars/Car";
 import { Timer } from "./components/Timer";
 import BackgroundMusic from "./components/BackgroundMusic";
-import LeaderBoard from "./components/Leaderboard";
+// import LeaderBoard from "./components/Leaderboard";
 import DustParticles from "./components/DustParticles/DustParticles";
 import HUD from "./components/HUD";
 import Loader from "./components/Loader"; // Import the Loader component
@@ -153,6 +153,7 @@ export default function App() {
                 maxLap={2}
                 setEnd={setEnd}
                 setTimer={(i) => setStartTimer(i)}
+                setLaps={setLaps}
               />
 
               <Canvas
@@ -274,10 +275,13 @@ export default function App() {
                   {/* <LeafParticle color={color} count={250} /> */}
                 </Physics>
 
-                <BackgroundMusic />
-              </Canvas>
+                <BackgroundMusic  track={activeGroup} />
+            </Canvas>
             </Suspense>
+
           </div>
+
+  
         </>
       )}
     </>

@@ -1,41 +1,3 @@
-// import React, { useState, useEffect, useRef } from 'react';
-
-// export function Timer({ startTimer,Laps }) {
-//   const [time, setTime] = useState(0);
-//   const timerRef = useRef(null); // Use ref to store the interval ID
-//   const[LapTimes,setlapTimes]=useState({Lap1:0,Lap2:0,Lap3:0})
-//   useEffect(()=>{
-
-//   },[Laps])
-
-//   // Start the timer when the `startTimer` prop is true
-//   useEffect(() => {
-    
-//     if (startTimer && !timerRef.current) {  // Check if the timer has started
-//       timerRef.current = setInterval(() => {
-//         setTime(prevTime => prevTime + 1); // Increment time by 1 second
-//       }, 1000);
-//     }
-//     else{
-//       setTime(0);
-//     }
-
-//     // Cleanup interval when the component unmounts or when the timer stops
-//     return () => {
-//       clearInterval(timerRef.current);
-//       timerRef.current = null; // Reset the timer reference
-//     };
-//   }, [startTimer]); // This will run when `startTimer` changes
-
-//   return (
-
-//   <div>Time Elapsed: {time} seconds</div>
-  
-
-
-// );
-// }
-
 import React, { useState, useEffect, useRef } from 'react';
 
 export function Timer({ startTimer, Laps,setTotalTime }) {
@@ -66,7 +28,7 @@ export function Timer({ startTimer, Laps,setTotalTime }) {
 
   // Track lap times whenever `Laps` changes
   useEffect(() => {
-    if (Laps > 0) {
+    if (Laps -1> 0) {
       setLapTimes((prevLapTimes) => ({
         ...prevLapTimes,
         [`Checkpoint ${Laps-1}`]: time,
@@ -100,9 +62,11 @@ export function Timer({ startTimer, Laps,setTotalTime }) {
       <div>Checkpoint Times:</div>
       <ul>
         {Object.entries(LapTimes).map(([lap, lapTime]) => (
+          
           <li key={lap}>
             {lap}: {lapTime} seconds
           </li>
+          
         ))}
       </ul>
     </div>

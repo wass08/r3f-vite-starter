@@ -12,6 +12,7 @@ import { HomeNissan } from "../assets/Home/HomeNissan";
 import { HomeCar } from "../assets/Home/HomeCar";
 import logo from "./images/logo.png"
 import LeafParticle from "./LeafParticle";
+import BackgroundMusic from "./BackgroundMusic";
 
 export default function StartMenu({ onTrackSelect, onCarSelect }) {
   const { progress } = useProgress();
@@ -363,6 +364,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
               />
             )}
             <LeafParticle color={color} count={1000} />
+            <BackgroundMusic track={1} />
           </Canvas>
         </Suspense>
       )}
