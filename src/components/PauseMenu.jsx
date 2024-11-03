@@ -7,6 +7,7 @@ export default function PauseMenu({
   setFog,
   setIsPaused,
   setStartGame,
+  setLaps
 }) {
   return (
     <div
@@ -63,6 +64,7 @@ export default function PauseMenu({
         onClick={() => {
           setIsPaused(false);
           setStartGame(false);
+          setLaps(0)
         }}
         onMouseEnter={(e) => (e.target.style.backgroundColor = "#e53935")}
         onMouseLeave={(e) => (e.target.style.backgroundColor = "#f44336")}

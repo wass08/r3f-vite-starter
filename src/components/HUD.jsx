@@ -6,6 +6,11 @@ import { Text } from "@react-three/drei";
 export default function HUD({currentLap, maxLap, speed, currentTime,setEnd, setTimer,setLaps}) {
 
     if(currentLap===maxLap){
+        console.log("Im a, te proble");
+        console.log(currentLap);
+        console.log(maxLap);
+        
+        
         setEnd(true);
         setTimer(false);
         setLaps(1);

@@ -43,11 +43,10 @@ export default function App() {
   const gameOver = () => {
     setEnd(false);
     setStartGame(false);
-    setLaps(1);
+    setLaps(0);
     console.log("Game Over");
   };
   const carRef = useRef();
-
   const [Laps, setLaps] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
 
@@ -117,6 +116,7 @@ export default function App() {
             <PauseMenu
               setIsPaused={setIsPaused}
               setStartGame={setStartGame}
+              setLaps={setLaps}
               setFog={setFog}
               setShadows={setShadows}
               Fog={Fog}
