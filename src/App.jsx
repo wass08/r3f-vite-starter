@@ -39,10 +39,11 @@ export default function App() {
   const handleStartGame = () => setStartGame(true); // Start the game
   const onCarIndex = (i) => setCarIndex(i);
   const [end, setEnd] = useState(false);
-  
+
   const gameOver = () => {
     setEnd(false);
     setStartGame(false);
+    setLaps(1);
     console.log("Game Over");
   };
   const carRef = useRef();
@@ -127,9 +128,9 @@ export default function App() {
               mapNum={activeGroup}
               time={totalTime}
               setEnd={gameOver}
+              end={end}
             />
           )}
-
           <div style={{ position: "relative", width: "100%", height: "100vh" }}>
             <Suspense fallback={<Loader progress={progress} />}>
               <div
@@ -151,7 +152,7 @@ export default function App() {
               <HUD
                 speed={carSpeed}
                 currentLap={Laps - 1}
-                maxLap={.5}
+                maxLap={0.5}
                 setEnd={setEnd}
                 setTimer={(i) => setStartTimer(i)}
                 setLaps={setLaps}
