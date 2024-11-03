@@ -16,12 +16,14 @@ import { NetherRawTrack } from "./assets/track/Track2/NetherRawTrack";
 import { EndRawTrack } from "./assets/track/Track3/EndRawTrack";
 import { Environment, Sky } from "@react-three/drei"; // Import Sky and Environment for HDR or skybox
 import { Hummer } from "./components/Cars/Hummer";
-import { NeonCar } from "./components/Cars/NeonCar";
 import { Nissan } from "./components/Cars/Nissan";
 import PauseMenu from "./components/PauseMenu";
 import StartMenu from "./components/StartMenu";
 import { useProgress } from "@react-three/drei"; // For tracking loading progress
 import Checkpoint from "./components/Checkpoint";
+import SmokeEffect from "./components/SmokeEffect/SmokeEffect";
+import SmokeParticle from "./components/SmokeEffect/SmokeParticle";
+
 
 export default function App() {
   const [startTimer, setStartTimer] = useState(false);
@@ -199,18 +201,24 @@ export default function App() {
                 {activeGroup == 2 && (
                   <>
                     <Nether />
-                    <Environment files=" /~scarhatt/Nether.jpg" background={true} />
+                    <Environment
+                      files=" /~scarhatt/Nether.jpg"
+                      background={true}
+                    />
                   </>
                 )}
                 {activeGroup == 3 && (
                   <>
                     <End />
-                    <Environment files=" /~scarhatt/space.jpg" background={true} />
+                    <Environment
+                      files=" /~scarhatt/space.jpg"
+                      background={true}
+                    />
                   </>
                 )}
                 {activeGroup == 4 && null}
 
-                <Physics gravity={[0, -90.81, 0]} paused={isPaused} debug >
+                <Physics gravity={[0, -90.81, 0]} paused={isPaused} debug>
                   {activeGroup == 1 && <CherryBlossomRawTrack />}
                   {activeGroup == 2 && <NetherRawTrack />}
                   {activeGroup == 3 && <EndRawTrack />}
@@ -261,6 +269,12 @@ export default function App() {
                   )}
                   <DustParticles carRef={carRef} />
                   <Checkpoint carRef={carRef} setLaps={setLaps} />
+                  <SmokeEffect
+                    carRef={carRef}
+                    timer={startTimer}
+                    carIndex={carIndex}
+                  />
+                  <LeafParticle color={color} count={250} />
                 </Physics>
 
                 <BackgroundMusic />
