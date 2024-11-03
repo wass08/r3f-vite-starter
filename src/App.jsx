@@ -149,7 +149,7 @@ export default function App() {
               </div>
               <HUD
                 speed={carSpeed}
-                currentLap={Laps - 1}
+                currentLap={Laps }
                 maxLap={2}
                 setEnd={setEnd}
                 setTimer={(i) => setStartTimer(i)}
@@ -270,7 +270,7 @@ export default function App() {
                     timer={startTimer}
                     carIndex={carIndex}
                   />
-                  <LeafParticle color={color} count={250} />
+                  {/* <LeafParticle color={color} count={250} /> */}
                 </Physics>
 
                 <BackgroundMusic />

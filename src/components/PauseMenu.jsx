@@ -29,20 +29,6 @@ export default function PauseMenu({
       }}
     >
       <h1 style={{ fontSize: "48px", marginBottom: "20px" }}>Game Paused</h1>
-
-      <div style={{ marginBottom: "30px" }}>
-        <h2>Controls</h2>
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          <li>⬆️ Up Arrow: Accelerate</li>
-          <li>⬇️ Down Arrow: Brake/Reverse</li>
-          <li>➡️ Right Arrow: Turn Right</li>
-          <li>⬅️ Left Arrow: Turn Left</li>
-          <li>Space: Drift</li>
-          <li>C: Change Camera View</li>
-          <li>R: Restart from the begining</li>
-        </ul>
-      </div>
-
       <button
         style={{
           padding: "12px 24px",
@@ -90,15 +76,19 @@ export default function PauseMenu({
           fontSize: "20px",
           margin: "10px",
           cursor: "pointer",
-          backgroundColor: "#2196F3",
+          backgroundColor: shadows ? "#2196F3" : "#333",
           border: "none",
           borderRadius: "5px",
           color: "#fff",
           transition: "background-color 0.3s",
         }}
         onClick={() => setShadows(!shadows)}
-        onMouseEnter={(e) => (e.target.style.backgroundColor = "#1e88e5")}
-        onMouseLeave={(e) => (e.target.style.backgroundColor = "#2196F3")}
+        onMouseEnter={(e) =>
+          (e.target.style.backgroundColor = shadows ? "#2196F3" : "#333")
+        }
+        onMouseLeave={(e) =>
+          (e.target.style.backgroundColor = shadows ? "#2196F3" : "#333")
+        }
       >
         Toggle Shadows
       </button>
@@ -108,15 +98,19 @@ export default function PauseMenu({
           fontSize: "20px",
           margin: "10px",
           cursor: "pointer",
-          backgroundColor: "#2196F3",
+          backgroundColor: Fog ? "#2196F3" : "#333",
           border: "none",
           borderRadius: "5px",
           color: "#fff",
           transition: "background-color 0.3s",
         }}
         onClick={() => setFog(!Fog)}
-        onMouseEnter={(e) => (e.target.style.backgroundColor = "#1e88e5")}
-        onMouseLeave={(e) => (e.target.style.backgroundColor = "#2196F3")}
+        onMouseEnter={(e) =>
+          (e.target.style.backgroundColor = Fog ? "#2196F3" : "#333")
+        }
+        onMouseLeave={(e) =>
+          (e.target.style.backgroundColor = Fog ? "#2196F3" : "#333")
+        }
       >
         Toggle Fog
       </button>

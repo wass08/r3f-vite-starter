@@ -11,6 +11,7 @@ import { HomeHummer } from "../assets/Home/HomeHummer";
 import { HomeNissan } from "../assets/Home/HomeNissan";
 import { HomeCar } from "../assets/Home/HomeCar";
 import logo from "./images/logo.png"
+import LeafParticle from "./LeafParticle";
 
 export default function StartMenu({ onTrackSelect, onCarSelect }) {
   const { progress } = useProgress();
@@ -104,21 +105,48 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
               <button
                 onClick={() => setHome(1)}
                 disabled={loading}
-                style={buttonStyle}
+                style={{
+                  ...buttonStyle,
+                  backgroundColor: Home === 1 ? "green" : "#2196F3",
+                  color: "white",
+                }}
+                onMouseEnter={(e) => (e.target.style.backgroundColor = "green")}
+                onMouseLeave={(e) =>
+                  (e.target.style.backgroundColor =
+                    Home ===1 ? "green" : "#2196F3")
+                }
               >
                 Cherry Blossom
               </button>
               <button
                 onClick={() => setHome(2)}
                 disabled={loading}
-                style={buttonStyle}
+                style={{
+                  ...buttonStyle,
+                  backgroundColor: Home === 2 ? "green" : "#2196F3",
+                  color: "white",
+                }}
+                onMouseEnter={(e) => (e.target.style.backgroundColor = "green")}
+                onMouseLeave={(e) =>
+                  (e.target.style.backgroundColor =
+                    Home === 2 ? "green" : "#2196F3")
+                }
               >
                 Nether Realm
               </button>
               <button
                 onClick={() => setHome(3)}
                 disabled={loading}
-                style={buttonStyle}
+                style={{
+                  ...buttonStyle,
+                  backgroundColor: Home === 3 ? "green" : "#2196F3",
+                  color: "white",
+                }}
+                onMouseEnter={(e) => (e.target.style.backgroundColor = "green")}
+                onMouseLeave={(e) =>
+                  (e.target.style.backgroundColor =
+                    Home === 3 ? "green" : "#2196F3")
+                }
               >
                 End Map
               </button>
@@ -166,7 +194,6 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
             {showCredits && (
               <div className="overlay" onClick={() => setShowCredits(false)}>
                 <div className="modal">
-      
                   <h2>Cars Models</h2>
                   <ul>
                     <li>
@@ -266,7 +293,12 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
           <Canvas
             antialias="true"
             shadows
-            camera={{ fov: 60, near: 0.1, far: 2000, position: [0, 50, 200] }}
+            camera={{
+              fov: 60,
+              near: 0.1,
+              far: 2000000,
+              position: [0, 49, 200],
+            }}
             style={{ position: "absolute", top: 0, left: 0 }}
           >
             <fog attach="fog" color={color} near={1} far={far} />
@@ -310,6 +342,7 @@ export default function StartMenu({ onTrackSelect, onCarSelect }) {
                 scale={[0.8, 0.8, 0.8]}
               />
             )}
+            <LeafParticle color={color} count={1000} />
           </Canvas>
         </Suspense>
       )}
@@ -326,6 +359,7 @@ const buttonStyle = {
   border: "none",
   borderRadius: "5px",
   color: "#fff",
+  
 };
 
 const sideButtonStyle = {
