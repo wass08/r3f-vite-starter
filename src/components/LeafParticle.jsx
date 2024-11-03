@@ -38,7 +38,7 @@ const LeafParticle = ({ color = "#3A5F0B", count = 50 }) => {
   });
 
   return (
-    <group>
+    <group position={[0,45,200]}>
       {initialPositions.map((pos, i) => (
         <mesh
           key={i}
