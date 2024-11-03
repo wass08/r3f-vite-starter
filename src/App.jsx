@@ -241,7 +241,7 @@ export default function App() {
                       disabled={isPaused} // Disable car controls when paused
                     />
                   )}
-                  <DustParticles carRef={carRef} />
+                  <DustParticles carRef={carRef}  carIndex={carIndex}/>
                   <SmokeEffect
                     carRef={carRef}
                     timer={startTimer}
