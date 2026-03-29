@@ -26,9 +26,9 @@ export const projects = [
     description: "A framer project working with interface"
   },
   {
-    title: "Canaball",
-    url: "https://trusting-designers-367680.framer.app",
-    image: "project/canaball.png",
+    title: "Maryam RSVP",
+    url: "https://maryamrsvp.framer.website",
+    image: "project/maryamrsvp.png",
     description: "A framer project working with interface"
   },
 ];

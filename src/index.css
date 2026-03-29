@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,11 +12,22 @@
 }
 body {
   margin: 0;
-  background-color: #edf2f4;
+  font-family: "Manrope", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 24%),
+    radial-gradient(circle at 78% 18%, rgba(148, 163, 184, 0.24), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(203, 213, 225, 0.42), transparent 28%),
+    linear-gradient(145deg, #edf2f7 0%, #dbe4ee 52%, #cfd8e3 100%);
 
 }
+h1,
+h2,
+h3,
+.TypeEffect {
+  font-family: "Syne", sans-serif;
+}
 .paragraph{
-  font-family: "Didact Gothic", sans-serif;
+  font-family: "Manrope", sans-serif;
   letter-spacing: 1px;
 }
 form{
@@ -26,7 +39,7 @@ form{
   background-color: gray;
 }
 form label{
-  font-family: "Didact Gothic", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-size: large;
   margin-top:30px;
   /* border: 1px solid black; */
@@ -46,7 +59,7 @@ textarea:hover{
   box-shadow: 0px 0px 10px white;
 }
 .sendbutton{
-  font-family: "Didact Gothic", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-size: large;
   cursor: pointer;
   background-color: #8d99ae;
